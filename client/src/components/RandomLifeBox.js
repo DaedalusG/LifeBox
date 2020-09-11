@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { render } from 'react-dom';
+
 
 const RandomLifeBox = () => {
     const canvasRef = React.useRef(null)
@@ -9,12 +9,12 @@ const RandomLifeBox = () => {
         const ctx = canvas.getContext('2d')
 
 
-        const resolution = 10;
-        canvas.width = 800;
-        canvas.height = 800;
+        const resolution = 100;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        const COLS = canvas.width / resolution;
-        const ROWS = canvas.height / resolution;
+        const COLS = Math.floor(canvas.width / resolution)
+        const ROWS = Math.floor(canvas.height / resolution)
 
         // makes randomly populated grid
         function buildGrid() {
@@ -31,9 +31,11 @@ const RandomLifeBox = () => {
 
                     ctx.beginPath();
                     ctx.rect(col * resolution, row * resolution, resolution, resolution)
-                    ctx.fillStyle = cell ? 'black' : 'white';
+                    ctx.fillStyle = cell ? 'lightgreen' : '#271D45';
+                    ctx.shadowColor = 'green'
+                    ctx.shadowBlur = 20;
                     ctx.fill();
-                    ctx.stroke();
+                    //ctx.stroke();
                 }
             }
         }
