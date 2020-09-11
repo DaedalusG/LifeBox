@@ -9,7 +9,7 @@ const RandomLifeBox = () => {
         const ctx = canvas.getContext('2d')
 
 
-        const resolution = 100;
+        const resolution = 80;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
