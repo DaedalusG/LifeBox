@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { render } from 'react-dom';
 
-const LifeBox = () => {
+const RandomLifeBox = () => {
 
     useEffect(() => {
 
@@ -90,9 +90,9 @@ const LifeBox = () => {
     return (
         <>
             <div>This a canvas plz</div>
-            <canvas></canvas>
+            <canvas ></canvas>
         </>
     )
 }
 
-export default LifeBox
+export default RandomLifeBox
