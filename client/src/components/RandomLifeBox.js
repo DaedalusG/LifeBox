@@ -18,13 +18,13 @@ const RandomLifeBox = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const COLS = Math.round(canvas.width / resolution)
-        const ROWS = Math.round(canvas.height / resolution)
-
         // makes randomly populated grid
         function buildGrid() {
-            return new Array(COLS).fill(null)
-                .map(() => new Array(COLS).fill(null)
+            const cols = Math.ceil(canvas.width / resolution);
+            const rows = Math.ceil(canvas.height / resolution);
+
+            return new Array(cols).fill(null)
+                .map(() => new Array(rows).fill(null)
                     .map(() => Math.floor(Math.random() * 2)));
         }
 
@@ -47,8 +47,10 @@ const RandomLifeBox = () => {
 
         //make next interation based of rules of conways game of life
 
-        function nextGen(gird) {
+        function nextGen(grid) {
             const nextGen = grid.map(arr => [...arr]);
+            const cols = Math.ceil(canvas.width / resolution);
+            const rows = Math.ceil(canvas.height / resolution);
 
             for (let col = 0; col < grid.length; col++) {
                 for (let row = 0; row < grid[col].length; row++) {
@@ -60,9 +62,9 @@ const RandomLifeBox = () => {
                                 continue;
                             }
                             const x_cell = col + i;
-                            const y_cell = col + j;
+                            const y_cell = row + j;
 
-                            if (x_cell >= 0 && y_cell >= 0 && x_cell < COLS && y_cell < ROWS) {
+                            if (x_cell >= 0 && y_cell >= 0 && x_cell < cols && y_cell < rows) {
                                 const currentNeighbour = grid[col + i][row + j]
                                 numNeighbours += currentNeighbour
                             }
@@ -84,9 +86,9 @@ const RandomLifeBox = () => {
         //renders grid on every generation
         function update() {
             grid = nextGen(grid);
-            console.log(grid)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             makeLifeBox(grid);
+            console.log(grid)
             setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
