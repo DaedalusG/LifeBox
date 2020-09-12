@@ -2,14 +2,19 @@ import React, { useEffect } from 'react';
 
 
 const RandomLifeBox = () => {
-    const canvasRef = React.useRef(null)
+    const canvasRef = React.useRef(null);
+    let canvas;
+    let ctx;
 
     useEffect(() => {
-        const canvas = canvasRef.current
-        const ctx = canvas.getContext('2d')
+        if (!canvas) {
+            canvas = canvasRef.current;
+        }
 
-
-        const resolution = 50;
+        if (!ctx) {
+            ctx = canvas.getContext('2d')
+        }
+        const resolution = 55;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
@@ -79,6 +84,8 @@ const RandomLifeBox = () => {
         //renders grid on every generation
         function update() {
             grid = nextGen(grid);
+            console.log(grid)
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             makeLifeBox(grid);
             setTimeout(() => requestAnimationFrame(update), 1000);
         }
