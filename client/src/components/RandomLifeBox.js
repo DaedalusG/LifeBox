@@ -9,12 +9,12 @@ const RandomLifeBox = () => {
         const ctx = canvas.getContext('2d')
 
 
-        const resolution = 80;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const resolution = 50;
+        canvas.width = Math.round(window.innerWidth);
+        canvas.height = Math.round(window.innerHeight);
 
-        const COLS = Math.floor(canvas.width / resolution)
-        const ROWS = Math.floor(canvas.height / resolution)
+        const COLS = Math.round(canvas.width / resolution)
+        const ROWS = Math.round(canvas.height / resolution)
 
         // makes randomly populated grid
         function buildGrid() {
@@ -35,7 +35,7 @@ const RandomLifeBox = () => {
                     ctx.shadowColor = 'green'
                     ctx.shadowBlur = 20;
                     ctx.fill();
-                    //ctx.stroke();
+                    ctx.stroke();
                 }
             }
         }
@@ -87,13 +87,13 @@ const RandomLifeBox = () => {
         //execute functions to produce and render game of life
         let grid = buildGrid();
         requestAnimationFrame(update);
-    })
+    }, [])
 
     return (
         <>
-            <div>This a canvas plz</div>
             <canvas
                 ref={canvasRef}
+                className={'login_background'}
             />
         </>
     )

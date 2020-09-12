@@ -11,12 +11,12 @@ function App() {
 
     return (
         <BrowserRouter>
-            <nav>
+            {/* <nav>
                 <ul>
                     <li><NavLink to="/" activeclass="active">Home</NavLink></li>
                     <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
                 </ul>
-            </nav>
+            </nav> */}
             <Switch>
                 <Route path="/users">
                     <UserList />
