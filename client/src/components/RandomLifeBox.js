@@ -33,7 +33,7 @@ const RandomLifeBox = () => {
                     ctx.rect(col * resolution, row * resolution, resolution, resolution)
                     ctx.fillStyle = cell ? 'lightgreen' : '#271D45';
                     ctx.shadowColor = 'green'
-                    ctx.shadowBlur = 10;
+                    ctx.shadowBlur = 15;
                     ctx.fill();
                     ctx.stroke();
                 }
