@@ -10,8 +10,8 @@ const RandomLifeBox = () => {
 
 
         const resolution = 50;
-        canvas.width = Math.round(window.innerWidth);
-        canvas.height = Math.round(window.innerHeight);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
         const COLS = Math.round(canvas.width / resolution)
         const ROWS = Math.round(canvas.height / resolution)
@@ -33,7 +33,7 @@ const RandomLifeBox = () => {
                     ctx.rect(col * resolution, row * resolution, resolution, resolution)
                     ctx.fillStyle = cell ? 'lightgreen' : '#271D45';
                     ctx.shadowColor = 'green'
-                    ctx.shadowBlur = 20;
+                    ctx.shadowBlur = 10;
                     ctx.fill();
                     ctx.stroke();
                 }
@@ -80,7 +80,7 @@ const RandomLifeBox = () => {
         function update() {
             grid = nextGen(grid);
             makeLifeBox(grid);
-            requestAnimationFrame(update);
+            setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
 
