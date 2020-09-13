@@ -16,12 +16,23 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    border-radius: 20px;
+    height: 40vh;
+    width: 40vw;
+    background-color: #032116;
+    border: 2px solid #04D482;
     z-index: 1;
 }
 
 .login_background {
     position: absolute;
     display: inline;
+}
+
+.login_input_field {
+    color: #04D482;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #381A60;
+    outline: none;
 }
