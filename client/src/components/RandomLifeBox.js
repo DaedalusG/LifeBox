@@ -88,7 +88,6 @@ const RandomLifeBox = () => {
             grid = nextGen(grid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             makeLifeBox(grid);
-            console.log(grid)
             setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
