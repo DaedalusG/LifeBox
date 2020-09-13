@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
+import Login from './components/Login.js'
 import RandomLifeBox from './components/RandomLifeBox.js'
 import TestCanvas from './components/TestCanvas.js'
 
@@ -8,6 +9,7 @@ import UserList from './components/UsersList';
 
 
 function App() {
+    const loggedIn = window.localStorage.getItem("auth_token");
 
     return (
         <BrowserRouter>
@@ -23,8 +25,7 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    {/* <TestCanvas /> */}
-                    <RandomLifeBox />
+                    {loggedIn ? <RandomLifeBox /> : <Login />}
                 </Route>
             </Switch>
         </BrowserRouter>

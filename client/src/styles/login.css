@@ -1,0 +1,27 @@
+.login_container {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    min-width: 600px;
+    top: 0px;
+    left: 0px;
+}
+
+.login_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.login_background {
+    position: absolute;
+    display: inline;
+}
