@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import RandomLifeBox from './RandomLifeBox.js'
-import Glider from '../images/glider.js'
+import Glider from '../images/Glider.js'
 
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
     return (
         <div className={"login_container"}>
             <div className={"login_form"}>
-                {/* <Glider /> */}
+                <Glider />
                 <input
                     className="login_input_field"
                     type="text"
