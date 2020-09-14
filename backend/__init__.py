@@ -20,15 +20,18 @@ from flask_jwt_extended import (
     get_raw_jwt,
     verify_jwt_in_request)  # noqa
 
+# Setup
 app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
-jwt = JWTManager(app)
 Migrate(app, db)
 
-# Application Security
+# Security
 CORS(app)
+jwt = JWTManager(app)
+
+# Blueprints
+app.register_blueprint(user_routes, url_prefix='/api/users')
 
 
 @app.after_request
