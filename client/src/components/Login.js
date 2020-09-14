@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import RandomLifeBox from './RandomLifeBox.js'
-import Glider from '../images/Glider.js'
+import Glider from '../images/glider.js'
 
 
 const Login = () => {
