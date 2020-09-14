@@ -6,6 +6,13 @@ from flask_migrate import Migrate
 from backend.models import db, User
 from backend.api.user_routes import user_routes
 from backend.config import Config
+from flask_login import LoginManager
+from flask_jwt_extended import (
+    JWTManager,
+    jwt_required,
+    get_jwt_identity,
+    get_raw_jwt,
+    verify_jwt_in_request)  # noqa
 
 app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
