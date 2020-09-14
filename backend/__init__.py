@@ -24,6 +24,7 @@ app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
+jwt = JWTManager(app)
 Migrate(app, db)
 
 # Application Security
