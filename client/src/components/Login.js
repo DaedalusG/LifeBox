@@ -13,8 +13,9 @@ const Login = () => {
 
     return (
         <div className={"login_container"}>
-            <div className={"login_form"}>
+            <div className={"login_form_container"}>
                 <Glider />
+                <div className={"login_header"}>Log in to LifeBox</div>
                 <input
                     className="login_input_field"
                     type="text"
