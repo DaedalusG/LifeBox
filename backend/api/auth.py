@@ -28,8 +28,7 @@ def login():
     try:
         username = data['username']
         password = data['password']
-        print('username---->', username)
-        print('password---->', password)
+
         if not username:
             return jsonify(message='Username Required'), 400
         elif not password:
@@ -45,7 +44,8 @@ def login():
             # Error needs handling decision
             return jsonify(message='Password verify failed'), 403
         else:
-            auth_token = create_access_token(identity={"email": user.email})
+            auth_token = create_access_token(
+                identity={"username": user.username})
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
