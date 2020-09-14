@@ -1,22 +1,40 @@
 import os
-from flask import Flask, render_template, request, session
+from flask import (
+    Flask,
+    render_template,
+    request,
+    session,
+    redirect,
+    jsonify)
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-
-
+from flask_migrate import Migrate
 from backend.models import db, User
 from backend.api.user_routes import user_routes
-
 from backend.config import Config
+from flask_login import LoginManager
+from flask_jwt_extended import (
+    JWTManager,
+    jwt_required,
+    get_jwt_identity,
+    get_raw_jwt,
+    verify_jwt_in_request)
 
+from .api.auth import auth
+
+# Setup
 app = Flask(__name__, static_url_path='')
-
 app.config.from_object(Config)
-app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
+Migrate(app, db)
 
-# Application Security
+# Security
 CORS(app)
+jwt = JWTManager(app)
+
+# Blueprints
+app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(auth, url_prefix='/api/auth')
 
 
 @app.after_request
@@ -34,3 +52,13 @@ def inject_csrf_token(response):
 @app.route('/<path>')
 def react_root(path):
     return app.send_static_file('index.html')
+
+
+@app.route('/')
+def slash():
+    return jsonify(Notice='Please use /api route to access the api'), 200
+
+
+@app.route('/api', methods=['GET'])
+def api():
+    return jsonify(message='Successful API ping'), 200
