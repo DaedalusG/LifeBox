@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RandomLifeBox from './RandomLifeBox.js'
 import Glider from '../images/glider.js'
+import { apiUrl } from '../config.js'
 
 
 const Login = () => {
@@ -11,9 +12,25 @@ const Login = () => {
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
 
-    const handleLoginSubmit = () => {
-        console.log('submitted')
-    }
+    const handleLoginSubmit = async () => {
+        const response = await fetch(`${apiUrl}/auth/login`, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: `${username}`, password: `${password}` }),
+        });
+
+        if (response.ok) {
+            console.log("inside tryLogin: Success");
+        } else {
+            console.log("inside tryLogin: Response failure");
+        }
+        const res = await response.json()
+        if (res.auth_token != undefined) {
+            window.localStorage.setItem('auth_token', res.auth_token)
+            window.location.reload()
+        }
+    };
 
     return (
         <div className={"login_container"}>

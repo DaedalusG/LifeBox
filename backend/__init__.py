@@ -18,7 +18,9 @@ from flask_jwt_extended import (
     jwt_required,
     get_jwt_identity,
     get_raw_jwt,
-    verify_jwt_in_request)  # noqa
+    verify_jwt_in_request)
+
+from .api.auth import auth
 
 # Setup
 app = Flask(__name__, static_url_path='')
@@ -32,6 +34,7 @@ jwt = JWTManager(app)
 
 # Blueprints
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(auth, url_prefix='/api/auth')
 
 
 @app.after_request

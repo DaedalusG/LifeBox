@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token
 import bcrypt
 
-from models import db, User
+from backend.models import db, User
 
 auth = Blueprint('auth', __name__)
 
@@ -21,23 +21,24 @@ def verify_password(password, hashed_password):
         return False
 
 
+@auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
 
     try:
-        email = data['email']
+        username = data['username']
         password = data['password']
-        print("++++++++++++++++++++", email, password)
-        if not email:
-            return jsonify(message='Email Required'), 400
+        print('username---->', username)
+        print('password---->', password)
+        if not username:
+            return jsonify(message='Username Required'), 400
         elif not password:
             return jsonify(message='Password Required'), 400
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(username=username).first()
         if not user:
-            return jsonify(message='Email Required'), 400
+            return jsonify(message='Username Required'), 400
 
-        print('+++++++++++++++++', user, user.hashed_password)
         verified = verify_password(password, user.hashed_password)
 
         if not verified:
@@ -49,3 +50,36 @@ def login():
 
     except Exception:
         return jsonify(message='Login Failed'), 408
+
+
+@auth.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+
+    try:
+        username = data['username']
+        email = data['email']
+
+        if not username:
+            return jsonify(message="Username Required"), 400
+        elif not email:
+            return jsonify(message='Email Required'), 400
+
+        try:
+            hashed_password = set_password(data['password'])
+        except Exception:
+            return jsonify(message='Password Required'), 400
+
+        user = User(
+            username=username,
+            email=email,
+            hashed_password=hashed_password,
+        )
+        db.session.add(user)
+        db.session.commit()
+
+        auth_token = create_access_token(identity={"email": user.email})
+        return jsonify(auth_token=auth_token), 200
+
+    except Exception:
+        return jsonify(message="try failed"), 409
