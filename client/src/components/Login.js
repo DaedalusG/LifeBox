@@ -11,6 +11,10 @@ const Login = () => {
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
 
+    const handleLoginSubmit = () => {
+        console.log('submitted')
+    }
+
     return (
         <div className={"login_container"}>
             <div className={"login_form_container"}>
@@ -28,6 +32,7 @@ const Login = () => {
                     placeholder="Password"
                     value={password}
                     onChange={updatePassword} />
+                <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
             </div>
             <RandomLifeBox className={"login_background"} />
         </div>
