@@ -84,6 +84,9 @@ const RandomLifeBox = () => {
         }
 
         //stops and restarts game on change of viewport
+        function handleResize() {
+            window.location.reload()
+        }
 
         //renders grid on every generation
         function update() {
@@ -99,11 +102,7 @@ const RandomLifeBox = () => {
         let stopUpdate = requestAnimationFrame(update);
 
         //restarts on change of viewport
-        // window.addEventListener("resize", handleResize(stopUpdate))
-        // function handleResize(stopUpdate) {
-        //     console.log('test', stopUpdate)
-        //     cancelAnimationFrame(stopUpdate)
-        // }
+        window.addEventListener("resize", handleResize)
 
     }, [])
 
