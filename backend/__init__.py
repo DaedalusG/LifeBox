@@ -1,5 +1,11 @@
 import os
-from flask import Flask, render_template, request, session
+from flask import (
+    Flask,
+    render_template,
+    request,
+    session,
+    redirect,
+    jsonify)
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_migrate import Migrate
@@ -39,3 +45,13 @@ def inject_csrf_token(response):
 @app.route('/<path>')
 def react_root(path):
     return app.send_static_file('index.html')
+
+
+@app.route('/')
+def slash():
+    return jsonify(Notice='Please use /api route to access the api'), 200
+
+
+@app.route('/api', methods=['GET'])
+def api():
+    return jsonify(message='Successful API ping'), 200
