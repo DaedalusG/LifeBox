@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import RandomLifeBox from './RandomLifeBox.js'
-import Glider from '../images/glider.js'
 import SignUpModal from './SignUpModal.js'
+import Glider from '../images/glider.js'
 import { apiUrl } from '../config.js'
 
 
@@ -9,7 +9,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [isOpen, setIsOpen] = useState(false)
+    const [openSignUp, setSignUp] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
@@ -53,10 +53,10 @@ const Login = () => {
                     value={password}
                     onChange={updatePassword} />
                 <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
-                <div className={"signup_link"} onClick={() => setIsOpen(true)}>Need an Account?</div>
+                <div className={"signup_link"} onClick={() => setSignUp(true)}>Need an Account?</div>
                 <div className={"signup_link"}>Sign in as Demo</div>
             </div>
-            <SignUpModal open={isOpen} onClose={() => setIsOpen(false)} />
+            <SignUpModal openSignUp={openSignUp} closeSignUp={() => setSignUp(false)} />
             <RandomLifeBox className={"login_background"} />
         </div >
     )

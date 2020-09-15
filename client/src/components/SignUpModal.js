@@ -1,14 +1,12 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 
-const SignUpModal = ({ open, onClose }) => {
-    if (!open) return null;
-    return ReactDom.createPortal(
+const SignUpModal = ({ openSignUp, closeSignUp }) => {
+    if (!openSignUp) return null
+    return (
         <div>
-            Test
-            <button onClick={onClose}>Close Modal</button>
-        </div>,
-        document.getElementById("signup")
+            <button onClick={closeSignUp}>Close</button>
+            <div>Test</div>
+        </div>
     )
 }
 
