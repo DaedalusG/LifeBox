@@ -1,5 +1,7 @@
 import React from 'react';
 
-const SignupModal = () => {
+const SignUpModal = () => {
 
 }
+
+export default SignUpModal
