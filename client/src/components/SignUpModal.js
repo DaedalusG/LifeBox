@@ -11,9 +11,10 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             </div>
             <img src='/Users/wglaptop/Documents/AppAcademy/LifeBox/client/public/default_profile_pic.png' alt="default_profile_pic"></img>
             <div className={"signup_inputs_container"}>
-                <input></input>
-                <input></input>
-                <input></input>
+                <input>Username</input>
+                <input>Email</input>
+                <input>Password</input>
+                <input>Password Again</input>
             </div>
             <div>
                 <button className={"register_button"}>Register</button>
