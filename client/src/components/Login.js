@@ -9,6 +9,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [isOpen, setIsOpen] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
@@ -33,12 +34,6 @@ const Login = () => {
         }
     };
 
-    const [signupModal, setSignup] = useState(false)
-
-    const handleSignUp = () => {
-        let toggleSignup = !signupModal;
-        setSignup(toggleSignup)
-    }
 
     return (
         <div className={"login_container"}>
@@ -58,9 +53,10 @@ const Login = () => {
                     value={password}
                     onChange={updatePassword} />
                 <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
-                <div className={"signup_link"} onClick={handleSignUp}>Need an Account?</div>
+                <div className={"signup_link"} onClick={() => setIsOpen(true)}>Need an Account?</div>
                 <div className={"signup_link"}>Sign in as Demo</div>
             </div>
+            <SignUpModal open={isOpen} onClose={() => setIsOpen(false)} />
             <RandomLifeBox className={"login_background"} />
         </div >
     )

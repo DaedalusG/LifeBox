@@ -32,6 +32,7 @@
 .login_background {
     position: absolute;
     display: inline;
+    z-index: -1;
 }
 
 .login_header {
