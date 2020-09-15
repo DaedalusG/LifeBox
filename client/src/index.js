@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './styles/login.css'
 import './styles/signupmodal.css'
+import './styles/images.css'
 import App from './App';
 
 ReactDOM.render(

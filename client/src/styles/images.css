@@ -1,0 +1,12 @@
+.close_button {
+    width: 25px;
+    height: 25px;
+    fill:  #49D884;
+    padding: 7px;
+    border: 2px solid #49D884;
+    border-radius: 999px;
+}
+
+.close_button:hover {
+    box-shadow: 0 5px 15px #49D884;
+}
