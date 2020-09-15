@@ -19,8 +19,9 @@
     flex-wrap: wrap;
     flex-flow: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border-radius: 20px;
+    padding: 10px;
     height: 40vh;
     width: 40vw;
     background-color: #032116;
