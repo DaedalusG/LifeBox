@@ -22,6 +22,8 @@ const Login = () => {
             body: JSON.stringify({ username: `${username}`, password: `${password}` }),
         });
 
+        console.log(username, password, response)
+
         if (response.ok) {
             console.log("inside tryLogin: Success");
         } else {
