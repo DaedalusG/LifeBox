@@ -59,7 +59,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             <div className={'signup_close_container'} onClick={closeSignUp}>
                 <Close />
             </div>
-            <img src={'../images/default_profile_pic.png'} alt="default_profile_pic"></img>
+            <img src={'../casey_cat.png'} alt="default_profile_pic"></img>
             <div className={"signup_inputs_container"}>
                 <input
                     className="login_input_field"
