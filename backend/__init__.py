@@ -10,7 +10,7 @@ from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_migrate import Migrate
 from backend.models import db, User
-from backend.api.user_routes import user_routes
+from backend.api.user import user
 from backend.config import Config
 from flask_login import LoginManager
 from flask_jwt_extended import (
@@ -33,7 +33,7 @@ CORS(app)
 jwt = JWTManager(app)
 
 # Blueprints
-app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(auth, url_prefix='/api/auth')
 
 

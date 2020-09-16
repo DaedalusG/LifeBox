@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 
 import Login from './components/Login.js'
 import RandomLifeBox from './components/RandomLifeBox.js'
+import MainPage from './components/MainPage.js'
 import TestCanvas from './components/TestCanvas.js'
 
 import UserList from './components/UsersList';
@@ -25,7 +26,7 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    {loggedIn ? <RandomLifeBox /> : <Login />}
+                    {loggedIn ? <MainPage /> : <Login />}
                 </Route>
             </Switch>
         </BrowserRouter>
