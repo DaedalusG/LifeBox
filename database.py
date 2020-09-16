@@ -1,7 +1,10 @@
 from backend.models import User
 from backend import app, db
 from dotenv import load_dotenv
+from backend.api.auth import set_password
 load_dotenv()
+
+hash = set_password('password')
 
 with app.app_context():
     db.drop_all()
@@ -10,52 +13,52 @@ with app.app_context():
     ian = User(
         username='Ian',
         email='ian@aa.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     javier = User(
         username='Javier',
         email='javier@aa.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     dean = User(
         username='Dean',
         email='dean@aa.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     metal_fingers = User(
         username='metal_fingers',
         email='cutz@lair.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     ultron = User(
         username='ultron',
         email='robo-rights@lair.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     ElizabethII = User(
         username='ElizabethII',
         email='lizzy@england.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     xenomorph = User(
         username='xenomorph',
         email='queen@corp.com',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     IggyPop = User(
         username='Iggy',
         email='Iggy@england.io',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     predator = User(
         username='ThePredator',
         email='@corp.com',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
     Arnold = User(
         username='Arnold',
         email='arnold@corp.com',
-        hashed_password='$2b$12$vu6DPbq4MzCBwvlqjPiy1Oq0huYhoxlRWx5ipZ1AvEo8McV.QD1KC',  # noqa
+        hashed_password=hash,  # noqa
     )
 
     db.session.add(ian)
