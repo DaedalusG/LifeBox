@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
+import DrawLife from './DrawLife'
 
 const MainPage = () => {
     const [user, setUser] = useState({})
@@ -24,7 +25,10 @@ const MainPage = () => {
     }, [targetUser])
 
     return (
-        <div>Gee wiz a page</div>
+        <>
+            <div>Gee wiz a page</div>
+            <DrawLife />
+        </>
     )
 }
 
