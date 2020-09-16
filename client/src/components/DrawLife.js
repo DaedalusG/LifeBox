@@ -6,9 +6,19 @@ const DrawLife = () => {
     let canvas;
     let ctx;
 
+    // canvas.addEventListener('click', handleClick);
+    function handleClick(e) {
+        ctx.fillStyle = "black";
+
+        ctx.fillRect(Math.floor(e.offsetX / 40) * 40,
+            Math.floor(e.offsetY / 40) * 40,
+            40, 40);
+    }
+
     useEffect(() => {
         if (!canvas) {
             canvas = canvasRef.current;
+            canvas.addEventListener('click', handleClick);
         }
 
         if (!ctx) {
@@ -24,8 +34,7 @@ const DrawLife = () => {
             const rows = Math.ceil(canvas.height / resolution);
 
             return new Array(cols).fill(null)
-                .map(() => new Array(rows).fill(null)
-                    .map(() => Math.floor(Math.random() * 2)));
+                .map(() => new Array(rows).fill(null))
         }
 
         //renders lifebox to canvas
