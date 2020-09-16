@@ -10,7 +10,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    # hashed_password = db.Column(db.Binary(100), nullable=False)
+    hashed_password = db.Column(db.Binary(100), nullable=False)
     # root_interlocutor = db.Column(db.Boolean, nullable=False)
     profile_pic = db.Column(db.String)
 
