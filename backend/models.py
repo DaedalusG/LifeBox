@@ -11,7 +11,7 @@ class User(db.Model):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     # hashed_password = db.Column(db.Binary(100), nullable=False)
-    root_interlocutor = db.Column(db.Boolean, nullable=False)
+    # root_interlocutor = db.Column(db.Boolean, nullable=False)
     profile_pic = db.Column(db.String)
 
     # likes = db.relationship("Like", backref="user")
