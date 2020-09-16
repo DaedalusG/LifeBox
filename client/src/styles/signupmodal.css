@@ -7,6 +7,7 @@
 .signupmodal {
     position: absolute;
     top:15vh;
+    left: 26%;
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
