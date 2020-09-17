@@ -57,6 +57,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
 
     return ReactDom.createPortal(
         <div className={"signupmodal"}>
+            <link src={""}></link>
             <div className={'signup_close_container'} onClick={closeSignUp}>
                 <Close />
             </div>

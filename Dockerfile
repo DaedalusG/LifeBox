@@ -16,6 +16,8 @@ RUN ["npm", "run", "build", "--prefix", "client"]
 # Use cp here because we're copying files inside our working directory, not from
 # our host machine.
 RUN ["cp", "-r", "client/build/", "backend/static"]
+# RUN ["cp", "backend/static/favicon.ico", "backend/static/static"]
+# RUN ["cp", "backend/static/glider.svg", "backend/static/static"]
 
 # Setup Flask environment
 ENV FLASK_APP=backend
