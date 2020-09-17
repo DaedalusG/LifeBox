@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDom from 'react-dom'
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
-import defaultPic from "../images/default_profile_pic.png"
+import defaultPic from "../images/casey_cat.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const [username, setUsername] = useState("");
@@ -83,7 +83,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
                 <input
                     className="login_input_field"
                     type="password"
-                    placeholder="Password"
+                    placeholder="rePassword"
                     value={rePassword}
                     onChange={updateRePassword} />
             </div>
