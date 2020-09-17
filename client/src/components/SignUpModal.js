@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactDom from 'react-dom'
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
+import defaultPic from "../images/default_profile_pic.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const [username, setUsername] = useState("");
@@ -59,7 +60,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             <div className={'signup_close_container'} onClick={closeSignUp}>
                 <Close />
             </div>
-            <img src={'../casey_cat.png'} alt="default_profile_pic"></img>
+            <img src={defaultPic} alt="default_profile_pic"></img>
             <div className={"signup_inputs_container"}>
                 <input
                     className="login_input_field"

@@ -18,7 +18,13 @@
     border-radius: 20px;
     z-index: 1000;
     width: 50vw;
-    height: 50vh;
+    min-height: 60vh;
+}
+
+.signupmodal > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 .register_button {

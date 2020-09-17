@@ -8,7 +8,7 @@ const DrawLife = () => {
 
     // canvas.addEventListener('click', handleClick);
     function handleClick(e) {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "lightgreen";
 
         ctx.fillRect(Math.floor(e.offsetX / 40) * 40,
             Math.floor(e.offsetY / 40) * 40,
@@ -97,6 +97,10 @@ const DrawLife = () => {
             window.location.reload()
         }
 
+        //execute functions to produce and render game of life
+        let grid = buildGrid();
+        let stopUpdate = requestAnimationFrame(update);
+
         //renders grid on every generation
         function update() {
             grid = nextGen(grid);
@@ -106,9 +110,6 @@ const DrawLife = () => {
         }
 
 
-        //execute functions to produce and render game of life
-        let grid = buildGrid();
-        let stopUpdate = requestAnimationFrame(update);
 
         //restarts on change of viewport
         window.addEventListener("resize", handleResize)
