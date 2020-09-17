@@ -7,7 +7,6 @@ const DrawLife = () => {
 
 
     const resolution = 55;
-
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
@@ -22,7 +21,9 @@ const DrawLife = () => {
         // console.log(e, e.nativeEvent.offsetX, e.nativeEvent.offsetY)
         const columnClicked = Math.floor(e.nativeEvent.offsetX / colWidth)
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
-        console.log(cols, rows)
+        console.log('col= ', columnClicked)
+        console.log('row= ', rowClicked)
+
         newGrid[columnClicked][rowClicked] = 1
 
         setGrid(newGrid)
@@ -61,7 +62,7 @@ const DrawLife = () => {
     function nextGen() {
         if (!grid) return
         const nextGen = grid.map(arr => [...arr]);
-        // console.log(nextGen)
+        console.log('Gen')
 
         for (let col = 0; col < grid.length; col++) {
             for (let row = 0; row < grid[col].length; row++) {
@@ -103,12 +104,6 @@ const DrawLife = () => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         setGrid(newGrid)
-        // const intervalHandler = setInterval(() => {
-        //     setGrid(nextGen())
-        //     console.log('update', grid)
-        // }, 1000)
-
-        // return () => clearInterval(intervalHandler)
         setIsReady(true)
     }, [])
 
@@ -125,10 +120,14 @@ const DrawLife = () => {
 
     return (
         <>
+            <div className={'drawlife_controller'}>
+                <button className={'drawlife_button'}>Start</button>
+                <button className={'drawlife_button'}>Stop</button>
+            </div>
             <canvas
                 ref={canvasRef}
                 onClick={handleClick}
-                className={'login_background'}
+                className={'drawlife_grid'}
             />
         </>
     )

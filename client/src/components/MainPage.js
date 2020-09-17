@@ -26,7 +26,7 @@ const MainPage = () => {
 
     return (
         <>
-            <div>Gee wiz a page</div>
+            <div className={'navbar'}>Navbar Goes here (in parent to canvas)</div>
             <DrawLife />
         </>
     )

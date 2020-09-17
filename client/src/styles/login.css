@@ -77,6 +77,9 @@
 .login_form_submit:hover {
     box-shadow: 0 5px 15px #49D884;
 }
+.login_form_submit:active {
+    background-color: #0c4d30;
+}
 
 .signup_link {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
