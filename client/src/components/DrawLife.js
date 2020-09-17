@@ -111,7 +111,7 @@ const DrawLife = () => {
         if (!isReady) return
         setTimeout(() => {
             setGrid(nextGen())
-        }, 1000)
+        }, 5000)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         makeLifeBox();
     }, [grid, isReady])
@@ -119,7 +119,7 @@ const DrawLife = () => {
 
 
     return (
-        <>
+        <div className={'drawlife_container'}>
             <div className={'drawlife_controller'}>
                 <button className={'drawlife_button'}>Start</button>
                 <button className={'drawlife_button'}>Stop</button>
@@ -129,7 +129,7 @@ const DrawLife = () => {
                 onClick={handleClick}
                 className={'drawlife_grid'}
             />
-        </>
+        </div>
     )
 }
 
