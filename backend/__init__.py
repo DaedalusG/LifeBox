@@ -52,13 +52,3 @@ def inject_csrf_token(response):
 @app.route('/<path>')
 def react_root(path):
     return app.send_static_file('index.html')
-
-
-@app.route('/')
-def slash():
-    return jsonify(Notice='Please use /api route to access the api'), 200
-
-
-@app.route('/api', methods=['GET'])
-def api():
-    return jsonify(message='Successful API ping'), 200
