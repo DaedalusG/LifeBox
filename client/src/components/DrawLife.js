@@ -7,6 +7,7 @@ const DrawLife = () => {
 
     //sets up a state containing information about the current grids array and values, 
     const [resolution, setResolution] = useState(50);
+    const [genCount, setGenCount] = useState(0)
     const [genFreq, setGenFreq] = useState(500)
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
@@ -18,15 +19,16 @@ const DrawLife = () => {
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
 
-    //functions to control regeneration cycle
-    function start() {
-        console.log('start')
-        setGenerate(true)
-    }
-
-    function stop() {
-        console.log('stop')
-        setGenerate(false)
+    //function to control regeneration cycle
+    function genStart() {
+        const button = document.getElementById('gen_button')
+        if (!generate) {
+            button.innerHTML = 'Stop';
+            setGenerate(true)
+        } else {
+            button.innerHTML = 'Start';
+            setGenerate(false)
+        }
     }
 
     // adds a true value to a cell in the grid
@@ -42,7 +44,6 @@ const DrawLife = () => {
         } else {
             newGrid[columnClicked][rowClicked] = 1;
         }
-
 
         console.log('handleClick---> setGrid')
         setGrid(newGrid)
@@ -142,6 +143,7 @@ const DrawLife = () => {
         setTimeout(() => {
             console.log('useEffect-update-------> setGrid')
             setGrid(nextGen(grid))
+            setGenCount(genCount + 1)
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         console.log(grid)
@@ -153,9 +155,9 @@ const DrawLife = () => {
     return (
         <div className={'drawlife_container'}>
             <div className={'drawlife_hud'}>
-                <div className={'drawlife_start_stop'}>
-                    <button onClick={start} className={'drawlife_button'}>Start</button>
-                    <button onClick={stop} className={'drawlife_button'}>Stop</button>
+                <div className={'drawlife_genStart'}>
+                    <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>Start</button>
+                    <div className={'gen_counter'}>Gen: {genCount}</div>
                 </div>
                 <div>
                     <input
@@ -175,6 +177,10 @@ const DrawLife = () => {
                         max={"11"}
                     />
                 </div>
+                {/* <div className={'drawlife_start_stop'}>
+                    <button onClick={start} className={'drawlife_button'}>Start</button>
+                    <button onClick={stop} className={'drawlife_button'}>Stop</button>
+                </div> */}
             </div>
             <canvas
                 ref={canvasRef}
