@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react'
+import Draggable from 'react-draggable';
 
 const DrawLife = () => {
 
@@ -158,34 +159,38 @@ const DrawLife = () => {
 
     return (
         <div className={'drawlife_container'}>
-            <div className={'drawlife_hud'}>
-                <div className={'drawlife_genStart'}>
-                    <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
-                    <div className={'gen_counter'}>{genCount}</div>
+            <Draggable>
+                <div className={'drawlife_hud'}>
+                    <div className={'drawlife_genStart'}>
+                        <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
+                        <div className={'gen_counter'}>{genCount}</div>
+                    </div>
+                    <div>
+                        <input
+                            type={"range"}
+                            defaultValue={genFreq}
+                            onChange={() => setGenFreq(genFreq)}
+                            min={"100"}
+                            max={"1000"}
+                            step={"100"}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type={"range"}
+                            defaultValue={resolution}
+                            onChange={() => setResolution(resolution)}
+                            min={"20"}
+                            max={"80"}
+                            step={"10"}
+                        />
+                    </div>
+                    <div className={'drawlife_start_stop'}>
+                        <button onClick={clear} className={'drawlife_button'}>Clear</button>
+                        <button onClick={randomGrid} className={'drawlife_button'}>Rand</button>
+                    </div>
                 </div>
-                <div>
-                    <input
-                        type={"range"}
-                        defaultValue={genFreq}
-                        onChange={() => setGenFreq(genFreq)}
-                        min={"100"}
-                        max={"1000"}
-                    />
-                </div>
-                <div>
-                    <input
-                        type={"range"}
-                        defaultValue={resolution}
-                        onChange={() => setResolution(resolution)}
-                        min={"0"}
-                        max={"11"}
-                    />
-                </div>
-                <div className={'drawlife_start_stop'}>
-                    <button onClick={clear} className={'drawlife_button'}>Clear</button>
-                    <button onClick={randomGrid} className={'drawlife_button'}>Rand</button>
-                </div>
-            </div>
+            </Draggable>
             <canvas
                 ref={canvasRef}
                 onMouseDown={handleClick}

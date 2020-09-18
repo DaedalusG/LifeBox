@@ -9,7 +9,7 @@
 .drawlife_hud {
     position: absolute;
     z-index: 1;
-    top: 20vh;
+    top: 6vh;
     right: 1vw;
     display: flex;
     flex-direction: column;
