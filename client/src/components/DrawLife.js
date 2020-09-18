@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react'
 import Draggable from 'react-draggable';
+import InputRange from 'react-input-range';
 
 const DrawLife = () => {
 
