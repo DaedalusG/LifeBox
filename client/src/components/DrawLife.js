@@ -6,7 +6,7 @@ const DrawLife = () => {
     const ctx = useRef(null)
 
     //sets up a state containing information about the current grids array and values, 
-    const resolution = 55;
+    const [resolution, setResolution] = useState(40);
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
@@ -14,16 +14,17 @@ const DrawLife = () => {
     const rows = useMemo(() => Math.ceil(height / resolution), [height])
     const colWidth = useMemo(() => Math.ceil(width / cols), [width])
     const rowHeight = useMemo(() => Math.ceil(height / rows), [height])
-    const [isReady, setIsReady] = useState(false)
+    const [init, setInit] = useState(false)
+    const [generate, setGenerate] = useState(false)
 
     function start() {
         console.log('start')
-        setIsReady(true)
+        setGenerate(true)
     }
 
     function stop() {
         console.log('stop')
-        setIsReady(false)
+        setGenerate(false)
     }
 
     // adds a true value to a cell in the grid
@@ -116,22 +117,30 @@ const DrawLife = () => {
         const canvas = canvasRef.current;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        // canvas.addEventListener('click', handleClick);
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         // console.log('useEffect-----> generate initial grid')
         setGrid(newGrid)
-        setIsReady(true)
+        setInit(true)
     }, [])
 
+    useEffect(() => {
+        if (!init) return
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        console.log(grid)
+        renderLifeBox();
+    })
+
     // renders the lifebox whenever grid state is changed or isReady is set
-    useEffect((grid) => {
-        if (!isReady) return
+    useEffect(() => {
+        if (!generate) return
         setTimeout(() => {
             console.log('useEffect-update-------> setGrid')
             setGrid(nextGen(grid))
-        }, 1000)
+        }, 500)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        console.log(grid)
         renderLifeBox();
     })
 
