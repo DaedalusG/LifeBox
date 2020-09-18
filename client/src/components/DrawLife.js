@@ -111,7 +111,7 @@ const DrawLife = () => {
         if (!isReady) return
         setTimeout(() => {
             setGrid(nextGen())
-        }, 5000)
+        }, 8000)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         makeLifeBox();
     }, [grid, isReady])
