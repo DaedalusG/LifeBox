@@ -36,6 +36,16 @@ const DrawLife = () => {
         setGenCount(0)
     }
 
+    //function to generate random grid
+    function randomGrid() {
+        setGenerate(false)
+        const randGrid = new Array(cols).fill(null)
+            .map(() => new Array(rows).fill(null)
+                .map(() => Math.floor(Math.random() * 2)));
+        setGrid(randGrid)
+        setGenCount(0)
+    }
+
     // adds a true value to a cell in the grid
     function handleClick(e) {
         const newGrid = grid.map(arr => [...arr])
@@ -173,7 +183,7 @@ const DrawLife = () => {
                 </div>
                 <div className={'drawlife_start_stop'}>
                     <button onClick={clear} className={'drawlife_button'}>Clear</button>
-                    <button className={'drawlife_button'}>Rand</button>
+                    <button onClick={randomGrid} className={'drawlife_button'}>Rand</button>
                 </div>
             </div>
             <canvas
