@@ -21,14 +21,22 @@ const DrawLife = () => {
 
     //function to control regeneration cycle
     function genStart() {
-        const button = document.getElementById('gen_button')
+        // const button = document.getElementById('gen_button')
         if (!generate) {
-            button.innerHTML = 'Stop';
+            // button.innerHTML = 'Stop';
             setGenerate(true)
         } else {
-            button.innerHTML = 'Start';
+            // button.innerHTML = 'Start';
             setGenerate(false)
         }
+    }
+
+    //function to clear the grid and reinitialize count
+    function clear() {
+        setGenerate(false)
+        const freshGrid = buildGrid()
+        setGrid(freshGrid)
+        setGenCount(0)
     }
 
     // adds a true value to a cell in the grid
@@ -156,7 +164,7 @@ const DrawLife = () => {
         <div className={'drawlife_container'}>
             <div className={'drawlife_hud'}>
                 <div className={'drawlife_genStart'}>
-                    <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>Start</button>
+                    <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
                     <div className={'gen_counter'}>{genCount}</div>
                 </div>
                 <div>
@@ -177,10 +185,10 @@ const DrawLife = () => {
                         max={"11"}
                     />
                 </div>
-                {/* <div className={'drawlife_start_stop'}>
-                    <button onClick={start} className={'drawlife_button'}>Start</button>
-                    <button onClick={stop} className={'drawlife_button'}>Stop</button>
-                </div> */}
+                <div className={'drawlife_start_stop'}>
+                    <button onClick={clear} className={'drawlife_button'}>Clear</button>
+                    <button className={'drawlife_button'}>Rand</button>
+                </div>
             </div>
             <canvas
                 ref={canvasRef}
