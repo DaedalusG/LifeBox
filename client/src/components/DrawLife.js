@@ -5,7 +5,7 @@ const DrawLife = () => {
     const canvasRef = useRef(null);
     const ctx = useRef(null)
 
-
+    //sets up a state containing information about the current grids array and values, 
     const resolution = 55;
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
@@ -16,17 +16,31 @@ const DrawLife = () => {
     const rowHeight = useMemo(() => Math.ceil(height / rows), [height])
     const [isReady, setIsReady] = useState(false)
 
+    function start() {
+        console.log('start')
+        setIsReady(true)
+    }
+
+    function stop() {
+        console.log('stop')
+        setIsReady(false)
+    }
+
+    // adds a true value to a cell in the grid
     function handleClick(e) {
-        const newGrid = grid.map((row) => row.slice())
+        const newGrid = grid.map(arr => [...arr])
         // console.log(e, e.nativeEvent.offsetX, e.nativeEvent.offsetY)
         const columnClicked = Math.floor(e.nativeEvent.offsetX / colWidth)
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
-        console.log('col= ', columnClicked)
-        console.log('row= ', rowClicked)
+        // console.log('col= ', columnClicked)
+        // console.log('row= ', rowClicked)
 
         newGrid[columnClicked][rowClicked] = 1
 
+        console.log('handleClick---> setGrid')
         setGrid(newGrid)
+        renderLifeBox(grid)
+        console.log(grid)
     }
 
 
@@ -37,12 +51,14 @@ const DrawLife = () => {
         const cols = Math.ceil(canvasRef.current.width / resolution);
         const rows = Math.ceil(canvasRef.current.height / resolution);
 
+        // console.log('-----> buildGrid')
+
         return new Array(cols).fill(null)
             .map(() => new Array(rows).fill(null))
     }
 
     // //renders lifebox to canvas
-    function makeLifeBox() {
+    function renderLifeBox() {
         for (let col = 0; col < grid.length; col++) {
             for (let row = 0; row < grid[col].length; row++) {
                 const cell = grid[col][row];
@@ -55,14 +71,13 @@ const DrawLife = () => {
                 ctx.current.stroke();
             }
         }
+        // console.log('----> renderLifeBox')
     }
 
     //make next interation based of rules of conways game of life
-
     function nextGen() {
         if (!grid) return
         const nextGen = grid.map(arr => [...arr]);
-        console.log('Gen')
 
         for (let col = 0; col < grid.length; col++) {
             for (let row = 0; row < grid[col].length; row++) {
@@ -92,6 +107,7 @@ const DrawLife = () => {
                 }
             }
         }
+        // console.log('-----> nextGen')
         return nextGen
     }
 
@@ -103,26 +119,29 @@ const DrawLife = () => {
         // canvas.addEventListener('click', handleClick);
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
+        // console.log('useEffect-----> generate initial grid')
         setGrid(newGrid)
         setIsReady(true)
     }, [])
 
-    useEffect(() => {
+    // renders the lifebox whenever grid state is changed or isReady is set
+    useEffect((grid) => {
         if (!isReady) return
         setTimeout(() => {
-            setGrid(nextGen())
-        }, 8000)
+            console.log('useEffect-update-------> setGrid')
+            setGrid(nextGen(grid))
+        }, 1000)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        makeLifeBox();
-    }, [grid, isReady])
+        renderLifeBox();
+    }, [isReady])
 
 
 
     return (
         <div className={'drawlife_container'}>
             <div className={'drawlife_controller'}>
-                <button className={'drawlife_button'}>Start</button>
-                <button className={'drawlife_button'}>Stop</button>
+                <button onClick={start} className={'drawlife_button'}>Start</button>
+                <button onClick={stop} className={'drawlife_button'}>Stop</button>
             </div>
             <canvas
                 ref={canvasRef}

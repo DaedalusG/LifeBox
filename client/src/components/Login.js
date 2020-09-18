@@ -30,7 +30,7 @@ const Login = () => {
             console.log("inside tryLogin: Response failure");
         }
         const res = await response.json()
-        if (res.auth_token != undefined) {
+        if (res.auth_token !== undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
             window.location.reload()
         }

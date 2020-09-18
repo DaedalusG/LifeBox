@@ -99,7 +99,7 @@ const RandomLifeBox = () => {
 
         //execute functions to produce and render game of life
         let grid = buildGrid();
-        let stopUpdate = requestAnimationFrame(update);
+        requestAnimationFrame(update);
 
         //restarts on change of viewport
         window.addEventListener("resize", handleResize)

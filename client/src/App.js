@@ -1,11 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './components/Login.js'
-import RandomLifeBox from './components/RandomLifeBox.js'
 import MainPage from './components/MainPage.js'
-import TestCanvas from './components/TestCanvas.js'
-
 import UserList from './components/UsersList';
 
 
