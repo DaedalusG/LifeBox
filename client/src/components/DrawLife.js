@@ -149,8 +149,20 @@ const DrawLife = () => {
     return (
         <div className={'drawlife_container'}>
             <div className={'drawlife_controller'}>
-                <button onClick={start} className={'drawlife_button'}>Start</button>
-                <button onClick={stop} className={'drawlife_button'}>Stop</button>
+                <div className={'drawlife_start_stop'}>
+                    <button onClick={start} className={'drawlife_button'}>Start</button>
+                    <button onClick={stop} className={'drawlife_button'}>Stop</button>
+                </div>
+                <div>
+                    <label for={"volume"}>Gen</label>
+                    <input type={"range"} id={"volume"} name={"volume"}
+                        min={"0"} max={"11"} />
+                </div>
+                <div>
+                    <label for={"volume"}>Res</label>
+                    <input type={"range"} id={"volume"} name={"volume"}
+                        min={"0"} max={"11"} />
+                </div>
             </div>
             <canvas
                 ref={canvasRef}

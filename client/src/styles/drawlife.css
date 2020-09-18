@@ -1,5 +1,5 @@
 /* .drawlife_container {
-    position: relative;
+
 } */
 
 .drawlife_grid {
@@ -9,9 +9,10 @@
 .drawlife_controller {
     position: absolute;
     z-index: 1;
-    top: 93vh;
+    top: 20vh;
     right: 1vw;
     display: flex;
+    flex-direction: column;
     min-width: 15vw;
     justify-content: center;
     border-radius: 20px;
