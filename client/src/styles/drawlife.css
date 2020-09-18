@@ -12,7 +12,7 @@
     top: 93vh;
     right: 1vw;
     display: flex;
-    width: 15vw;
+    min-width: 15vw;
     justify-content: center;
     border-radius: 20px;
     border: 2px solid #04D482;
