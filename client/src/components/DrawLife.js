@@ -125,10 +125,10 @@ const DrawLife = () => {
         setInit(true)
     }, [])
 
+    // renders first grid after 
     useEffect(() => {
         if (!init) return
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        console.log(grid)
         renderLifeBox();
     })
 
