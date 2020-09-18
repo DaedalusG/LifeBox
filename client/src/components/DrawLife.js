@@ -21,12 +21,9 @@ const DrawLife = () => {
 
     //function to control regeneration cycle
     function genStart() {
-        // const button = document.getElementById('gen_button')
         if (!generate) {
-            // button.innerHTML = 'Stop';
             setGenerate(true)
         } else {
-            // button.innerHTML = 'Start';
             setGenerate(false)
         }
     }
@@ -42,21 +39,15 @@ const DrawLife = () => {
     // adds a true value to a cell in the grid
     function handleClick(e) {
         const newGrid = grid.map(arr => [...arr])
-        // console.log(e, e.nativeEvent.offsetX, e.nativeEvent.offsetY)
         const columnClicked = Math.floor(e.nativeEvent.offsetX / colWidth)
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
-        // console.log('col= ', columnClicked)
-        // console.log('row= ', rowClicked)
         if (newGrid[columnClicked][rowClicked] === 1) {
             newGrid[columnClicked][rowClicked] = 0;
         } else {
             newGrid[columnClicked][rowClicked] = 1;
         }
-
-        console.log('handleClick---> setGrid')
         setGrid(newGrid)
         renderLifeBox(grid)
-        console.log(grid)
     }
 
 
@@ -85,7 +76,6 @@ const DrawLife = () => {
                 ctx.current.stroke();
             }
         }
-        // console.log('----> renderLifeBox')
     }
 
     //make next interation based of rules of conways game of life
@@ -121,7 +111,6 @@ const DrawLife = () => {
                 }
             }
         }
-        // console.log('-----> nextGen')
         return nextGen
     }
 
@@ -133,7 +122,6 @@ const DrawLife = () => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        // console.log('useEffect-----> generate initial grid')
         setGrid(newGrid)
         setInit(true)
     }, [])
@@ -149,12 +137,10 @@ const DrawLife = () => {
     useEffect(() => {
         if (!generate) return
         setTimeout(() => {
-            console.log('useEffect-update-------> setGrid')
             setGrid(nextGen(grid))
             setGenCount(genCount + 1)
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        console.log(grid)
         renderLifeBox();
     })
 
