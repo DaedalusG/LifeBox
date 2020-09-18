@@ -35,8 +35,12 @@ const DrawLife = () => {
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
         // console.log('col= ', columnClicked)
         // console.log('row= ', rowClicked)
+        if (newGrid[columnClicked][rowClicked] === 1) {
+            newGrid[columnClicked][rowClicked] = 0;
+        } else {
+            newGrid[columnClicked][rowClicked] = 1;
+        }
 
-        newGrid[columnClicked][rowClicked] = 1
 
         console.log('handleClick---> setGrid')
         setGrid(newGrid)
