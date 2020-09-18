@@ -32,7 +32,7 @@ const DrawLife = () => {
 
     //function to clear the grid and reinitialize count
     function clear() {
-        setGenerate(false)
+        if (generate) return
         const freshGrid = buildGrid()
         setGrid(freshGrid)
         setGenCount(0)
@@ -40,7 +40,7 @@ const DrawLife = () => {
 
     //function to generate random grid
     function randomGrid() {
-        setGenerate(false)
+        if (generate) return
         const randGrid = new Array(cols).fill(null)
             .map(() => new Array(rows).fill(null)
                 .map(() => Math.floor(Math.random() * 2)));
@@ -50,6 +50,7 @@ const DrawLife = () => {
 
     // adds a true value to a cell in the grid
     function handleClick(e) {
+        if (generate) return
         const newGrid = grid.map(arr => [...arr])
         const columnClicked = Math.floor(e.nativeEvent.offsetX / colWidth)
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
