@@ -53,8 +53,8 @@ const DrawLife = () => {
 
         // console.log('-----> buildGrid')
 
-        return new Array(cols).fill(null)
-            .map(() => new Array(rows).fill(null))
+        return new Array(cols).fill(0)
+            .map(() => new Array(rows).fill(0))
     }
 
     // //renders lifebox to canvas
@@ -133,7 +133,7 @@ const DrawLife = () => {
         }, 1000)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
-    }, [isReady])
+    })
 
 
 
