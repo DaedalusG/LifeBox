@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react'
 import Draggable from 'react-draggable';
 
-
 const DrawLife = () => {
 
     const canvasRef = useRef(null);
@@ -167,25 +166,15 @@ const DrawLife = () => {
                         <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
                         <div className={'gen_counter'}>{genCount}</div>
                     </div>
-                    <div>
-                        <input
-                            type={"range"}
-                            defaultValue={genFreq}
-                            onChange={() => setGenFreq(genFreq)}
-                            min={"100"}
-                            max={"1000"}
-                            step={"100"}
-                        />
+                    <div className={"env_toggles"}>
+                        <div className={'toggle_button'}>{'<'}</div>
+                        <div className={"gen_counter"}>{genFreq}</div>
+                        <div className={'toggle_button'}>{'>'}</div>
                     </div>
-                    <div>
-                        <input
-                            type={"range"}
-                            defaultValue={resolution}
-                            onChange={() => setResolution(resolution)}
-                            min={"20"}
-                            max={"80"}
-                            step={"10"}
-                        />
+                    <div className={"env_toggles"}>
+                        <div className={'toggle_button'}>{'<'}</div>
+                        <div className={"gen_counter"}>{resolution}</div>
+                        <div className={'toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={'drawlife_button'}>Clear</button>
