@@ -6,7 +6,7 @@
     position: absolute;
 }
 
-.drawlife_controller {
+.drawlife_hud {
     position: absolute;
     z-index: 1;
     top: 20vh;
@@ -15,6 +15,7 @@
     flex-direction: column;
     min-width: 15vw;
     justify-content: center;
+    align-items: center;
     border-radius: 20px;
     border: 2px solid #04D482;
     background-color: #472E79;

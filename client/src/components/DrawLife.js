@@ -6,7 +6,8 @@ const DrawLife = () => {
     const ctx = useRef(null)
 
     //sets up a state containing information about the current grids array and values, 
-    const [resolution, setResolution] = useState(40);
+    const [resolution, setResolution] = useState(50);
+    const [genFreq, setGenFreq] = useState(500)
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
@@ -17,6 +18,7 @@ const DrawLife = () => {
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
 
+    //functions to control regeneration cycle
     function start() {
         console.log('start')
         setGenerate(true)
@@ -49,14 +51,12 @@ const DrawLife = () => {
     }
 
 
-    // makes randomly populated grid
+    // makes grid
     function buildGrid() {
         setWidth(canvasRef.current.width)
         setHeight(canvasRef.current.height)
         const cols = Math.ceil(canvasRef.current.width / resolution);
         const rows = Math.ceil(canvasRef.current.height / resolution);
-
-        // console.log('-----> buildGrid')
 
         return new Array(cols).fill(0)
             .map(() => new Array(rows).fill(0))
@@ -142,7 +142,7 @@ const DrawLife = () => {
         setTimeout(() => {
             console.log('useEffect-update-------> setGrid')
             setGrid(nextGen(grid))
-        }, 500)
+        }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         console.log(grid)
         renderLifeBox();
@@ -152,25 +152,33 @@ const DrawLife = () => {
 
     return (
         <div className={'drawlife_container'}>
-            <div className={'drawlife_controller'}>
+            <div className={'drawlife_hud'}>
                 <div className={'drawlife_start_stop'}>
                     <button onClick={start} className={'drawlife_button'}>Start</button>
                     <button onClick={stop} className={'drawlife_button'}>Stop</button>
                 </div>
                 <div>
-                    <label for={"volume"}>Gen</label>
-                    <input type={"range"} id={"volume"} name={"volume"}
-                        min={"0"} max={"11"} />
+                    <input
+                        type={"range"}
+                        defaultValue={genFreq}
+                        onChange={() => setGenFreq(genFreq)}
+                        min={"100"}
+                        max={"1000"}
+                    />
                 </div>
                 <div>
-                    <label for={"volume"}>Res</label>
-                    <input type={"range"} id={"volume"} name={"volume"}
-                        min={"0"} max={"11"} />
+                    <input
+                        type={"range"}
+                        defaultValue={resolution}
+                        onChange={() => setResolution(resolution)}
+                        min={"0"}
+                        max={"11"}
+                    />
                 </div>
             </div>
             <canvas
                 ref={canvasRef}
-                onClick={handleClick}
+                onMouseDown={handleClick}
                 className={'drawlife_grid'}
             />
         </div>
