@@ -157,7 +157,7 @@ const DrawLife = () => {
             <div className={'drawlife_hud'}>
                 <div className={'drawlife_genStart'}>
                     <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>Start</button>
-                    <div className={'gen_counter'}>Gen: {genCount}</div>
+                    <div className={'gen_counter'}>{genCount}</div>
                 </div>
                 <div>
                     <input

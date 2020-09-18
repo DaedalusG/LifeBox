@@ -27,6 +27,22 @@
     align-items: center;
 }
 
+.gen_counter {
+    color: #F100A1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    width: 35px;
+    height: 35px;
+    border-radius:25px;
+    border: 2px solid #49D884;
+    margin: 6px;
+    background-color: #052115;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .drawlife_button {
     border-radius:25px;
     border: 2px solid #49D884;
