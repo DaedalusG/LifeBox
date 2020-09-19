@@ -8,5 +8,13 @@
 
 .navbar_profile_pic {
     width: 40px;
-    height: 40px;
+    height: 5vh;
+}
+
+.info_link {
+    width: 5vw;
+    height: 5vh;
+    border: 2px solid #49D884;
+    border-radius:25px;
+    background-color: lightgreen;
 }

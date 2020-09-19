@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
 import DrawLife from './DrawLife'
+import Brain from '../images/brain-svgrepo-com.svg'
 
 const MainPage = () => {
     const [user, setUser] = useState({})
@@ -28,6 +29,8 @@ const MainPage = () => {
         <>
             <div className={'navbar'}>
                 <img src={user.profile_pic} className={'navbar_profile_pic'} />
+                <img src={Brain} className={'info_link'} />
+                <div>Logout</div>
             </div>
             <DrawLife />
         </>
