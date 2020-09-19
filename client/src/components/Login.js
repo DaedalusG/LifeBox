@@ -36,6 +36,44 @@ const Login = () => {
         }
     };
 
+    const loginDemoUser = async () => {
+        const demoUsername = "xenomorph";
+        const demoPassword = "password"
+        let speed = 70, i = 1, k = 0;
+
+        const ghostWriteUsername = () => {
+            if (i <= demoUsername.length) {
+                let text = demoUsername.slice(0, i);
+                setUsername(text);
+                i++;
+                setTimeout(ghostWriteUsername, speed);
+            }
+        }
+        const ghostWritePassword = () => {
+            if (k <= demoPassword.length) {
+                let text = demoPassword.slice(0, k);
+                setPassword(text);
+                k++;
+                setTimeout(ghostWritePassword, speed);
+            }
+        }
+        ghostWriteUsername();
+        setTimeout(ghostWritePassword, speed * demoUsername.length);
+        const demoLogin = async () => {
+            const response = await fetch(`${apiUrl}/auth/login`, {
+                method: "POST",
+                mode: "cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: `${demoUsername}`, password: `${demoPassword}` }),
+            });
+            const res = await response.json()
+            if (res.auth_token != undefined) {
+                window.localStorage.setItem('auth_token', res.auth_token)
+                window.location.reload()
+            }
+        }
+        setTimeout(demoLogin, 1500);
+    }
 
     return (
         <div className={"login_container"}>
@@ -55,8 +93,8 @@ const Login = () => {
                     value={password}
                     onChange={updatePassword} />
                 <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
-                <div className={"signup_link"} onClick={() => setSignUp(true)}>Need an Account?</div>
-                <div className={"signup_link"}>Sign in as Demo</div>
+                <div className={"signup_link"} onClick={() => setSignUp(true)}>Need an Login?</div>
+                <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
             </div>
             <SignUpModal openSignUp={openSignUp} closeSignUp={() => setSignUp(false)} />
             <RandomLifeBox className={"login_background"} />

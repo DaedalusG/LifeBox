@@ -14,7 +14,7 @@
 .login_form_container {
     position: relative;
     top: 15vh;
-    left: 30vw;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
@@ -23,7 +23,7 @@
     border-radius: 20px;
     padding: 10px;
     height: 45vh;
-    width: 40vw;
+    max-width: 40vw;
     background-color: #032116;
     border: 3px solid #04D482;
     z-index: 1;

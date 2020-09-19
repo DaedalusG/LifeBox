@@ -10,21 +10,6 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    ian = User(
-        username='Ian',
-        email='ian@aa.io',
-        hashed_password=hash,  # noqa
-    )
-    javier = User(
-        username='Javier',
-        email='javier@aa.io',
-        hashed_password=hash,  # noqa
-    )
-    dean = User(
-        username='Dean',
-        email='dean@aa.io',
-        hashed_password=hash,  # noqa
-    )
     metal_fingers = User(
         username='metal_fingers',
         email='cutz@lair.io',
@@ -61,9 +46,6 @@ with app.app_context():
         hashed_password=hash,  # noqa
     )
 
-    db.session.add(ian)
-    db.session.add(javier)
-    db.session.add(dean)
     db.session.add(metal_fingers)
     db.session.add(ultron)
     db.session.add(ElizabethII)
