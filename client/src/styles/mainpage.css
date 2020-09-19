@@ -1,5 +1,6 @@
 .navbar {
-    position: relative;
+    position: absolute;
+    z-index: 5;
     width: 100vw;
     height: 5vh;
     background-color: #472E79;

@@ -20,6 +20,52 @@ const DrawLife = () => {
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
 
+    //------------------------useEffects--------------------------
+
+    // initializes the grid
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.current = canvas.getContext('2d')
+        let newGrid = buildGrid()
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        setGrid(newGrid)
+        setInit(true)
+    }, [])
+
+    //generates new grid when grid reolution is set
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.current = canvas.getContext('2d')
+        let newGrid = buildGrid()
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        setGrid(newGrid)
+        setInit(true)
+    }, [resolution])
+
+    // renders first grid after 
+    useEffect(() => {
+        if (!init) return
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        renderLifeBox();
+    })
+
+    // renders the lifebox whenever grid state is changed or isReady is set
+    useEffect(() => {
+        if (!generate) return
+        setTimeout(() => {
+            setGrid(nextGen(grid))
+            setGenCount(genCount + 1)
+        }, genFreq)
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        renderLifeBox();
+    })
+
+    //---------------functions--------------
+
     //function to control regeneration cycle
     function genStart() {
         if (!generate) {
@@ -154,40 +200,6 @@ const DrawLife = () => {
         }
         return nextGen
     }
-
-    //------------------------useEffects--------------------------
-
-    // initializes the grid
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        ctx.current = canvas.getContext('2d')
-        let newGrid = buildGrid()
-        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        setGrid(newGrid)
-        setInit(true)
-    }, [])
-
-    // renders first grid after 
-    useEffect(() => {
-        if (!init) return
-        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        renderLifeBox();
-    })
-
-    // renders the lifebox whenever grid state is changed or isReady is set
-    useEffect(() => {
-        if (!generate) return
-        setTimeout(() => {
-            setGrid(nextGen(grid))
-            setGenCount(genCount + 1)
-        }, genFreq)
-        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        renderLifeBox();
-    })
-
-
 
     return (
         <div className={'drawlife_container'}>
