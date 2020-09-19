@@ -13,8 +13,8 @@ const DrawLife = () => {
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
-    const cols = useMemo(() => Math.ceil(width / resolution), [width])
-    const rows = useMemo(() => Math.ceil(height / resolution), [height])
+    const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
+    const rows = useMemo(() => Math.ceil(height / resolution), [height, resolution])
     const colWidth = useMemo(() => Math.ceil(width / cols), [width])
     const rowHeight = useMemo(() => Math.ceil(height / rows), [height])
     const [init, setInit] = useState(false)
@@ -122,7 +122,7 @@ const DrawLife = () => {
         setGenCount(0)
     }
 
-    // adds a true value to a cell in the grid
+    // populates a cell on click
     function handleClick(e) {
         if (generate) return
         const newGrid = grid.map(arr => [...arr])
