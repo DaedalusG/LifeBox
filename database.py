@@ -13,37 +13,44 @@ with app.app_context():
     metal_fingers = User(
         username='metal_fingers',
         email='cutz@lair.io',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/metal_fingers.jpg'  # noqa
     )
     ultron = User(
         username='ultron',
         email='robo-rights@lair.io',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/ultron.jpg'  # noqa
     )
     ElizabethII = User(
         username='ElizabethII',
         email='lizzy@england.io',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/ElizabethII.jpg'  # noqa
     )
     xenomorph = User(
         username='xenomorph',
         email='queen@corp.com',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/Xenomorph.jpg'  # noqa
     )
     IggyPop = User(
         username='Iggy',
         email='Iggy@england.io',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/iggypop.jpg'  # noqa
     )
     predator = User(
         username='ThePredator',
         email='@corp.com',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/predator.jpeg'  # noqa
     )
     Arnold = User(
         username='Arnold',
         email='arnold@corp.com',
-        hashed_password=hash,  # noqa
+        hashed_password=hash,
+        profile_pic='https://life-box-app.s3-us-west-2.amazonaws.com/arnold.jpg'  # noqa
     )
 
     db.session.add(metal_fingers)

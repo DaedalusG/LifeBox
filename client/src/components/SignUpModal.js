@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDom from 'react-dom'
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
-import defaultPic from "../images/casey_cat.png"
+import defaultPic from "../images/default_profile_pic.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const [username, setUsername] = useState("");
