@@ -15,8 +15,8 @@ const DrawLife = () => {
     const [height, setHeight] = useState(0)
     const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
     const rows = useMemo(() => Math.ceil(height / resolution), [height, resolution])
-    const colWidth = useMemo(() => Math.ceil(width / cols), [width])
-    const rowHeight = useMemo(() => Math.ceil(height / rows), [height])
+    const colWidth = useMemo(() => Math.ceil(width / cols), [width, resolution])
+    const rowHeight = useMemo(() => Math.ceil(height / rows), [height, resolution])
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
 
