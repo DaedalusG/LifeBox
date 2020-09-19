@@ -26,7 +26,9 @@ const MainPage = () => {
 
     return (
         <>
-            <div className={'navbar'}>Navbar Goes here (in parent to canvas)</div>
+            <div className={'navbar'}>
+                <img src={user.profile_pic} className={'navbar_profile_pic'} />
+            </div>
             <DrawLife />
         </>
     )
