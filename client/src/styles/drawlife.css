@@ -13,7 +13,8 @@
     right: 1vw;
     display: flex;
     flex-direction: column;
-    min-width: 15vw;
+    min-width: 200px;
+    max-width: 100px;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -34,6 +35,11 @@
     align-items: space-between;
 }
 
+.hud_labels {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-style: italic;
+}
+
 .toggle_button {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     width: 35px;
@@ -47,6 +53,11 @@
     line-height: 35px;
     font-size: 16px;
     font-weight: bold;
+    cursor: default;
+}
+
+.toggle_button:hover {
+    box-shadow: 0 5px 15px #49D884;
 }
 
 .gen_counter {
@@ -63,6 +74,7 @@
     line-height: 35px;
     font-size: 16px;
     font-weight: bold;
+    cursor: default;
 }
 
 .drawlife_button {

@@ -29,6 +29,35 @@ const DrawLife = () => {
         }
     }
 
+    //------env functions-------
+
+    //frequency
+    function addFrequency() {
+        if (generate) return
+        if (genFreq >= 1500) return
+        setGenFreq(genFreq + 100);
+    }
+
+    function reduceFrequency() {
+        if (generate) return
+        if (genFreq <= 100) return
+        setGenFreq(genFreq - 100);
+    }
+
+    //resolution
+    function addResolution() {
+        if (generate) return
+        if (resolution >= 100) return
+        setResolution(resolution + 10);
+    }
+
+    function reduceResolution() {
+        if (generate) return
+        if (resolution <= 10) return
+        setResolution(resolution - 10);
+    }
+
+
     //function to clear the grid and reinitialize count
     function clear() {
         if (generate) return
@@ -126,6 +155,8 @@ const DrawLife = () => {
         return nextGen
     }
 
+    //------------------------useEffects--------------------------
+
     // initializes the grid
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -166,15 +197,17 @@ const DrawLife = () => {
                         <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
                         <div className={'gen_counter'}>{genCount}</div>
                     </div>
+                    <div className={'hud_labels'}>--frequency--</div>
                     <div className={"env_toggles"}>
-                        <div className={'toggle_button'}>{'<'}</div>
-                        <div className={"gen_counter"}>{genFreq}</div>
-                        <div className={'toggle_button'}>{'>'}</div>
+                        <div onClick={reduceFrequency} className={'toggle_button'}>{'<'}</div>
+                        <div className={"gen_counter"}>{genFreq / 100}</div>
+                        <div onClick={addFrequency} className={'toggle_button'}>{'>'}</div>
                     </div>
+                    <div className={'hud_labels'}>--resolution--</div>
                     <div className={"env_toggles"}>
-                        <div className={'toggle_button'}>{'<'}</div>
-                        <div className={"gen_counter"}>{resolution}</div>
-                        <div className={'toggle_button'}>{'>'}</div>
+                        <div onClick={reduceResolution} className={'toggle_button'}>{'<'}</div>
+                        <div className={"gen_counter"}>{resolution / 10}</div>
+                        <div onClick={addResolution} className={'toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={'drawlife_button'}>Clear</button>
