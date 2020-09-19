@@ -4,6 +4,7 @@
 
 .drawlife_grid {
     position: absolute;
+    cursor: cell;
 }
 
 .drawlife_hud {
