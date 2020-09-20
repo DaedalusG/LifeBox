@@ -1,3 +1,9 @@
+#instructionsmodal {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
 .instructionsmodal {
     position: absolute;
     top:15vh;

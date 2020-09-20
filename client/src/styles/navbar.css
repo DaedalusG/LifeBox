@@ -31,6 +31,7 @@
     border: 3px solid #36bb6e;
     border-radius:25px;
     background-color: lightgreen;
+    z-index: 1;
 }
 
 .info_link:hover {

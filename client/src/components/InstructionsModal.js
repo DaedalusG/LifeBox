@@ -7,8 +7,12 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
 
     return ReactDom.createPortal(
         <div className={"instructionsmodal"}>
-            <div></div>
+            <div className={'signup_close_container'} onClick={closeInstructions}>
+                <Close />
+            </div>
         </div>,
         document.getElementById('instructionsmodal')
     )
 }
+
+export default InstructionsModal

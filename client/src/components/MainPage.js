@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
+import InstructionsModal from './InstructionsModal'
 import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
@@ -40,10 +41,11 @@ const MainPage = () => {
                 </div>
                 <img src={Brain} className={'info_link'} />
                 <div className={'navbar_sub_container'}>
-                    <img src={Question} className={'info_link'} />
+                    <img src={Question} onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
             </div >
+            <InstructionsModal openInstructions={openInstructions} closeInstructions={() => setInstructions(false)} />
             <DrawLife />
         </>
     )
