@@ -6,6 +6,7 @@ import Question from '../images/question.svg'
 
 const MainPage = () => {
     const [user, setUser] = useState({})
+    const [openInstructions, setInstructions] = useState(false)
 
     const logout = () => {
         localStorage.removeItem("auth_token")
