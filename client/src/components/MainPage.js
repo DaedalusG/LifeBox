@@ -30,8 +30,10 @@ const MainPage = () => {
             <div className={'navbar'}>
                 <img src={user.profile_pic} className={'navbar_profile_pic'} />
                 <img src={Brain} className={'info_link'} />
-                <div>Logout</div>
-            </div>
+                <div className={'navbar_sub_container'}>
+                    <button className={'navbar_logout_button'}>Logout</button>
+                </div>
+            </div >
             <DrawLife />
         </>
     )
