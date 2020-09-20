@@ -10,16 +10,16 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
     return ReactDom.createPortal(
         <Draggable>
             <div className={"instructionsmodal"}>
-                <div className={'instructions_sub_container'}>
-                    <div className={'instructions_sub_container'}>
-                        <img id={'Conway'} src={Conway} alt="john_conway"></img>
-                    </div>
-                    <div className={'instructions_close_container'} onClick={closeInstructions}>
-                        <Close />
+                <div className={'instructions_sub_container_row'}>
+                    <img id={'Conway'} src={Conway} alt="john_conway"></img>
+                    <div className={'instructions_sub_container_column'}>
+                        <div className={"instructions_close"} onClick={closeInstructions}>
+                            <Close />
+                        </div>
                     </div>
                 </div>
             </div>
-        </Draggable>,
+        </Draggable >,
         document.getElementById('instructionsmodal')
     )
 }

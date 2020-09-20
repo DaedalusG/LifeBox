@@ -9,13 +9,12 @@
     height: 75%;
     border: 3px solid #04D482;
     border-radius: 20px;
-    /* margin: 10px; */
 }
 
 .instructionsmodal {
     position: absolute;
     top:15vh;
-    left: 26%;
+    /* left: 26%; */
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
@@ -24,20 +23,23 @@
     border-radius: 20px;
     z-index: 1000;
     min-width: 50vw;
-    min-height: 60vh;
+    max-width: 75vw;
 }
 
-.instructions_sub_container {
+.instructions_sub_container_row {
     display: flex;
     flex-flow: row;
     margin: 10px;
 }
 
+.instructions_sub_container_column {
+    display: flex;
+    flex-flow: column;
+    margin: 10px;
+}
 
-
-.instructions_close_container {
+.instructions_close {
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
-    margin: 10px;
 }
