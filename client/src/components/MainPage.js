@@ -6,7 +6,6 @@ import Question from '../images/question.svg'
 
 const MainPage = () => {
     const [user, setUser] = useState({})
-    const [targetUser, setTargetUser] = useState(1);
 
     const logout = () => {
         localStorage.removeItem("auth_token")
@@ -29,12 +28,15 @@ const MainPage = () => {
             }
         }
         getCurrentUser();
-    }, [targetUser])
+    }, [])
 
     return (
         <>
             <div className={'navbar'}>
-                <img src={user.profile_pic} className={'navbar_profile_pic'} />
+                <div className={'navbar_sub_container'}>
+                    <img src={user.profile_pic} className={'navbar_profile_pic'} />
+                    <div>{`Welcome: ${user.username}`}</div>
+                </div>
                 <img src={Brain} className={'info_link'} />
                 <div className={'navbar_sub_container'}>
                     <img src={Question} className={'info_link'} />
