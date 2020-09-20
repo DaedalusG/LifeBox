@@ -211,19 +211,19 @@ const DrawLife = () => {
                     </div>
                     <div className={'hud_labels'}>--frequency--</div>
                     <div className={"env_toggles"}>
-                        <div onClick={reduceFrequency} className={'toggle_button'}>{'<'}</div>
+                        <div onClick={reduceFrequency} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'<'}</div>
                         <div className={"gen_counter"}>{genFreq / 100}</div>
-                        <div onClick={addFrequency} className={'toggle_button'}>{'>'}</div>
+                        <div onClick={addFrequency} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'hud_labels'}>--resolution--</div>
                     <div className={"env_toggles"}>
-                        <div onClick={reduceResolution} className={'toggle_button'}>{'<'}</div>
+                        <div onClick={reduceResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'<'}</div>
                         <div className={"gen_counter"}>{resolution / 10}</div>
-                        <div onClick={addResolution} className={'toggle_button'}>{'>'}</div>
+                        <div onClick={addResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
-                        <button onClick={clear} className={'drawlife_button'}>Clear</button>
-                        <button onClick={randomGrid} className={'drawlife_button'}>Rand</button>
+                        <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
+                        <button onClick={randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Rand</button>
                     </div>
                 </div>
             </Draggable>
