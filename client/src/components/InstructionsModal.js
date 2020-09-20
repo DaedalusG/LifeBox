@@ -16,6 +16,7 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
                         <div className={"instructions_close"} onClick={closeInstructions}>
                             <Close />
                         </div>
+                        <div> Rules Conway's Game of Life</div>
                     </div>
                 </div>
             </div>

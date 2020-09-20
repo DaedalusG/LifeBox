@@ -14,7 +14,6 @@
 .instructionsmodal {
     position: absolute;
     top:15vh;
-    /* left: 26%; */
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
@@ -28,12 +27,15 @@
 
 .instructions_sub_container_row {
     display: flex;
+    flex: 1;
     flex-flow: row;
+    justify-content: space-between;
     margin: 10px;
 }
 
 .instructions_sub_container_column {
     display: flex;
+    flex: 1;
     flex-flow: column;
     margin: 10px;
 }
