@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
 import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
+import Question from '../images/question.svg'
 
 const MainPage = () => {
     const [user, setUser] = useState({})
     const [targetUser, setTargetUser] = useState(1);
+
+    const logout = () => {
+        localStorage.removeItem("auth_token")
+        window.location.reload()
+    }
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -31,7 +37,8 @@ const MainPage = () => {
                 <img src={user.profile_pic} className={'navbar_profile_pic'} />
                 <img src={Brain} className={'info_link'} />
                 <div className={'navbar_sub_container'}>
-                    <button className={'navbar_logout_button'}>Logout</button>
+                    <img src={Question} className={'info_link'} />
+                    <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
             </div >
             <DrawLife />

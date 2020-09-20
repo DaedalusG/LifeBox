@@ -11,6 +11,7 @@
 }
 
 .navbar_sub_container {
+    display: flex;
     z-index: 5;
     height: inherit;
 }
@@ -21,12 +22,16 @@
 }
 
 .info_link {
-    width: 4.5vw;
+    width: 3.5vw;
     height: 4.5vh;
     margin: 6px;
-    border: 2px solid #49D884;
+    border: 3px solid #36bb6e;
     border-radius:25px;
     background-color: lightgreen;
+}
+
+.info_link:hover {
+    box-shadow: 0 5px 15px #49D884;
 }
 
 .navbar_logout_button {
