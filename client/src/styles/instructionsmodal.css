@@ -64,6 +64,11 @@
     overflow-wrap: inherit;
 }
 
+.rules {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
 #instructions_title {
     color: #F100A1;
 }

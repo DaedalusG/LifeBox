@@ -37,10 +37,10 @@ const HomePage = () => {
             <div className={'navbar'}>
                 <div className={'navbar_sub_container'}>
                     <img src={user.profile_pic} className={'navbar_profile_pic'} />
-                    <div>{`Welcome: ${user.username}`}</div>
+                    <div className={'username'}>{`Welcome: ${user.username}`}</div>
                 </div>
-                <img src={Brain} className={'info_link'} />
                 <div className={'navbar_sub_container'}>
+                    <img src={Brain} className={'info_link'} />
                     <img src={Question} onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
