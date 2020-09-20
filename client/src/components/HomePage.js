@@ -5,7 +5,7 @@ import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
 
-const MainPage = () => {
+const HomePage = () => {
     const [user, setUser] = useState({})
     const [openInstructions, setInstructions] = useState(false)
 
@@ -51,4 +51,4 @@ const MainPage = () => {
     )
 }
 
-export default MainPage
+export default HomePage

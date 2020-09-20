@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './components/Login.js'
-import MainPage from './components/MainPage.js'
+import HomePage from './components/HomePage.js'
 import UserList from './components/UsersList';
 
 
@@ -22,7 +22,7 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    {loggedIn ? <MainPage /> : <Login />}
+                    {loggedIn ? <HomePage /> : <Login />}
                 </Route>
             </Switch>
         </BrowserRouter>

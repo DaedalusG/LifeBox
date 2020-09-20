@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+#Conway {
+    width: 50%;
+    height: 75%;
+    border: 3px solid #04D482;
+    border-radius: 20px;
+    /* margin: 10px; */
+}
+
 .instructionsmodal {
     position: absolute;
     top:15vh;
@@ -11,17 +19,23 @@
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
-    /* align-items: center; */
-    /* justify-content: space-around; */
     background-color: #032116;
     border: 3px solid #04D482;
     border-radius: 20px;
     z-index: 1000;
-    width: 50vw;
+    min-width: 50vw;
     min-height: 60vh;
 }
 
-.login_close_container {
+.instructions_sub_container {
+    display: flex;
+    flex-flow: row;
+    margin: 10px;
+}
+
+
+
+.instructions_close_container {
     display: flex;
     flex-flow: row;
     justify-content: flex-end;
