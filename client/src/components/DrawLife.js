@@ -59,7 +59,6 @@ const DrawLife = () => {
         setTimeout(() => {
             setGrid(nextGen(grid))
             setGenCount(genCount + 1)
-            console.log(genCount + 1, genFreq)
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
