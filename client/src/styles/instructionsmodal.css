@@ -42,10 +42,9 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    /* margin-bottom: 10px; */
+    font-family: "orbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;    /* margin-bottom: 10px; */
 }
 
 .quote {
@@ -55,13 +54,23 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
+.quote > span {
+    font-family: "orbitronBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+
+}
+
 .rule {
-    display: flex;
     margin-top: 5px;
     font-size: 15px;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    /* font-weight: bold; */
+    font-family: "orbitronSemiRegular", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     overflow-wrap: inherit;
+}
+
+.rule > span {
+    font-family: "orbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin-right: 10px;
+    width: 100px;
 }
 
 .rules {

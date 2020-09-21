@@ -28,7 +28,7 @@
     font-size: 25px;
     margin: auto;
     font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
+    font-family: "OrbitronBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
 }
 
 .info_link {

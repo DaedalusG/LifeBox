@@ -34,7 +34,7 @@ const DrawLife = () => {
         setInit(true)
     }, [])
 
-    //generates new grid when grid reolution is set
+    //generates new grid when grid resolution is set
     useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = window.innerWidth;
@@ -59,6 +59,7 @@ const DrawLife = () => {
         setTimeout(() => {
             setGrid(nextGen(grid))
             setGenCount(genCount + 1)
+            console.log(genCount + 1, genFreq)
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();

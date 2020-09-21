@@ -51,7 +51,7 @@
     line-height: 35px;
     font-size: 16px;
     font-weight: bold;
-    cursor: default;
+    cursor: pointer;
 }
 
 .disable_toggle_button {
@@ -68,7 +68,7 @@
     color: red;
     font-size: 16px;
     font-weight: bold;
-    cursor: default;
+    cursor: pointer;
 }
 
 .toggle_button:hover {
@@ -89,7 +89,7 @@
     line-height: 35px;
     font-size: 16px;
     font-weight: bold;
-    cursor: default;
+    cursor: pointer;
 }
 
 .drawlife_button {

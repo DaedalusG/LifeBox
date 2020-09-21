@@ -1,8 +1,26 @@
 /* TODO Add site wide styles */
+@font-face {
+	font-family: "orbitronRegular";
+	src: url(fonts/Orbitron-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "orbitronSemiBold";
+	src: url(fonts/Orbitron-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "orbitronBold";
+	src: url(fonts/Orbitron-Bold.ttf) format("truetype");
+}
 
 html, body {
     background-color: #271D45;
     color: lightgreen;
     overflow: hidden;
     margin: 0;
+}
+
+button {
+    cursor: pointer;
 }
