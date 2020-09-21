@@ -169,7 +169,6 @@ const DrawLife = () => {
     function nextGen() {
         if (!grid) return
         const nextGen = grid.map(arr => [...arr]);
-
         for (let col = 0; col < grid.length; col++) {
             for (let row = 0; row < grid[col].length; row++) {
                 const cell = grid[col][row];
@@ -198,6 +197,7 @@ const DrawLife = () => {
                 }
             }
         }
+        console.timeEnd('rendering');
         return nextGen
     }
 
