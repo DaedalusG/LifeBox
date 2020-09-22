@@ -14,7 +14,7 @@ class User(db.Model):
     # root_interlocutor = db.Column(db.Boolean, nullable=False)
     profile_pic = db.Column(db.String)
 
-    # likes = db.relationship("Like", backref="user")
+    grids = db.relationship("Grid", backref="user")
 
     def to_safe_object(self):
         return {
@@ -23,3 +23,10 @@ class User(db.Model):
             "email": self.email,
             "profile_pic": self.profile_pic,
         }
+
+
+class Grid(db.Model):
+    __tablename__ = 'girds'
+
+    id = db.Column(db.Integer, primary_key=True)
+    grid = db.Column(db.Array, nullable=False, unique=True)
