@@ -33,8 +33,8 @@
 
 .info_link {
     width: 3.5vw;
-    height: 4.5vh;
-    margin: 6px;
+    height: 4vh;
+    margin: 4px;
     border: 3px solid #36bb6e;
     border-radius:25px;
     background-color: lightgreen;
@@ -48,7 +48,7 @@
 .navbar_logout_button {
     border-radius: 25px;
     border: 2px solid #49D884;
-    margin: 6px;
+    margin: 4px;
     height: 5vh;
     width: 80px;
     background-color: #052115;

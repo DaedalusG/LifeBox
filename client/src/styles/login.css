@@ -30,6 +30,12 @@
     z-index: 1;
 }
 
+.login_sub_container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
 .login_background {
     position: absolute;
     display: inline;

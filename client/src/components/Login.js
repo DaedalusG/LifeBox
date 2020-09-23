@@ -78,21 +78,25 @@ const Login = () => {
             <div className={"login_form_container"}>
                 <Glider />
                 <div className={"login_header"}>Log in to LifeBox</div>
-                <input
-                    className="login_input_field"
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={updateUsername} />
-                <input
-                    className="login_input_field"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={updatePassword} />
-                <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
-                <div className={"signup_link"} onClick={() => setSignUp(true)}>Need an Login?</div>
-                <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
+                <div className={'login_sub_container'}>
+                    <input
+                        className="login_input_field"
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={updateUsername} />
+                    <input
+                        className="login_input_field"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={updatePassword} />
+                    <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
+                </div>
+                <div className={"login_sub_container"}>
+                    <div className={"signup_link"} onClick={() => setSignUp(true)}>Need a Login?</div>
+                    <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
+                </div>
             </div>
             <SignUpModal openSignUp={openSignUp} closeSignUp={() => setSignUp(false)} />
             <RandomLifeBox className={"login_background"} />
