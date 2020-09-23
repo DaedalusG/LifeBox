@@ -9,7 +9,6 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // const [signup, setSignup] = useState(false);
     const [openSignUp, setSignUp] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
@@ -66,7 +65,7 @@ const Login = () => {
                 body: JSON.stringify({ username: `${demoUsername}`, password: `${demoPassword}` }),
             });
             const res = await response.json()
-            if (res.auth_token != undefined) {
+            if (res.auth_token !== undefined) {
                 window.localStorage.setItem('auth_token', res.auth_token)
                 window.location.reload()
             }
