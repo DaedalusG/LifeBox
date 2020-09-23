@@ -79,21 +79,21 @@ const Login = () => {
                 <div className={"login_sub_container"}>
                     <Glider />
                     <div className={"login_header"}>Log in to LifeBox</div>
-                </div>
-                <div className={'login_sub_container'}>
-                    <input
-                        className="login_input_field"
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={updateUsername} />
-                    <input
-                        className="login_input_field"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={updatePassword} />
-                    <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
+                    <div className={'login_sub_container'}>
+                        <input
+                            className="login_input_field"
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={updateUsername} />
+                        <input
+                            className="login_input_field"
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={updatePassword} />
+                        <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
+                    </div>
                 </div>
                 <div className={"login_sub_container"}>
                     <div className={"signup_link"} onClick={() => setSignUp(true)}>Need a Login?</div>
