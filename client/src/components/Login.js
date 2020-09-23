@@ -9,6 +9,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [signup, setSignup] = useState(false);
     const [openSignUp, setSignUp] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
