@@ -5,10 +5,12 @@ const DrawLife = () => {
 
     const canvasRef = useRef(null);
     const ctx = useRef(null)
+    const genCount = useRef(0)
+    // let currentGenCount =
 
     //sets up a state containing information about the current grids array and values, 
     const [resolution, setResolution] = useState(50);
-    const [genCount, setGenCount] = useState(0)
+    // const [genCount, setGenCount] = useState(0)
     const [genFreq, setGenFreq] = useState(500)
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
@@ -57,8 +59,9 @@ const DrawLife = () => {
     useEffect(() => {
         if (!generate) return
         setTimeout(() => {
+            genCount.current++
             setGrid(nextGen(grid))
-            setGenCount(genCount + 1)
+            // setGenCount(genCount + 1)
             console.log(genCount)
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -114,7 +117,8 @@ const DrawLife = () => {
         if (generate) return
         const freshGrid = buildGrid()
         setGrid(freshGrid)
-        setGenCount(0)
+        // setGenCount(0)
+        genCount.current = 0
     }
 
     //function to generate random grid
@@ -124,7 +128,8 @@ const DrawLife = () => {
             .map(() => new Array(rows).fill(null)
                 .map(() => Math.floor(Math.random() * 2)));
         setGrid(randGrid)
-        setGenCount(0)
+        // setGenCount(0)
+        genCount.current = 0
     }
 
     // populates a cell on click
@@ -212,7 +217,7 @@ const DrawLife = () => {
                 <div className={'drawlife_hud'}>
                     <div className={'drawlife_genStart'}>
                         <button onClick={genStart} id={'gen_button'} className={'drawlife_button'}>{generate ? "Stop" : "Start"}</button>
-                        <div className={'gen_counter'}>{genCount}</div>
+                        <div className={'gen_counter'}>{genCount.current}</div>
                     </div>
                     <div className={'hud_labels'}>--frequency--</div>
                     <div className={"env_toggles"}>
