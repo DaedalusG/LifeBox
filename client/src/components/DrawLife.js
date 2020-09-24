@@ -6,11 +6,9 @@ const DrawLife = () => {
     const canvasRef = useRef(null);
     const ctx = useRef(null)
     const genCount = useRef(0)
-    // let currentGenCount =
 
     //sets up a state containing information about the current grids array and values, 
     const [resolution, setResolution] = useState(50);
-    // const [genCount, setGenCount] = useState(0)
     const [genFreq, setGenFreq] = useState(500)
     const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
@@ -68,10 +66,6 @@ const DrawLife = () => {
         renderLifeBox();
     })
 
-    // useEffect(() => {
-    //     setGenCount(genCount + 1)
-    // }, [grid])
-
     //---------------functions--------------
 
     //function to control regeneration cycle
@@ -117,7 +111,6 @@ const DrawLife = () => {
         if (generate) return
         const freshGrid = buildGrid()
         setGrid(freshGrid)
-        // setGenCount(0)
         genCount.current = 0
     }
 
@@ -128,7 +121,6 @@ const DrawLife = () => {
             .map(() => new Array(rows).fill(null)
                 .map(() => Math.floor(Math.random() * 2)));
         setGrid(randGrid)
-        // setGenCount(0)
         genCount.current = 0
     }
 
