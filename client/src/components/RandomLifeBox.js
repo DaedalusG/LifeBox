@@ -13,6 +13,15 @@ const RandomLifeBox = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
+        //execute functions to produce and render game of life
+        let grid = buildGrid();
+        requestAnimationFrame(update);
+
+        //restarts on change of viewport
+        window.addEventListener("resize", handleResize)
+
+        //--------------functions----------------
+
         // makes randomly populated grid
         function buildGrid() {
             const cols = Math.ceil(canvas.width / resolution);
@@ -24,7 +33,7 @@ const RandomLifeBox = () => {
         }
 
         //renders lifebox to canvas
-        function makeLifeBox(grid) {
+        function renderLifeBox(grid) {
             for (let col = 0; col < grid.length; col++) {
                 for (let row = 0; row < grid[col].length; row++) {
                     const cell = grid[col][row];
@@ -82,27 +91,18 @@ const RandomLifeBox = () => {
 
         //stops and restarts game on change of viewport
         function handleResize() {
-            // window.location.reload()
-            let grid = buildGrid();
-            clearTimeout(gen)
-            requestAnimationFrame(update);
+            window.location.reload()
         }
 
         //renders grid on every generation
         function update() {
             grid = nextGen(grid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            makeLifeBox(grid);
+            renderLifeBox(grid);
             gen = setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
 
-        //execute functions to produce and render game of life
-        let grid = buildGrid();
-        requestAnimationFrame(update);
-
-        //restarts on change of viewport
-        window.addEventListener("resize", handleResize)
 
     }, [])
 
