@@ -3,17 +3,12 @@ import React, { useEffect } from 'react';
 
 const RandomLifeBox = () => {
     const canvasRef = React.useRef(null);
-    let canvas;
-    let ctx;
+
 
     useEffect(() => {
-        if (!canvas) {
-            canvas = canvasRef.current;
-        }
+        let canvas = canvasRef.current;
+        let ctx = canvas.getContext('2d');
 
-        if (!ctx) {
-            ctx = canvas.getContext('2d')
-        }
         const resolution = 55;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -83,9 +78,14 @@ const RandomLifeBox = () => {
             return nextGen
         }
 
+        let gen;
+
         //stops and restarts game on change of viewport
         function handleResize() {
-            window.location.reload()
+            // window.location.reload()
+            let grid = buildGrid();
+            clearTimeout(gen)
+            requestAnimationFrame(update);
         }
 
         //renders grid on every generation
@@ -93,7 +93,7 @@ const RandomLifeBox = () => {
             grid = nextGen(grid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             makeLifeBox(grid);
-            setTimeout(() => requestAnimationFrame(update), 1000);
+            gen = setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
 
