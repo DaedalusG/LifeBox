@@ -31,14 +31,14 @@ def login():
         username = data['username']
         password = data['password']
 
-        if not username:
-            return jsonify(message='Username Required'), 400
-        elif not password:
-            return jsonify(message='Password Required'), 400
+        if not username or not password:
+            return jsonify(message='Username and password required'), 400
+        # elif not password:
+        #     return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(username=username).first()
         if not user:
-            return jsonify(message='Username Required'), 400
+            return jsonify(message='Username not found'), 400
 
         verified = verify_password(password, user.hashed_password)
 
