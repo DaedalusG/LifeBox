@@ -197,7 +197,6 @@ const DrawLife = () => {
                 }
             }
         }
-        console.timeEnd('rendering');
         return nextGen
     }
 
