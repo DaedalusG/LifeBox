@@ -9,6 +9,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("")
     const [openSignUp, setSignUp] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
@@ -26,11 +27,15 @@ const Login = () => {
             console.log("inside tryLogin: Success");
         } else {
             console.log("inside tryLogin: Response failure");
+            console.log(response)
         }
         const res = await response.json()
         if (res.auth_token !== undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
             window.location.reload()
+        }
+        if (res.message) {
+            setError(res.message)
         }
     };
 
@@ -93,6 +98,7 @@ const Login = () => {
                             value={password}
                             onChange={updatePassword} />
                         <button className={"login_form_submit"} onClick={handleLoginSubmit}>Submit</button>
+                        <div className={"login_response"}>{error}</div>
                     </div>
                 </div>
                 <div className={"login_sub_container"}>

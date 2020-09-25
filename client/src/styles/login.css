@@ -88,6 +88,13 @@
     background-color: #0c4d30;
 }
 
+.login_response {
+    color: #F96363;
+    margin: 0.5em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+}
+
 .signup_link {
     font-family: "orbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     cursor: pointer;
