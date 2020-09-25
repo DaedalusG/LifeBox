@@ -9,6 +9,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
+    const [error, setError] = useState("")
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updateEmail = (e) => setEmail(e.target.value);
@@ -18,15 +19,12 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        if (password !== rePassword) {
-            console.log('Passwords must match')
-            return
-        }
 
         const user = {
             username: username,
             email: email,
             password: password,
+            rePassword: rePassword,
         }
 
         const response = await fetch(`${apiUrl}/auth/signup`, {
@@ -48,7 +46,8 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
                 // Add redirect here
             }
         } else {
-            console.log("Response Failure");
+            const res = await response.json();
+            setError(res.message)
         }
     };
 
@@ -60,35 +59,38 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             <div className={'signup_close_container'} onClick={closeSignUp}>
                 <Close />
             </div>
-            <img src={defaultPic} alt="default_profile_pic"></img>
-            <div className={"signup_inputs_container"}>
-                <input
-                    className="login_input_field"
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={updateUsername} />
-                <input
-                    className="login_input_field"
-                    type="text"
-                    placeholder="Email"
-                    value={email}
-                    onChange={updateEmail} />
-                <input
-                    className="login_input_field"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={updatePassword} />
-                <input
-                    className="login_input_field"
-                    type="password"
-                    placeholder="rePassword"
-                    value={rePassword}
-                    onChange={updateRePassword} />
-            </div>
-            <div>
-                <button className={"register_button"} onClick={registerUser}>Register</button>
+            <div className={"signup_sub_container"}>
+                <img src={defaultPic} alt="default_profile_pic"></img>
+                <div className={"signup_inputs_container"}>
+                    <input
+                        className="login_input_field"
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={updateUsername} />
+                    <input
+                        className="login_input_field"
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        onChange={updateEmail} />
+                    <input
+                        className="login_input_field"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={updatePassword} />
+                    <input
+                        className="login_input_field"
+                        type="password"
+                        placeholder="rePassword"
+                        value={rePassword}
+                        onChange={updateRePassword} />
+                </div>
+                <div>
+                    <button className={"register_button"} onClick={registerUser}>Register</button>
+                </div>
+                <div className={'signup_error'}>{error}</div>
             </div>
         </div >,
         document.getElementById('signupmodal')

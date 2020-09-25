@@ -51,7 +51,7 @@ def login():
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
-        return jsonify(message='Login Failed'), 408
+        return jsonify(message='Login failed'), 408
 
 
 @auth.route('/signup', methods=['POST'])
@@ -63,14 +63,16 @@ def signup():
         email = data['email']
 
         if not username:
-            return jsonify(message="Username Required"), 400
+            return jsonify(message="Username required"), 400
         elif not email:
-            return jsonify(message='Email Required'), 400
+            return jsonify(message='Email required'), 400
+        elif not (data['password'] == data['rePassword']):
+            return jsonify(message="Passwords must match"), 400
 
         try:
             hashed_password = set_password(data['password'])
         except Exception:
-            return jsonify(message='Password Required'), 400
+            return jsonify(message='Password required'), 400
 
         user = User(
             username=username,

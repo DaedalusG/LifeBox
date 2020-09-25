@@ -18,10 +18,19 @@
     border-radius: 20px;
     z-index: 1000;
     width: 50vw;
+    max-width: 440px;
     min-height: 60vh;
 }
 
-.signupmodal > img {
+.signup_sub_container {
+    position: relative;
+    top: -2em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.signup_sub_container > img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -53,10 +62,18 @@
     flex-flow: column;
 }
 
+.signup_error {
+    color: #F96363;
+    margin: 0.5em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+}
+
 .signup_close_container {
    display: flex;
    flex-flow: row;
    width: inherit;
+   max-width: inherit;
    justify-content: flex-end;
 }
 
