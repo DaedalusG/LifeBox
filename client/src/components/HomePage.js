@@ -9,6 +9,7 @@ const HomePage = () => {
     const [user, setUser] = useState({})
     const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
+    const [saving, setSaving] = useState(false)
 
     const logout = () => {
         localStorage.removeItem("auth_token")
@@ -39,9 +40,9 @@ const HomePage = () => {
                 <div className={'navbar_sub_container'}>
                     <img src={user.profile_pic} alt='profile_pic' className={'navbar_profile_pic'} />
                     <div className={'username'}>{`Welcome: ${user.username}`}</div>
-                    <img src={Brain} alt='save_icon' className={'info_link'} />
                 </div>
                 <div className={'navbar_sub_container'}>
+                    <img src={Brain} alt='save_icon' onClick={saving ? () => console.log('saving') : () => setSaving(true)} className={'info_link'} />
                     <img src={Question} alt='info_icon' onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>

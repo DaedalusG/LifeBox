@@ -29,7 +29,9 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
                                 <div className={'rule'}></div>
                             </div>
                             <div id={"instructions_title"} className={'quote'}>
-                                There is no way to win game of life, it's really an exploration. The brain icon allows you to save a grid.
+                                There is no way to win game of life, it's really an exploration.
+                                The brain icon allows you to save a grid.
+                                Changing the grid resolution resets the grid.
                             </div>
                         </div>
                     </div>
