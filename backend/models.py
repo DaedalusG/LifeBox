@@ -31,3 +31,22 @@ class Grid(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(40), nullable=False, unique=True)
     grid = db.Column(db.Text)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
+    grid_id = db.Column(db.Integer, db.ForeignKey("grids.id"), nullable=False)  # noqa
+    content = db.Column(db.Text, nullable=False)
+
+    users = db.relationship('User', backref='comment')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "grid_id": self.grid_id,
+            "content": self.content,
+        }
