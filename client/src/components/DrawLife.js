@@ -10,7 +10,6 @@ const DrawLife = (props) => {
     //sets up a state containing information about the current grids array and values, 
     const [resolution, setResolution] = useState(50);
     const [genFreq, setGenFreq] = useState(500)
-    // const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
     const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
