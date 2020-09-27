@@ -34,6 +34,11 @@ const HomePage = () => {
         getCurrentUser();
     }, [])
 
+    const handleSave = () => {
+        console.log('saving')
+        setSaving(false)
+    }
+
     return (
         <>
             <div className={'navbar'}>
@@ -42,7 +47,8 @@ const HomePage = () => {
                     <div className={'username'}>{`Welcome: ${user.username}`}</div>
                 </div>
                 <div className={'navbar_sub_container'}>
-                    <img src={Brain} alt='save_icon' onClick={saving ? () => console.log('saving') : () => setSaving(true)} className={'info_link'} />
+                    <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
+                    {saving && <input className={'navbar_input'}></input>}
                     <img src={Question} alt='info_icon' onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
