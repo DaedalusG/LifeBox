@@ -34,6 +34,7 @@ jwt = JWTManager(app)
 
 # Blueprints
 app.register_blueprint(user, url_prefix='/api/users')
+# app.register_blueprint(save, url_prefix='/api/save')
 app.register_blueprint(auth, url_prefix='/api/auth')
 
 

@@ -35,8 +35,9 @@ const HomePage = () => {
         getCurrentUser();
     }, [])
 
-    const handleSave = () => {
-        console.log('saving')
+    const handleSave = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`${apiUrl}/save`)
         setSaving(false)
     }
 
