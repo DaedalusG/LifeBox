@@ -87,7 +87,6 @@ const RandomLifeBox = () => {
             return nextGen
         }
 
-        let gen;
 
         //stops and restarts game on change of viewport
         function handleResize() {
@@ -99,7 +98,7 @@ const RandomLifeBox = () => {
             grid = nextGen(grid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             renderLifeBox(grid);
-            gen = setTimeout(() => requestAnimationFrame(update), 1000);
+            setTimeout(() => requestAnimationFrame(update), 1000);
         }
 
 
