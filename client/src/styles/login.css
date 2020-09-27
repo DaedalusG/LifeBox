@@ -62,6 +62,11 @@
     outline: none;
 }
 
+.login_input_field::placeholder {
+    color: #04D482;
+    opacity: 0.5;
+}
+
 .login_input_field:hover {
     box-shadow: 0 5px 15px #49D884;
 }

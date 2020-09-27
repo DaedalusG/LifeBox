@@ -10,6 +10,7 @@ const HomePage = () => {
     const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
+    const [loadGrid, setLoadGrid] = useState(null)
 
     const logout = () => {
         localStorage.removeItem("auth_token")
@@ -48,13 +49,21 @@ const HomePage = () => {
                 </div>
                 <div className={'navbar_sub_container'}>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
-                    {saving && <input className={'navbar_input'} />}
+                    {saving && <input className={'navbar_input'} placeholder={'Save as'} />}
                     <img src={Question} alt='info_icon' onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
             </div >
-            <InstructionsModal openInstructions={openInstructions} closeInstructions={() => setInstructions(false)} />
-            <DrawLife grid={grid} setGrid={setGrid} />
+            <InstructionsModal
+                openInstructions={openInstructions}
+                closeInstructions={() => setInstructions(false)}
+            />
+            <DrawLife
+                grid={grid}
+                setGrid={setGrid}
+                loadGrid={loadGrid}
+                setLoadGrid={setLoadGrid}
+            />
         </>
     )
 }
