@@ -7,6 +7,7 @@ import Question from '../images/question.svg'
 
 const HomePage = () => {
     const [user, setUser] = useState({})
+    const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
 
     const logout = () => {
@@ -46,7 +47,7 @@ const HomePage = () => {
                 </div>
             </div >
             <InstructionsModal openInstructions={openInstructions} closeInstructions={() => setInstructions(false)} />
-            <DrawLife />
+            <DrawLife grid={grid} setGrid={setGrid} />
         </>
     )
 }

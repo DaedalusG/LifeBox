@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react'
 import Draggable from 'react-draggable';
 
-const DrawLife = () => {
+const DrawLife = (props) => {
 
     const canvasRef = useRef(null);
     const ctx = useRef(null)
@@ -10,7 +10,7 @@ const DrawLife = () => {
     //sets up a state containing information about the current grids array and values, 
     const [resolution, setResolution] = useState(50);
     const [genFreq, setGenFreq] = useState(500)
-    const [grid, setGrid] = useState(null)
+    // const [grid, setGrid] = useState(null)
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
     const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
@@ -30,7 +30,7 @@ const DrawLife = () => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        setGrid(newGrid)
+        props.setGrid(newGrid)
         setInit(true)
     }, [])
 
@@ -42,7 +42,7 @@ const DrawLife = () => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        setGrid(newGrid)
+        props.setGrid(newGrid)
         setInit(true)
     }, [resolution])
 
@@ -58,7 +58,7 @@ const DrawLife = () => {
         if (!generate) return
         setTimeout(() => {
             genCount.current++
-            setGrid(nextGen(grid))
+            props.setGrid(nextGen(props.grid))
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
@@ -108,7 +108,7 @@ const DrawLife = () => {
     function clear() {
         if (generate) return
         const freshGrid = buildGrid()
-        setGrid(freshGrid)
+        props.setGrid(freshGrid)
         genCount.current = 0
     }
 
@@ -118,14 +118,14 @@ const DrawLife = () => {
         const randGrid = new Array(cols).fill(null)
             .map(() => new Array(rows).fill(null)
                 .map(() => Math.floor(Math.random() * 2)));
-        setGrid(randGrid)
+        props.setGrid(randGrid)
         genCount.current = 0
     }
 
     // populates a cell on click
     function handleClick(e) {
         if (generate) return
-        const newGrid = grid.map(arr => [...arr])
+        const newGrid = props.grid.map(arr => [...arr])
         const columnClicked = Math.floor(e.nativeEvent.offsetX / colWidth)
         const rowClicked = Math.floor(e.nativeEvent.offsetY / rowHeight)
         if (newGrid[columnClicked][rowClicked] === 1) {
@@ -133,8 +133,8 @@ const DrawLife = () => {
         } else {
             newGrid[columnClicked][rowClicked] = 1;
         }
-        setGrid(newGrid)
-        renderLifeBox(grid)
+        props.setGrid(newGrid)
+        renderLifeBox(props.grid)
     }
 
 
@@ -151,9 +151,9 @@ const DrawLife = () => {
 
     // //renders lifebox to canvas
     function renderLifeBox() {
-        for (let col = 0; col < grid.length; col++) {
-            for (let row = 0; row < grid[col].length; row++) {
-                const cell = grid[col][row];
+        for (let col = 0; col < props.grid.length; col++) {
+            for (let row = 0; row < props.grid[col].length; row++) {
+                const cell = props.grid[col][row];
                 ctx.current.beginPath();
                 ctx.current.rect(col * resolution, row * resolution, resolution, resolution)
                 ctx.current.fillStyle = cell ? 'lightgreen' : '#271D45';
@@ -167,11 +167,11 @@ const DrawLife = () => {
 
     //make next interation based of rules of conways game of life
     function nextGen() {
-        if (!grid) return
-        const nextGen = grid.map(arr => [...arr]);
-        for (let col = 0; col < grid.length; col++) {
-            for (let row = 0; row < grid[col].length; row++) {
-                const cell = grid[col][row];
+        if (!props.grid) return
+        const nextGen = props.grid.map(arr => [...arr]);
+        for (let col = 0; col < props.grid.length; col++) {
+            for (let row = 0; row < props.grid[col].length; row++) {
+                const cell = props.grid[col][row];
                 let numNeighbours = 0;
                 for (let i = -1; i < 2; i++) {
                     for (let j = -1; j < 2; j++) {
@@ -182,7 +182,7 @@ const DrawLife = () => {
                         const y_cell = row + j;
 
                         if (x_cell >= 0 && y_cell >= 0 && x_cell < cols && y_cell < rows) {
-                            const currentNeighbour = grid[col + i][row + j]
+                            const currentNeighbour = props.grid[col + i][row + j]
                             numNeighbours += currentNeighbour
                         }
                     }
