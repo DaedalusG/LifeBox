@@ -28,7 +28,9 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
                                 <div className={'rule'}><span id={'instructions_title'}>Rule 3:</span>{'All other live cells die in the next generation. Similarly, all other dead cells stay dead.'}</div>
                                 <div className={'rule'}></div>
                             </div>
-                            <div id={"instructions_title"} className={'quote'}>There is no way to win game of life, and it's questionable wether or not its a game. The brain icon is in development.</div>
+                            <div id={"instructions_title"} className={'quote'}>
+                                There is no way to win game of life, it's really an exploration. The brain icon allows you to save a grid.
+                            </div>
                         </div>
                     </div>
                 </div>
