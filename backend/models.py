@@ -31,7 +31,7 @@ class Grid(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(40), nullable=False, unique=True)
-    grid = db.Column(db.JSON)
+    grid = db.Column(db.JSON, nullable=False)
 
 
 class Comment(db.Model):
