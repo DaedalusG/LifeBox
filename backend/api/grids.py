@@ -4,13 +4,12 @@ from backend.models import db, User
 grids = Blueprint('grids', __name__)
 
 
-@grids.route('/save', methods=['GET', 'POST'])
+@grids.route('/save', methods=['POST'])
 def save():
     data = request.get_json()
-    print(data)
-    # try:
-    #     name = data['name']
-    #     grid = data['grid']
+    print('data------->', data)
 
-    #     print(data)
-    return jsonify(message='hit route')
+    name = data['name']
+    grid = data['grid']
+
+    return jsonify(name=name, grid=grid), 200
