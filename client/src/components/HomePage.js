@@ -18,6 +18,7 @@ const HomePage = () => {
         window.location.reload()
     }
 
+    //gets user from jwt token, on page load
     useEffect(() => {
         const getCurrentUser = async () => {
             const token = window.localStorage.getItem('auth_token')
@@ -36,6 +37,7 @@ const HomePage = () => {
         getCurrentUser();
     }, [])
 
+    //function to save current grid as json
     const handleSave = async (e) => {
         e.preventDefault();
         const response = await fetch(`${apiUrl}/grids/save`, {
