@@ -111,6 +111,14 @@ const DrawLife = (props) => {
         genCount.current = 0
     }
 
+    //reset grid to saved initial condition
+    function reset() {
+        if (generate) return
+        props.setGrid(props.loadGrid.grid)
+        // props.setLoadGrid(props.loadGrid["saved"] = false)
+        genCount.current = 0
+    }
+
     //function to generate random grid
     function randomGrid() {
         if (generate) return
@@ -220,7 +228,7 @@ const DrawLife = (props) => {
                         <div onClick={addResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
-                        <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
+                        <button onClick={props.loadGrid.saved ? reset : clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>{props.loadGrid.saved ? 'Reset' : 'Clear'}</button>
                         <button onClick={randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Rand</button>
                     </div>
                 </div>

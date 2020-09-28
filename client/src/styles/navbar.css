@@ -25,14 +25,14 @@
 }
 
 .username {
-    font-size: 1.5em;
+    font-size: 2.5vh;
     margin-top: 6px;
     font-weight: bold;
     font-family: "OrbitronBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
 }
 
 .current_grid {
-    font-size: 1em;
+    font-size: 1.5vh;
     margin-left: 10px;
     /* color: #F96363; */
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
