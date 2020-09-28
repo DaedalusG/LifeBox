@@ -1,13 +1,13 @@
 from flask import Blueprint, request, jsonify
 from backend.models import db, User
 
-save = Blueprint('save', __name__)
+grids = Blueprint('grids', __name__)
 
 
-@save.route('/saving', methods=['GET, POST'])
-def saving():
+@grids.route('/save', methods=['GET', 'POST'])
+def save():
     data = request.get_json()
-
+    print(data)
     # try:
     #     name = data['name']
     #     grid = data['grid']
