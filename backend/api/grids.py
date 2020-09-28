@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from backend.models import db, User
+from backend.models import db, Grid
 
 grids = Blueprint('grids', __name__)
 
@@ -12,4 +12,13 @@ def save():
     name = data['name']
     grid = data['grid']
 
-    return jsonify(name=name, grid=grid), 200
+    test = Grid(
+        user_id=1,
+        name=name,
+        grid={"name": "test", "grid": [0, 1, 0]}
+    )
+
+    db.session.add(test)
+    db.session.commit()
+
+    return jsonify(message='added grid to db'), 200

@@ -37,7 +37,7 @@ const HomePage = () => {
 
     const handleSave = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${apiUrl}/save`)
+        const response = await fetch(`${apiUrl}/grids/save`)
         setSaving(false)
     }
 
