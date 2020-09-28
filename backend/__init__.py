@@ -21,6 +21,7 @@ from flask_jwt_extended import (
     verify_jwt_in_request)
 
 from .api.auth import auth
+from .api.grids import grids
 
 # Setup
 app = Flask(__name__, static_url_path='')
@@ -34,7 +35,7 @@ jwt = JWTManager(app)
 
 # Blueprints
 app.register_blueprint(user, url_prefix='/api/users')
-# app.register_blueprint(save, url_prefix='/api/save')
+app.register_blueprint(grids, url_prefix='/api/grids')
 app.register_blueprint(auth, url_prefix='/api/auth')
 
 

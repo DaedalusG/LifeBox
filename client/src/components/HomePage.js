@@ -10,13 +10,15 @@ const HomePage = () => {
     const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
-    const [loadGrid, setLoadGrid] = useState(null)
+    const [saveName, setSaveName] = useState('')
+    const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
 
     const logout = () => {
         localStorage.removeItem("auth_token")
         window.location.reload()
     }
 
+    //gets user from jwt token, on page load
     useEffect(() => {
         const getCurrentUser = async () => {
             const token = window.localStorage.getItem('auth_token')
@@ -28,17 +30,36 @@ const HomePage = () => {
             if (!response.ok) {
                 console.log("this will never happen. you can quote me")
             } else {
-                const json = await response.json();
-                setUser(json);
+                const user = await response.json();
+                setUser(user);
             }
         }
         getCurrentUser();
     }, [])
 
+    //function to save current grid as json
     const handleSave = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${apiUrl}/save`)
-        setSaving(false)
+        if (saveName === null || saveName === '') {
+            setSaving(false)
+            return
+        }
+
+        const response = await fetch(`${apiUrl}/grids/save`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
+        })
+        setSaveName('Saved')
+        setTimeout(() => {
+            setSaving(false);
+            setSaveName(null)
+        }, 2500)
+        setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
     }
 
     return (
@@ -46,11 +67,19 @@ const HomePage = () => {
             <div className={'navbar'}>
                 <div className={'navbar_sub_container'}>
                     <img src={user.profile_pic} alt='profile_pic' className={'navbar_profile_pic'} />
-                    <div className={'username'}>{`Welcome: ${user.username}`}</div>
+                    <div>
+                        <div className={'username'}>{`Welcome: ${user.username}`}</div>
+                        <div className={'current_grid'}>Current grid: <span style={{ color: "#F96363" }}>{`${loadGrid.name}`}</span></div>
+                    </div>
                 </div>
                 <div className={'navbar_sub_container'}>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
-                    {saving && <input className={'navbar_input'} placeholder={'Save as'} />}
+                    {saving && <input
+                        className={'navbar_input'}
+                        placeholder={'Save grid as'}
+                        value={saveName}
+                        onChange={(e) => setSaveName(e.target.value)}
+                    />}
                     <img src={Question} alt='info_icon' onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>
