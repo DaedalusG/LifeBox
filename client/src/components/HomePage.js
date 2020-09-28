@@ -10,7 +10,7 @@ const HomePage = () => {
     const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
-    const [saveName, setSaveName] = useState(null)
+    const [saveName, setSaveName] = useState('')
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
 
     const logout = () => {

@@ -14,11 +14,11 @@ const DrawLife = (props) => {
     const [height, setHeight] = useState(0)
     const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
     const rows = useMemo(() => Math.ceil(height / resolution), [height, resolution])
-    const colWidth = useMemo(() => Math.ceil(width / cols), [width, resolution])
-    const rowHeight = useMemo(() => Math.ceil(height / rows), [height, resolution])
+    const colWidth = useMemo(() => Math.ceil(width / cols), [width, cols])
+    const rowHeight = useMemo(() => Math.ceil(height / rows), [height, rows])
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
-
+    const { setGrid } = props
     //------------------------useEffects--------------------------
 
     // initializes the grid
@@ -29,7 +29,7 @@ const DrawLife = (props) => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        props.setGrid(newGrid)
+        setGrid(newGrid)
         setInit(true)
     }, [])
 
@@ -41,7 +41,7 @@ const DrawLife = (props) => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        props.setGrid(newGrid)
+        setGrid(newGrid)
         setInit(true)
     }, [resolution])
 
@@ -57,7 +57,7 @@ const DrawLife = (props) => {
         if (!generate) return
         setTimeout(() => {
             genCount.current++
-            props.setGrid(nextGen(props.grid))
+            setGrid(nextGen(props.grid))
         }, genFreq)
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
@@ -107,15 +107,15 @@ const DrawLife = (props) => {
     function clear() {
         if (generate) return
         const freshGrid = buildGrid()
-        props.setGrid(freshGrid)
+        setGrid(freshGrid)
         genCount.current = 0
     }
 
     //reset grid to saved initial condition
     function reset() {
         if (generate) return
-        props.setGrid(props.loadGrid.grid)
-        // props.setLoadGrid(props.loadGrid["saved"] = false)
+        setGrid(props.loadGrid.grid)
+        // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
         genCount.current = 0
     }
 
@@ -125,7 +125,7 @@ const DrawLife = (props) => {
         const randGrid = new Array(cols).fill(null)
             .map(() => new Array(rows).fill(null)
                 .map(() => Math.floor(Math.random() * 2)));
-        props.setGrid(randGrid)
+        setGrid(randGrid)
         genCount.current = 0
     }
 
@@ -140,7 +140,7 @@ const DrawLife = (props) => {
         } else {
             newGrid[columnClicked][rowClicked] = 1;
         }
-        props.setGrid(newGrid)
+        setGrid(newGrid)
         renderLifeBox(props.grid)
     }
 
@@ -228,8 +228,8 @@ const DrawLife = (props) => {
                         <div onClick={addResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
-                        <button onClick={props.loadGrid.saved ? reset : clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>{props.loadGrid.saved ? 'Reset' : 'Clear'}</button>
-                        <button onClick={randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Rand</button>
+                        <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
+                        <button onClick={props.loadGrid.saved ? reset : randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>{props.loadGrid.saved ? 'Reset' : 'Rand'}</button>
                     </div>
                 </div>
             </Draggable>
