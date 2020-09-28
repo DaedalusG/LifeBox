@@ -47,8 +47,8 @@ const HomePage = () => {
             },
             body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
         })
-        setSaving(false)
-        setSaveName(null)
+        setSaveName('Saved')
+        setTimeout(() => setSaving(false), 2500)
     }
 
     return (
