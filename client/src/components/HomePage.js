@@ -69,7 +69,7 @@ const HomePage = () => {
                     <img src={user.profile_pic} alt='profile_pic' className={'navbar_profile_pic'} />
                     <div>
                         <div className={'username'}>{`Welcome: ${user.username}`}</div>
-                        <div className={'current_grid'}>{`Current grid: ${loadGrid.name}`}</div>
+                        <div className={'current_grid'}>Current grid: <span style={{ color: "#F96363" }}>{`${loadGrid.name}`}</span></div>
                     </div>
                 </div>
                 <div className={'navbar_sub_container'}>
