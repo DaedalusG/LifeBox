@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.dialects.postgresql import JSON
 
 db = SQLAlchemy()
 
@@ -30,7 +31,7 @@ class Grid(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(40), nullable=False, unique=True)
-    grid = db.Column(db.Text)
+    grid = db.Column(db.JSON)
 
 
 class Comment(db.Model):
