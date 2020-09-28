@@ -9,13 +9,14 @@ def save():
     data = request.get_json()
     print('data------->', data)
 
+    user_id = data['user_id']
     name = data['name']
     grid = data['grid']
 
     test = Grid(
-        user_id=1,
+        user_id=user_id,
         name=name,
-        grid={"name": "test", "grid": [0, 1, 0]}
+        grid={"name": name, name: grid}
     )
 
     db.session.add(test)

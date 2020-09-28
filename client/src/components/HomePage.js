@@ -28,8 +28,8 @@ const HomePage = () => {
             if (!response.ok) {
                 console.log("this will never happen. you can quote me")
             } else {
-                const json = await response.json();
-                setUser(json);
+                const user = await response.json();
+                setUser(user);
             }
         }
         getCurrentUser();
@@ -37,7 +37,15 @@ const HomePage = () => {
 
     const handleSave = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${apiUrl}/grids/save`)
+        const response = await fetch(`${apiUrl}/grids/save`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ user_id: user.id, name: 'name', grid: { "grid": grid } })
+        })
         setSaving(false)
     }
 
