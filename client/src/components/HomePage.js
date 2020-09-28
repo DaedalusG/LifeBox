@@ -11,7 +11,7 @@ const HomePage = () => {
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState(null)
-    const [loadGrid, setLoadGrid] = useState(null)
+    const [loadGrid, setLoadGrid] = useState(undefined)
 
     const logout = () => {
         localStorage.removeItem("auth_token")
@@ -40,6 +40,10 @@ const HomePage = () => {
     //function to save current grid as json
     const handleSave = async (e) => {
         e.preventDefault();
+        if (saveName === null) {
+            setSaving(false)
+            return
+        }
         const response = await fetch(`${apiUrl}/grids/save`, {
             method: "POST",
             mode: "cors",
@@ -50,7 +54,10 @@ const HomePage = () => {
             body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
         })
         setSaveName('Saved')
-        setTimeout(() => setSaving(false), 2500)
+        setTimeout(() => {
+            setSaving(false);
+            setSaveName(null)
+        }, 2500)
     }
 
     return (
@@ -58,7 +65,10 @@ const HomePage = () => {
             <div className={'navbar'}>
                 <div className={'navbar_sub_container'}>
                     <img src={user.profile_pic} alt='profile_pic' className={'navbar_profile_pic'} />
-                    <div className={'username'}>{`Welcome: ${user.username}`}</div>
+                    <div>
+                        <div className={'username'}>{`Welcome: ${user.username}`}</div>
+                        <div className={'current_grid'}>{`Current grid: ${loadGrid}`}</div>
+                    </div>
                 </div>
                 <div className={'navbar_sub_container'}>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
