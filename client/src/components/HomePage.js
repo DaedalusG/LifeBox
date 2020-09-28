@@ -10,6 +10,7 @@ const HomePage = () => {
     const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
+    const [saveName, setSaveName] = useState(null)
     const [loadGrid, setLoadGrid] = useState(null)
 
     const logout = () => {
@@ -44,9 +45,10 @@ const HomePage = () => {
                 "Content-Type": "application/json",
                 // "Authorization": `Bearer ${token}`,
             },
-            body: JSON.stringify({ user_id: user.id, name: 'name', grid: { "grid": grid } })
+            body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
         })
         setSaving(false)
+        setSaveName(null)
     }
 
     return (
@@ -58,7 +60,12 @@ const HomePage = () => {
                 </div>
                 <div className={'navbar_sub_container'}>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
-                    {saving && <input className={'navbar_input'} placeholder={'Save as'} />}
+                    {saving && <input
+                        className={'navbar_input'}
+                        placeholder={'Save grid as'}
+                        value={saveName}
+                        onChange={(e) => setSaveName(e.target.value)}
+                    />}
                     <img src={Question} alt='info_icon' onClick={() => setInstructions(true)} className={'info_link'} />
                     <button onClick={logout} className={'navbar_logout_button'}>Logout</button>
                 </div>

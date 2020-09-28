@@ -16,7 +16,7 @@ def save():
     test = Grid(
         user_id=user_id,
         name=name,
-        grid={"name": name, name: grid}
+        grid_json=grid
     )
 
     db.session.add(test)
