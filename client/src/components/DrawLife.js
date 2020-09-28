@@ -33,17 +33,17 @@ const DrawLife = (props) => {
         setInit(true)
     }, [])
 
-    // //generates new grid when grid resolution is set
-    // useEffect(() => {
-    //     const canvas = canvasRef.current;
-    //     canvas.width = window.innerWidth;
-    //     canvas.height = window.innerHeight;
-    //     ctx.current = canvas.getContext('2d')
-    //     let newGrid = buildGrid()
-    //     ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    //     setGrid(newGrid)
-    //     setInit(true)
-    // }, [resolution])
+    //generates new grid when grid resolution is set
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        ctx.current = canvas.getContext('2d')
+        let newGrid = buildGrid()
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        setGrid(newGrid)
+        setInit(true)
+    }, [resolution])
 
     // renders first grid after 
     useEffect(() => {
