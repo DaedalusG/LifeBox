@@ -240,13 +240,13 @@ const DrawLife = (props) => {
                     </div>
                 </div>
             </Draggable>
-            <Draggable>
-                <canvas
-                    ref={canvasRef}
-                    onClick={handleClick}
-                    className={'drawlife_grid'}
-                />
-            </Draggable>
+            {/* <Draggable> */}
+            <canvas
+                ref={canvasRef}
+                onClick={handleClick}
+                className={'drawlife_grid'}
+            />
+            {/* </Draggable> */}
         </div>
     )
 }
