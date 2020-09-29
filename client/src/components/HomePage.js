@@ -7,10 +7,11 @@ import Question from '../images/question.svg'
 
 const HomePage = () => {
     const [user, setUser] = useState({})
-    const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
+    const [grid, setGrid] = useState(null)
+    const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
 
     const logout = () => {
@@ -91,6 +92,8 @@ const HomePage = () => {
             <DrawLife
                 grid={grid}
                 setGrid={setGrid}
+                resolution={resolution}
+                setResolution={setResolution}
                 loadGrid={loadGrid}
                 setLoadGrid={setLoadGrid}
             />
