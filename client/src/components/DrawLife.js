@@ -20,6 +20,8 @@ const DrawLife = (props) => {
     const [generate, setGenerate] = useState(false)
     const { setGrid } = props
     const { setResolution } = props
+
+
     //------------------------useEffects--------------------------
 
     // initializes the grid
@@ -96,13 +98,13 @@ const DrawLife = (props) => {
 
     //props.resolution
     function addResolution() {
-        if (generate) return
+        if (generate || props.loadGrid.grid) return
         if (props.resolution >= 100) return
         setResolution(props.resolution + 10);
     }
 
     function reduceResolution() {
-        if (generate) return
+        if (generate || props.loadGrid.grid) return
         if (props.resolution <= 10) return
         setResolution(props.resolution - 10);
     }
@@ -228,9 +230,9 @@ const DrawLife = (props) => {
                     </div>
                     <div className={'hud_labels'}>--resolution--</div>
                     <div className={"env_toggles"}>
-                        <div onClick={reduceResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'<'}</div>
+                        <div onClick={reduceResolution} className={(props.loadGrid.grid || generate) ? 'disable_toggle_button' : 'toggle_button'}>{'<'}</div>
                         <div className={"gen_counter"}>{props.resolution / 10}</div>
-                        <div onClick={addResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
+                        <div onClick={addResolution} className={(props.loadGrid.grid || generate) ? 'disable_toggle_button' : 'toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>

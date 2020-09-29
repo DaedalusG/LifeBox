@@ -4,12 +4,15 @@ import InstructionsModal from './InstructionsModal'
 import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
+import Search from '../images/search.svg'
 
 const HomePage = () => {
     const [user, setUser] = useState({})
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
+    const [searching, setSearching] = useState(false)
+    const [searchName, setSearchName] = useState('')
     const [grid, setGrid] = useState(null)
     const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
@@ -58,10 +61,25 @@ const HomePage = () => {
         setSaveName('Saved')
         setTimeout(() => {
             setSaving(false);
-            setSaveName(null)
-        }, 2500)
+            setSaveName('')
+        }, 2250)
         setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
     }
+
+    //function to handle search inputs
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchName === null || searchName === '') {
+            setSearching(false)
+            return
+        }
+        console.log('search')
+        setTimeout(() => {
+            setSearching(false);
+            setSearchName('')
+        }, 2250)
+    }
+
 
     return (
         <>
@@ -74,6 +92,13 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className={'navbar_sub_container'}>
+                    <img src={Search} alt='search_icon' onClick={searching ? handleSearch : () => setSearching(true)} className={'info_link'} />
+                    {searching && <input
+                        className={'navbar_input'}
+                        placeholder={'Search'}
+                        value={searchName}
+                        onChange={(e) => setSearchName(e.target.value)}
+                    />}
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
                     {saving && <input
                         className={'navbar_input'}
