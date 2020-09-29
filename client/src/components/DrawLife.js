@@ -42,7 +42,11 @@ const DrawLife = (props) => {
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        setGrid(newGrid)
+        if (props.loadGrid.grid) {
+            setGrid(props.loadGrid.grid)
+        } else {
+            setGrid(newGrid)
+        }
         setInit(true)
     }, [props.resolution])
 
@@ -234,13 +238,13 @@ const DrawLife = (props) => {
                     </div>
                 </div>
             </Draggable>
-            {/* <Draggable> */}
-            <canvas
-                ref={canvasRef}
-                onClick={handleClick}
-                className={'drawlife_grid'}
-            />
-            {/* </Draggable> */}
+            <Draggable>
+                <canvas
+                    ref={canvasRef}
+                    onClick={handleClick}
+                    className={'drawlife_grid'}
+                />
+            </Draggable>
         </div>
     )
 }
