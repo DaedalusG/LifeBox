@@ -10,8 +10,10 @@ const DrawLife = (props) => {
     //sets up a state containing information about the current grids array and values, 
     // const [props.resolution, setResolution] = useState(50);
     const [genFreq, setGenFreq] = useState(500)
-    const [width, setWidth] = useState(100)
-    const [height, setHeight] = useState(100)
+    // const [width, setWidth] = useState(100)
+    // const [height, setHeight] = useState(100)
+    const width = useMemo(() => window.innerWidth, [window.innerWidth])
+    const height = useMemo(() => window.innerHeight, [window.innerHeight])
     const cols = useMemo(() => Math.ceil(width / props.resolution), [width, props.resolution])
     const rows = useMemo(() => Math.ceil(height / props.resolution), [height, props.resolution])
     const colWidth = useMemo(() => Math.ceil(width / cols), [width, cols])
@@ -27,8 +29,10 @@ const DrawLife = (props) => {
     // initializes the grid
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // canvas.width = window.innerWidth;
+        // canvas.height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -39,8 +43,10 @@ const DrawLife = (props) => {
     //generates new grid when grid props.resolution is set
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // canvas.width = window.innerWidth;
+        // canvas.height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -52,7 +58,7 @@ const DrawLife = (props) => {
         setInit(true)
     }, [props.resolution])
 
-    // renders first grid after 
+    // renders grid after init
     useEffect(() => {
         if (!init) return
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -154,8 +160,8 @@ const DrawLife = (props) => {
 
     // makes grid
     function buildGrid() {
-        setWidth(canvasRef.current.width)
-        setHeight(canvasRef.current.height)
+        // setWidth(canvasRef.current.width)
+        // setHeight(canvasRef.current.height)
         const cols = Math.ceil(canvasRef.current.width / props.resolution);
         const rows = Math.ceil(canvasRef.current.height / props.resolution);
 
