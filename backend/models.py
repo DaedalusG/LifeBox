@@ -33,6 +33,14 @@ class Grid(db.Model):
     name = db.Column(db.String(40), nullable=False, unique=True)
     grid_json = db.Column(db.JSON, nullable=False)
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "name": self.name,
+            "grid_json": self.grid_json,
+        }
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'

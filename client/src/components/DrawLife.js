@@ -44,9 +44,7 @@ const DrawLife = (props) => {
 
     // // If grid is saved sets grid to have value of saved grid
     // useEffect(() => {
-    //     setGrid(props.loadGrid.grid)
-    //     ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    //     renderLifeBox();
+    //     reset()
     // }, [props.loadGrid])
 
     //generates new grid when grid props.resolution is set

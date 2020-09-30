@@ -49,7 +49,7 @@ const HomePage = () => {
             return
         }
         const token = window.localStorage.getItem('auth_token')
-        const response = await fetch(`${apiUrl}/grids/save`, {
+        await fetch(`${apiUrl}/grids/save`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -76,17 +76,24 @@ const HomePage = () => {
 
         const token = window.localStorage.getItem('auth_token')
         const response = await fetch(`${apiUrl}/grids/load`, {
-            method: "GET",
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
+            body: JSON.stringify({
+                name: searchName
+            })
         })
 
         const res = await response.json()
         if (res.message) {
             console.log(res.message)
+        }
+        if (res.grid) {
+            console.log(res.grid)
+            setLoadGrid({ "name": res.grid.name, "grid": res.grid.grid_json.grid, "saved": true })
         }
 
         setTimeout(() => {
