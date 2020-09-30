@@ -26,8 +26,6 @@ const DrawLife = (props) => {
     // initializes the grid
     useEffect(() => {
         const canvas = canvasRef.current;
-        // canvas.width = window.innerWidth;
-        // canvas.height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
         ctx.current = canvas.getContext('2d')
@@ -53,18 +51,20 @@ const DrawLife = (props) => {
 
     //generates new grid when grid props.resolution is set
     useEffect(() => {
+        if (!init) return
         const canvas = canvasRef.current;
-        // canvas.width = window.innerWidth;
-        // canvas.height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
-        // ctx.current = canvas.getContext('2d')
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         let newGrid = buildGrid()
+
+        let colDiff = Math.round((newGrid.length - props.grid.length) / 2)
+        let rowDiff = Math.round((newGrid[0].length - props.grid[0].length) / 2)
+
         if (newGrid.length > props.grid.length) {
             for (let col = 0; col < props.grid.length; col++) {
                 for (let row = 0; row < props.grid[col].length; row++) {
-                    newGrid[col][row] = props.grid[col][row];
+                    newGrid[col + colDiff][row + rowDiff] = props.grid[col][row];
                 }
             }
             setGrid(newGrid)
@@ -188,8 +188,6 @@ const DrawLife = (props) => {
 
     // makes grid
     function buildGrid() {
-        // setWidth(canvasRef.current.width)
-        // setHeight(canvasRef.current.height)
         const cols = Math.ceil(canvasRef.current.width / props.resolution);
         const rows = Math.ceil(canvasRef.current.height / props.resolution);
 
