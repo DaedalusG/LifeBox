@@ -70,15 +70,12 @@ const DrawLife = (props) => {
                 }
             }
             setGrid(newGrid)
+            renderLifeBox()
         } else {
             setGrid(props.grid)
             renderLifeBox()
         }
 
-        setInit(true)
-
-        console.log(props.grid)
-        console.log(newGrid)
     }, [props.resolution])
 
 
@@ -143,21 +140,26 @@ const DrawLife = (props) => {
 
     //reset grid to saved initial condition
     function reset() {
-        console.log('reset')
-        // if (generate) return
-        // let resGrid = buildGrid()
-        // if (grid.length > props.loadGrid.grid.length) {
-        //     for (let col = 0; col < props.loadGrid.gird.length; col++) {
-        //         for (let row = 0; row < props.loadGrid.grid[col].length; row++) {
-        //             resGrid[col][row] = props.loadGrid.grid[col][row];
-        //             console.log(true)
-        //         }
-        //     }
-        //     setGrid(resGrid)
-        // }
-        // setGrid(props.loadGrid.grid)
-        // // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
-        // genCount.current = 0
+        if (generate) return
+
+        const canvas = canvasRef.current;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        let resGrid = buildGrid()
+
+        if (resGrid.length > props.loadGrid.grid.length) {
+            for (let col = 0; col < props.loadGrid.grid.length; col++) {
+                for (let row = 0; row < props.loadGrid.grid[col].length; row++) {
+                    resGrid[col][row] = props.loadGrid.grid[col][row]
+                }
+            }
+            setGrid(resGrid)
+        } else {
+            setGrid(props.loadGrid.grid)
+        }
+        // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
+        genCount.current = 0
     }
 
     //function to generate random grid
