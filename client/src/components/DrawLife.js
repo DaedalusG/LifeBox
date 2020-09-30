@@ -70,12 +70,16 @@ const DrawLife = (props) => {
                     newGrid[col][row] = props.grid[col][row];
                 }
             }
+            setGrid(newGrid)
+        } else {
+            setGrid(props.grid)
+            renderLifeBox()
         }
-        setGrid(newGrid)
+
+        setInit(true)
 
         console.log(props.grid)
         console.log(newGrid)
-        setInit(true)
     }, [props.resolution])
 
 
@@ -118,13 +122,13 @@ const DrawLife = (props) => {
 
     //props.resolution
     function addResolution() {
-        // if (generate || props.loadGrid.grid) return
+        if (generate) return
         if (props.resolution >= 100) return
         setResolution(props.resolution + 10);
     }
 
     function reduceResolution() {
-        // if (generate || props.loadGrid.grid) return
+        if (generate) return
         if (props.resolution <= 10) return
         setResolution(props.resolution - 10);
     }
