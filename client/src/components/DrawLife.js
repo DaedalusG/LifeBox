@@ -8,7 +8,6 @@ const DrawLife = (props) => {
     const genCount = useRef(0)
 
     //sets up a state containing information about the current grids array and values, 
-    // const [props.resolution, setResolution] = useState(50);
     const [genFreq, setGenFreq] = useState(500)
     // const [width, setWidth] = useState(100)
     // const [height, setHeight] = useState(100)
@@ -144,10 +143,21 @@ const DrawLife = (props) => {
 
     //reset grid to saved initial condition
     function reset() {
-        if (generate) return
-        setGrid(props.loadGrid.grid)
-        // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
-        genCount.current = 0
+        console.log('reset')
+        // if (generate) return
+        // let resGrid = buildGrid()
+        // if (grid.length > props.loadGrid.grid.length) {
+        //     for (let col = 0; col < props.loadGrid.gird.length; col++) {
+        //         for (let row = 0; row < props.loadGrid.grid[col].length; row++) {
+        //             resGrid[col][row] = props.loadGrid.grid[col][row];
+        //             console.log(true)
+        //         }
+        //     }
+        //     setGrid(resGrid)
+        // }
+        // setGrid(props.loadGrid.grid)
+        // // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
+        // genCount.current = 0
     }
 
     //function to generate random grid
