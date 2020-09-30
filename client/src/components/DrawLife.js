@@ -9,8 +9,6 @@ const DrawLife = (props) => {
 
     //sets up a state containing information about the current grids array and values, 
     const [genFreq, setGenFreq] = useState(500)
-    // const [width, setWidth] = useState(100)
-    // const [height, setHeight] = useState(100)
     const width = useMemo(() => window.innerWidth, [window.innerWidth])
     const height = useMemo(() => window.innerHeight, [window.innerHeight])
     const cols = useMemo(() => Math.ceil(width / props.resolution), [width, props.resolution])
@@ -267,9 +265,9 @@ const DrawLife = (props) => {
                     </div>
                     <div className={'hud_labels'}>--resolution--</div>
                     <div className={"env_toggles"}>
-                        <div onClick={reduceResolution} className={(props.loadGrid.grid || generate) ? 'disable_toggle_button' : 'toggle_button'}>{'<'}</div>
+                        <div onClick={reduceResolution} className={(generate) ? 'disable_toggle_button' : 'toggle_button'}>{'<'}</div>
                         <div className={"gen_counter"}>{props.resolution / 10}</div>
-                        <div onClick={addResolution} className={(props.loadGrid.grid || generate) ? 'disable_toggle_button' : 'toggle_button'}>{'>'}</div>
+                        <div onClick={addResolution} className={(generate) ? 'disable_toggle_button' : 'toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
