@@ -48,13 +48,13 @@ const HomePage = () => {
             setSaving(false)
             return
         }
-
+        const token = window.localStorage.getItem('auth_token')
         const response = await fetch(`${apiUrl}/grids/save`, {
             method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-                // "Authorization": `Bearer ${token}`,
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
         })
@@ -67,13 +67,28 @@ const HomePage = () => {
     }
 
     //function to handle search inputs
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
         if (searchName === null || searchName === '') {
             setSearching(false)
             return
         }
-        console.log('search')
+
+        const token = window.localStorage.getItem('auth_token')
+        const response = await fetch(`${apiUrl}/grids/load`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        })
+
+        const res = await response.json()
+        if (res.message) {
+            console.log(res.message)
+        }
+
         setTimeout(() => {
             setSearching(false);
             setSearchName('')

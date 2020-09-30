@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import JWTManager, jwt_required
 from backend.models import db, Grid
 
 grids = Blueprint('grids', __name__)
 
 
 @grids.route('/save', methods=['POST'])
+@jwt_required
 def save():
     data = request.get_json()
     print('data------->', data)
@@ -23,3 +25,10 @@ def save():
     db.session.commit()
 
     return jsonify(message='added grid to db'), 200
+
+
+@grids.route('/load', methods=['GET'])
+@jwt_required
+def load():
+    print('hit load route')
+    return jsonify(message='hit load route'), 200
