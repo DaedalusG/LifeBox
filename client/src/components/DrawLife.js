@@ -64,16 +64,17 @@ const DrawLife = (props) => {
         // ctx.current = canvas.getContext('2d')
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         let newGrid = buildGrid()
-        // for (let col = 0; col < props.grid.length; col++) {
-        //     for (let row = 0; row < props.grid[col].length; row++) {
-        //         newGrid[col][row] = props.grid[col][row];
-        //     }
-        // }
+        if (newGrid.length > props.grid.length) {
+            for (let col = 0; col < props.grid.length; col++) {
+                for (let row = 0; row < props.grid[col].length; row++) {
+                    newGrid[col][row] = props.grid[col][row];
+                }
+            }
+        }
         setGrid(newGrid)
 
         console.log(props.grid)
         console.log(newGrid)
-        // renderLifeBox()
         setInit(true)
     }, [props.resolution])
 
