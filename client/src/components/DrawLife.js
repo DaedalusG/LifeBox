@@ -146,10 +146,13 @@ const DrawLife = (props) => {
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         let resGrid = buildGrid()
 
+        let colDiff = Math.round((resGrid.length - props.loadGrid.grid.length) / 2)
+        let rowDiff = Math.round((resGrid[0].length - props.loadGrid.grid[0].length) / 2)
+
         if (resGrid.length > props.loadGrid.grid.length) {
             for (let col = 0; col < props.loadGrid.grid.length; col++) {
                 for (let row = 0; row < props.loadGrid.grid[col].length; row++) {
-                    resGrid[col][row] = props.loadGrid.grid[col][row]
+                    resGrid[col + colDiff][row + rowDiff] = props.loadGrid.grid[col][row]
                 }
             }
             setGrid(resGrid)
