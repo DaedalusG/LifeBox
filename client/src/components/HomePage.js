@@ -13,7 +13,7 @@ const HomePage = () => {
     const [saveName, setSaveName] = useState('')
     const [searching, setSearching] = useState(false)
     const [searchName, setSearchName] = useState('')
-    const [grid, setGrid] = useState(null)
+    const [grid, setGrid] = useState([])
     const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
 

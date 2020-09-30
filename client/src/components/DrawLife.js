@@ -40,6 +40,20 @@ const DrawLife = (props) => {
         setInit(true)
     }, [])
 
+    // renders grid after init
+    useEffect(() => {
+        if (!init) return
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        renderLifeBox();
+    })
+
+    // // If grid is saved sets grid to have value of saved grid
+    // useEffect(() => {
+    //     setGrid(props.loadGrid.grid)
+    //     ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    //     renderLifeBox();
+    // }, [props.loadGrid])
+
     //generates new grid when grid props.resolution is set
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -47,23 +61,22 @@ const DrawLife = (props) => {
         // canvas.height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
-        ctx.current = canvas.getContext('2d')
-        let newGrid = buildGrid()
+        // ctx.current = canvas.getContext('2d')
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        if (props.loadGrid.grid) {
-            setGrid(props.loadGrid.grid)
-        } else {
-            setGrid(newGrid)
-        }
+        let newGrid = buildGrid()
+        // for (let col = 0; col < props.grid.length; col++) {
+        //     for (let row = 0; row < props.grid[col].length; row++) {
+        //         newGrid[col][row] = props.grid[col][row];
+        //     }
+        // }
+        setGrid(newGrid)
+
+        console.log(props.grid)
+        console.log(newGrid)
+        // renderLifeBox()
         setInit(true)
     }, [props.resolution])
 
-    // renders grid after init
-    useEffect(() => {
-        if (!init) return
-        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        renderLifeBox();
-    })
 
     // generates iterations of the lifebox
     useEffect(() => {
@@ -104,13 +117,13 @@ const DrawLife = (props) => {
 
     //props.resolution
     function addResolution() {
-        if (generate || props.loadGrid.grid) return
+        // if (generate || props.loadGrid.grid) return
         if (props.resolution >= 100) return
         setResolution(props.resolution + 10);
     }
 
     function reduceResolution() {
-        if (generate || props.loadGrid.grid) return
+        // if (generate || props.loadGrid.grid) return
         if (props.resolution <= 10) return
         setResolution(props.resolution - 10);
     }
@@ -193,6 +206,7 @@ const DrawLife = (props) => {
             for (let row = 0; row < props.grid[col].length; row++) {
                 const cell = props.grid[col][row];
                 let numNeighbours = 0;
+
                 for (let i = -1; i < 2; i++) {
                     for (let j = -1; j < 2; j++) {
                         if (i === 0 && j === 0) {
