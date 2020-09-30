@@ -3,6 +3,7 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    flex-grow: inherit;
     z-index: 5;
     width: 100vw;
     height: 6vh;
@@ -38,6 +39,21 @@
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; 
 }
 
+.grid_name {
+    color: #F96363;
+    margin-left: 5px;
+}
+
+.unload {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.unload:hover {
+    color: red;
+    text-shadow: 0 0 20px red;
+}
+
 .info_link {
     width: 3.5vw;
     height: 4vh;
@@ -66,6 +82,7 @@
     margin-bottom: 3px;
     background-color: #052115;
     outline: none;
+
 }
 
 .navbar_input:hover {

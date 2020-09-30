@@ -4,13 +4,17 @@ import InstructionsModal from './InstructionsModal'
 import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
+import Search from '../images/search.svg'
 
 const HomePage = () => {
     const [user, setUser] = useState({})
-    const [grid, setGrid] = useState(null)
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
+    const [searching, setSearching] = useState(false)
+    const [searchName, setSearchName] = useState('')
+    const [grid, setGrid] = useState([])
+    const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
 
     const logout = () => {
@@ -57,10 +61,25 @@ const HomePage = () => {
         setSaveName('Saved')
         setTimeout(() => {
             setSaving(false);
-            setSaveName(null)
-        }, 2500)
+            setSaveName('')
+        }, 2250)
         setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
     }
+
+    //function to handle search inputs
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchName === null || searchName === '') {
+            setSearching(false)
+            return
+        }
+        console.log('search')
+        setTimeout(() => {
+            setSearching(false);
+            setSearchName('')
+        }, 2250)
+    }
+
 
     return (
         <>
@@ -69,10 +88,23 @@ const HomePage = () => {
                     <img src={user.profile_pic} alt='profile_pic' className={'navbar_profile_pic'} />
                     <div>
                         <div className={'username'}>{`Welcome: ${user.username}`}</div>
-                        <div className={'current_grid'}>Current grid: <span style={{ color: "#F96363" }}>{`${loadGrid.name}`}</span></div>
+                        <div className={'current_grid'}>
+                            Current grid:
+                            <span className={'grid_name'}>{`${loadGrid.name}`}</span>
+                            {(loadGrid.name !== undefined) &&
+                                <span className={'unload'} onClick={() => setLoadGrid({ "name": undefined, "grid": null, "saved": false })}>unload</span>
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className={'navbar_sub_container'}>
+                    <img src={Search} alt='search_icon' onClick={searching ? handleSearch : () => setSearching(true)} className={'info_link'} />
+                    {searching && <input
+                        className={'navbar_input'}
+                        placeholder={'Search'}
+                        value={searchName}
+                        onChange={(e) => setSearchName(e.target.value)}
+                    />}
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
                     {saving && <input
                         className={'navbar_input'}
@@ -91,6 +123,8 @@ const HomePage = () => {
             <DrawLife
                 grid={grid}
                 setGrid={setGrid}
+                resolution={resolution}
+                setResolution={setResolution}
                 loadGrid={loadGrid}
                 setLoadGrid={setLoadGrid}
             />

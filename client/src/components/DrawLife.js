@@ -8,24 +8,26 @@ const DrawLife = (props) => {
     const genCount = useRef(0)
 
     //sets up a state containing information about the current grids array and values, 
-    const [resolution, setResolution] = useState(50);
     const [genFreq, setGenFreq] = useState(500)
-    const [width, setWidth] = useState(0)
-    const [height, setHeight] = useState(0)
-    const cols = useMemo(() => Math.ceil(width / resolution), [width, resolution])
-    const rows = useMemo(() => Math.ceil(height / resolution), [height, resolution])
+    const width = useMemo(() => window.innerWidth, [window.innerWidth])
+    const height = useMemo(() => window.innerHeight, [window.innerHeight])
+    const cols = useMemo(() => Math.ceil(width / props.resolution), [width, props.resolution])
+    const rows = useMemo(() => Math.ceil(height / props.resolution), [height, props.resolution])
     const colWidth = useMemo(() => Math.ceil(width / cols), [width, cols])
     const rowHeight = useMemo(() => Math.ceil(height / rows), [height, rows])
     const [init, setInit] = useState(false)
     const [generate, setGenerate] = useState(false)
     const { setGrid } = props
+    const { setResolution } = props
+
+
     //------------------------useEffects--------------------------
 
     // initializes the grid
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
         ctx.current = canvas.getContext('2d')
         let newGrid = buildGrid()
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -33,26 +35,49 @@ const DrawLife = (props) => {
         setInit(true)
     }, [])
 
-    //generates new grid when grid resolution is set
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        ctx.current = canvas.getContext('2d')
-        let newGrid = buildGrid()
-        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        setGrid(newGrid)
-        setInit(true)
-    }, [resolution])
-
-    // renders first grid after 
+    // renders grid after init
     useEffect(() => {
         if (!init) return
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
     })
 
-    // renders the lifebox whenever grid state is changed or isReady is set
+    // // If grid is saved sets grid to have value of saved grid
+    // useEffect(() => {
+    //     setGrid(props.loadGrid.grid)
+    //     ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    //     renderLifeBox();
+    // }, [props.loadGrid])
+
+    //generates new grid when grid props.resolution is set
+    useEffect(() => {
+        if (!init) return
+        const canvas = canvasRef.current;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        let newGrid = buildGrid()
+
+        let colDiff = Math.round((newGrid.length - props.grid.length) / 2)
+        let rowDiff = Math.round((newGrid[0].length - props.grid[0].length) / 2)
+
+        if (newGrid.length > props.grid.length) {
+            for (let col = 0; col < props.grid.length; col++) {
+                for (let row = 0; row < props.grid[col].length; row++) {
+                    newGrid[col + colDiff][row + rowDiff] = props.grid[col][row];
+                }
+            }
+            setGrid(newGrid)
+            renderLifeBox()
+        } else {
+            setGrid(props.grid)
+            renderLifeBox()
+        }
+
+    }, [props.resolution])
+
+
+    // generates iterations of the lifebox
     useEffect(() => {
         if (!generate) return
         setTimeout(() => {
@@ -89,17 +114,17 @@ const DrawLife = (props) => {
         setGenFreq(genFreq - 100);
     }
 
-    //resolution
+    //props.resolution
     function addResolution() {
         if (generate) return
-        if (resolution >= 100) return
-        setResolution(resolution + 10);
+        if (props.resolution >= 100) return
+        setResolution(props.resolution + 10);
     }
 
     function reduceResolution() {
         if (generate) return
-        if (resolution <= 10) return
-        setResolution(resolution - 10);
+        if (props.resolution <= 10) return
+        setResolution(props.resolution - 10);
     }
 
 
@@ -114,7 +139,26 @@ const DrawLife = (props) => {
     //reset grid to saved initial condition
     function reset() {
         if (generate) return
-        setGrid(props.loadGrid.grid)
+
+        const canvas = canvasRef.current;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        let resGrid = buildGrid()
+
+        let colDiff = Math.round((resGrid.length - props.loadGrid.grid.length) / 2)
+        let rowDiff = Math.round((resGrid[0].length - props.loadGrid.grid[0].length) / 2)
+
+        if (resGrid.length > props.loadGrid.grid.length) {
+            for (let col = 0; col < props.loadGrid.grid.length; col++) {
+                for (let row = 0; row < props.loadGrid.grid[col].length; row++) {
+                    resGrid[col + colDiff][row + rowDiff] = props.loadGrid.grid[col][row]
+                }
+            }
+            setGrid(resGrid)
+        } else {
+            setGrid(props.loadGrid.grid)
+        }
         // props.setLoadGrid({ "name": props.loadGrid.name, "grid": props.loadGrid.grid, "saved": false })
         genCount.current = 0
     }
@@ -147,22 +191,20 @@ const DrawLife = (props) => {
 
     // makes grid
     function buildGrid() {
-        setWidth(canvasRef.current.width)
-        setHeight(canvasRef.current.height)
-        const cols = Math.ceil(canvasRef.current.width / resolution);
-        const rows = Math.ceil(canvasRef.current.height / resolution);
+        const cols = Math.ceil(canvasRef.current.width / props.resolution);
+        const rows = Math.ceil(canvasRef.current.height / props.resolution);
 
         return new Array(cols).fill(0)
             .map(() => new Array(rows).fill(0))
     }
 
-    // //renders lifebox to canvas
+    //renders lifebox to canvas
     function renderLifeBox() {
         for (let col = 0; col < props.grid.length; col++) {
             for (let row = 0; row < props.grid[col].length; row++) {
                 const cell = props.grid[col][row];
                 ctx.current.beginPath();
-                ctx.current.rect(col * resolution, row * resolution, resolution, resolution)
+                ctx.current.rect(col * props.resolution, row * props.resolution, props.resolution, props.resolution)
                 ctx.current.fillStyle = cell ? 'lightgreen' : '#271D45';
                 ctx.current.shadowColor = 'green'
                 ctx.current.shadowBlur = 15;
@@ -172,7 +214,7 @@ const DrawLife = (props) => {
         }
     }
 
-    //make next interation based of rules of conways game of life
+    //make next interation based on rules of conways game of life
     function nextGen() {
         if (!props.grid) return
         const nextGen = props.grid.map(arr => [...arr]);
@@ -180,6 +222,7 @@ const DrawLife = (props) => {
             for (let row = 0; row < props.grid[col].length; row++) {
                 const cell = props.grid[col][row];
                 let numNeighbours = 0;
+
                 for (let i = -1; i < 2; i++) {
                     for (let j = -1; j < 2; j++) {
                         if (i === 0 && j === 0) {
@@ -223,9 +266,9 @@ const DrawLife = (props) => {
                     </div>
                     <div className={'hud_labels'}>--resolution--</div>
                     <div className={"env_toggles"}>
-                        <div onClick={reduceResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'<'}</div>
-                        <div className={"gen_counter"}>{resolution / 10}</div>
-                        <div onClick={addResolution} className={!generate ? 'toggle_button' : 'disable_toggle_button'}>{'>'}</div>
+                        <div onClick={reduceResolution} className={(generate) ? 'disable_toggle_button' : 'toggle_button'}>{'<'}</div>
+                        <div className={"gen_counter"}>{props.resolution / 10}</div>
+                        <div onClick={addResolution} className={(generate) ? 'disable_toggle_button' : 'toggle_button'}>{'>'}</div>
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
@@ -233,11 +276,13 @@ const DrawLife = (props) => {
                     </div>
                 </div>
             </Draggable>
+            {/* <Draggable> */}
             <canvas
                 ref={canvasRef}
-                onMouseDown={handleClick}
+                onClick={handleClick}
                 className={'drawlife_grid'}
             />
+            {/* </Draggable> */}
         </div>
     )
 }
