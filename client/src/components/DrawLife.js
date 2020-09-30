@@ -35,6 +35,11 @@ const DrawLife = (props) => {
         setInit(true)
     }, [])
 
+    // // intiializes grid if viewport changes
+    // useEffect(() => {
+    //     console.log('changed')
+    // }, [width, height])
+
     // renders grid after init
     useEffect(() => {
         if (!init) return
