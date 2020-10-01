@@ -92,12 +92,11 @@ const HomePage = () => {
         if (res.grids) {
             setSearchResult(res.grids)
         }
+    }
 
-        if (searchName === '') {
-            setSearchResult([])
-            setSearching(false);
-            setSearchName('')
-        }
+    const closeSearch = () => {
+        setSearchName('')
+        setSearching(false)
     }
 
 
@@ -118,7 +117,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className={'navbar_sub_container'}>
-                    <img src={Search} alt='search_icon' onClick={searching ? searchUpdate : () => setSearching(true)} className={'info_link'} />
+                    <img src={Search} alt='search_icon' onClick={searching ? closeSearch : () => setSearching(true)} className={'info_link'} />
                     <div className={'navbar_sub_container_column'}>
                         {searching &&
                             <input
@@ -129,7 +128,15 @@ const HomePage = () => {
                             />
                         }
                         {(searchName !== '') &&
-                            <div>inside</div>
+                            <div className={'search_result_container'}>
+                                {searchResult.map((grid) => {
+                                    return (
+                                        <div className={'search_result'}>
+                                            user: <span>{grid.user_id}</span> grid: <span>{grid.name}</span>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         }
                     </div>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
