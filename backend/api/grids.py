@@ -9,11 +9,15 @@ grids = Blueprint('grids', __name__)
 @jwt_required
 def save():
     data = request.get_json()
-    print('data------->', data)
 
     user_id = data['user_id']
     name = data['name']
     grid = data['grid']
+
+    print(name)
+
+    if ' ' in name:
+        return jsonify(error='please no spaces'), 400
 
     newGrid = Grid(
         user_id=user_id,
@@ -31,11 +35,7 @@ def save():
 @jwt_required
 def load():
     req_json = request.get_json()
-    print('name------->', req_json["name"])
-
     matches = Grid.query.filter(Grid.name.ilike(f'%{req_json["name"]}%'))
     grids = matches.all()
     grid_dict = [grid.to_dict() for grid in grids]
-    print('hit load route', req_json)
-    print('matches----->', grid_dict)
     return jsonify(message=req_json, grids=grid_dict), 200

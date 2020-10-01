@@ -55,7 +55,7 @@ const HomePage = () => {
             return
         }
         const token = window.localStorage.getItem('auth_token')
-        await fetch(`${apiUrl}/grids/save`, {
+        let res_json = await fetch(`${apiUrl}/grids/save`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -64,12 +64,25 @@ const HomePage = () => {
             },
             body: JSON.stringify({ user_id: user.id, name: saveName, grid: { grid: grid } })
         })
-        setSaveName('Saved')
-        setTimeout(() => {
-            setSaving(false);
-            setSaveName('')
-        }, 2250)
-        setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
+
+        let res = await res_json.json()
+
+        if (res.error) {
+            setSaveName(res.error)
+            setTimeout(() => {
+                setSaving(false);
+                setSaveName('')
+            }, 2250)
+        }
+
+        if (res_json.ok) {
+            setSaveName('Saved')
+            setTimeout(() => {
+                setSaving(false);
+                setSaveName('')
+            }, 2250)
+            setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
+        }
     }
 
     //function to handle search inputs
