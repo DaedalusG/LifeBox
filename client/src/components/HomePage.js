@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
 import InstructionsModal from './InstructionsModal'
 import DrawLife from './DrawLife'
@@ -89,7 +89,7 @@ const HomePage = () => {
         })
 
         const res = await response.json()
-        if (res.grids) {
+        if (res.grids !== []) {
             setSearchResult(res.grids)
         }
     }
@@ -99,8 +99,18 @@ const HomePage = () => {
         setSearching(false)
     }
 
-    const resultClick = () => {
-
+    const resultClick = (grid) => {
+        console.log('test')
+        setLoadGrid(
+            {
+                "name": grid.name,
+                "grid": grid.grid_json.grid,
+                "saved": true
+            }
+        )
+        setSearching(false)
+        setSearchName('')
+        setSearchResult([])
     }
 
 
@@ -135,7 +145,7 @@ const HomePage = () => {
                             <div className={'search_result_container'}>
                                 {searchResult.map((grid) => {
                                     return (
-                                        <div onClick={() => console.log(grid.name)} key={grid.id} className={'search_result'}>
+                                        <div onClick={() => resultClick(grid)} key={grid.id} className={'search_result'}>
                                             grid: <span>{grid.name}</span>
                                         </div>
                                     )
