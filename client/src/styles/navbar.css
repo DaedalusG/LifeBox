@@ -90,7 +90,6 @@
     margin-bottom: 3px;
     background-color: #052115;
     outline: none;
-
 }
 .navbar_search_input {
     color: #F100A1;
@@ -104,7 +103,6 @@
     margin-bottom: 3px;
     background-color: #052115;
     outline: none;
-    height: inherit;
 }
 
 .navbar_input:hover {
