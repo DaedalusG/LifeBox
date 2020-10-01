@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { apiUrl } from '../config.js'
 import InstructionsModal from './InstructionsModal'
 import DrawLife from './DrawLife'
@@ -7,13 +7,14 @@ import Question from '../images/question.svg'
 import Search from '../images/search.svg'
 
 const HomePage = () => {
+
     const [user, setUser] = useState({})
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
-    const [searchResult, setSearchResult] = useState([])
     const [searching, setSearching] = useState(false)
     const [searchName, setSearchName] = useState('')
+    const [searchResult, setSearchResult] = useState(null)
     const [grid, setGrid] = useState([])
     const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
@@ -49,7 +50,7 @@ const HomePage = () => {
     //function to save current grid as json
     const handleSave = async (e) => {
         e.preventDefault();
-        if (saveName === null || saveName === '') {
+        if (saveName === '') {
             setSaving(false)
             return
         }
@@ -72,12 +73,7 @@ const HomePage = () => {
     }
 
     //function to handle search inputs
-    const searchUpdate = async (e) => {
-        // e.preventDefault();
-        if (searchName === null || searchName === '') {
-            setSearching(false)
-            return
-        }
+    const searchUpdate = async () => {
 
         const token = window.localStorage.getItem('auth_token')
         const response = await fetch(`${apiUrl}/grids/load`, {
@@ -93,19 +89,14 @@ const HomePage = () => {
         })
 
         const res = await response.json()
-        if (res.message) {
-            console.log(res.message)
-        }
         if (res.grids) {
             setSearchResult(res.grids)
         }
 
         if (searchName === '') {
-            setTimeout(() => {
-                setSearchResult([])
-                setSearching(false);
-                setSearchName('')
-            }, 5000)
+            setSearchResult([])
+            setSearching(false);
+            setSearchName('')
         }
     }
 
@@ -128,12 +119,19 @@ const HomePage = () => {
                 </div>
                 <div className={'navbar_sub_container'}>
                     <img src={Search} alt='search_icon' onClick={searching ? searchUpdate : () => setSearching(true)} className={'info_link'} />
-                    {searching && <input
-                        className={'navbar_input'}
-                        placeholder={'Search'}
-                        value={searchName}
-                        onChange={(e) => setSearchName(e.target.value)}
-                    />}
+                    <div className={'navbar_sub_container_column'}>
+                        {searching &&
+                            <input
+                                className={'navbar_search_input'}
+                                placeholder={'Search'}
+                                value={searchName}
+                                onChange={(e) => setSearchName(e.target.value)}
+                            />
+                        }
+                        {(searchName !== '') &&
+                            <div>inside</div>
+                        }
+                    </div>
                     <img src={Brain} alt='save_icon' onClick={saving ? handleSave : () => setSaving(true)} className={'info_link'} />
                     {saving && <input
                         className={'navbar_input'}
