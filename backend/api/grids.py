@@ -32,9 +32,10 @@ def save():
 def load():
     req_json = request.get_json()
     print('name------->', req_json["name"])
-    # matches = Grid.query.filter(Grid.name.ilike(f'${req_json["name"]}$'))
-    matches = Grid.query.filter_by(name=req_json["name"]).first()
-    matches_dict = matches.to_dict()
+
+    matches = Grid.query.filter(Grid.name.ilike(f'%{req_json["name"]}%'))
+    grids = matches.all()
+    grid_dict = [grid.to_dict() for grid in grids]
     print('hit load route', req_json)
-    print('matches----->', matches_dict)
-    return jsonify(message=req_json, grid=matches_dict), 200
+    print('matches----->', grid_dict)
+    return jsonify(message=req_json, grids=grid_dict), 200

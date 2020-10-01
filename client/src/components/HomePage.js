@@ -11,6 +11,7 @@ const HomePage = () => {
     const [openInstructions, setInstructions] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
+    const [searchResult, setSearchResult] = useState([])
     const [searching, setSearching] = useState(false)
     const [searchName, setSearchName] = useState('')
     const [grid, setGrid] = useState([])
@@ -41,6 +42,10 @@ const HomePage = () => {
         getCurrentUser();
     }, [])
 
+    useEffect(() => {
+        searchUpdate()
+    }, [searchName])
+
     //function to save current grid as json
     const handleSave = async (e) => {
         e.preventDefault();
@@ -67,8 +72,8 @@ const HomePage = () => {
     }
 
     //function to handle search inputs
-    const handleSearch = async (e) => {
-        e.preventDefault();
+    const searchUpdate = async (e) => {
+        // e.preventDefault();
         if (searchName === null || searchName === '') {
             setSearching(false)
             return
@@ -91,15 +96,17 @@ const HomePage = () => {
         if (res.message) {
             console.log(res.message)
         }
-        if (res.grid) {
-            console.log(res.grid)
-            setLoadGrid({ "name": res.grid.name, "grid": res.grid.grid_json.grid, "saved": true })
+        if (res.grids) {
+            setSearchResult(res.grids)
         }
 
-        setTimeout(() => {
-            setSearching(false);
-            setSearchName('')
-        }, 2250)
+        if (searchName === '') {
+            setTimeout(() => {
+                setSearchResult([])
+                setSearching(false);
+                setSearchName('')
+            }, 5000)
+        }
     }
 
 
@@ -120,7 +127,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className={'navbar_sub_container'}>
-                    <img src={Search} alt='search_icon' onClick={searching ? handleSearch : () => setSearching(true)} className={'info_link'} />
+                    <img src={Search} alt='search_icon' onClick={searching ? searchUpdate : () => setSearching(true)} className={'info_link'} />
                     {searching && <input
                         className={'navbar_input'}
                         placeholder={'Search'}
