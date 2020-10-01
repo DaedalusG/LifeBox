@@ -49,7 +49,7 @@ const DrawLife = (props) => {
 
     // // If grid is saved sets grid to have value of saved grid
     // useEffect(() => {
-    //     reset()
+    //     load()
     // }, [props.loadGrid])
 
     //generates new grid when grid props.resolution is set
@@ -139,8 +139,8 @@ const DrawLife = (props) => {
         genCount.current = 0
     }
 
-    //reset grid to saved initial condition
-    function reset() {
+    //load grid to saved initial condition
+    function load() {
         if (generate) return
 
         const canvas = canvasRef.current;
@@ -275,7 +275,7 @@ const DrawLife = (props) => {
                     </div>
                     <div className={'drawlife_start_stop'}>
                         <button onClick={clear} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>Clear</button>
-                        <button onClick={props.loadGrid.saved ? reset : randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>{props.loadGrid.saved ? 'Reset' : 'Rand'}</button>
+                        <button onClick={props.loadGrid.saved ? load : randomGrid} className={!generate ? 'drawlife_button' : 'disable_drawlife_button'}>{props.loadGrid.saved ? 'Load' : 'Rand'}</button>
                     </div>
                 </div>
             </Draggable>
