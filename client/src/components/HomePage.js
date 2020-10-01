@@ -15,6 +15,8 @@ const HomePage = () => {
     const [searching, setSearching] = useState(false)
     const [searchName, setSearchName] = useState('')
     const [searchResult, setSearchResult] = useState(null)
+
+    const [init, setInit] = useState(false)
     const [grid, setGrid] = useState([])
     const [resolution, setResolution] = useState(50);
     const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
@@ -126,6 +128,17 @@ const HomePage = () => {
         setSearchResult([])
     }
 
+    const unload = () => {
+        setInstructions(false)
+        setLoadGrid(
+            {
+                "name": undefined,
+                "grid": null,
+                "saved": false
+            }
+        )
+    }
+
 
     return (
         <>
@@ -182,6 +195,8 @@ const HomePage = () => {
                 closeInstructions={() => setInstructions(false)}
             />
             <DrawLife
+                init={init}
+                setInit={setInit}
                 grid={grid}
                 setGrid={setGrid}
                 resolution={resolution}
