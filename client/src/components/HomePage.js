@@ -99,6 +99,10 @@ const HomePage = () => {
         setSearching(false)
     }
 
+    const resultClick = () => {
+
+    }
+
 
     return (
         <>
@@ -131,8 +135,8 @@ const HomePage = () => {
                             <div className={'search_result_container'}>
                                 {searchResult.map((grid) => {
                                     return (
-                                        <div className={'search_result'}>
-                                            user: <span>{grid.user_id}</span> grid: <span>{grid.name}</span>
+                                        <div onClick={() => console.log(grid.name)} key={grid.id} className={'search_result'}>
+                                            grid: <span>{grid.name}</span>
                                         </div>
                                     )
                                 })}

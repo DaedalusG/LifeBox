@@ -9,8 +9,8 @@ const DrawLife = (props) => {
 
     //sets up a state containing information about the current grids array and values, 
     const [genFreq, setGenFreq] = useState(500)
-    const width = useMemo(() => window.innerWidth, [window.innerWidth])
-    const height = useMemo(() => window.innerHeight, [window.innerHeight])
+    const width = useMemo(() => window.innerWidth, [])
+    const height = useMemo(() => window.innerHeight, [])
     const cols = useMemo(() => Math.ceil(width / props.resolution), [width, props.resolution])
     const rows = useMemo(() => Math.ceil(height / props.resolution), [height, props.resolution])
     const colWidth = useMemo(() => Math.ceil(width / cols), [width, cols])
