@@ -128,16 +128,6 @@ const HomePage = () => {
         setSearchResult([])
     }
 
-    const unload = () => {
-        setInstructions(false)
-        setLoadGrid(
-            {
-                "name": undefined,
-                "grid": null,
-                "saved": false
-            }
-        )
-    }
 
 
     return (
@@ -151,7 +141,7 @@ const HomePage = () => {
                             Current grid:
                             <span className={'grid_name'}>{`${loadGrid.name}`}</span>
                             {(loadGrid.name !== undefined) &&
-                                <span className={'unload'} onClick={() => setLoadGrid({ "name": undefined, "grid": null, "saved": false })}>unload</span>
+                                <span className={'unload'} onClick={() => setLoadGrid({ "name": '', "grid": [], "saved": false })}>unload</span>
                             }
                         </div>
                     </div>

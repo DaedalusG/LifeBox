@@ -46,6 +46,19 @@ const DrawLife = (props) => {
     // If grid is saved sets grid to have value of saved grid
     useEffect(() => {
         if (!init) return
+        if (loadGrid.saved === false) {
+            setLoadGrid(
+                {
+                    "name": undefined,
+                    "grid": null,
+                    "saved": false
+                }
+            )
+            let newGrid = buildGrid()
+            setGrid(newGrid)
+            renderLifeBox()
+            return
+        }
         load()
     }, [loadGrid.saved])
 
