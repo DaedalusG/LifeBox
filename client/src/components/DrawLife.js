@@ -37,11 +37,20 @@ const DrawLife = (props) => {
     }, [])
 
 
+    //renders lifebox after first initialization
     useEffect(() => {
         if (!init) return
         ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         renderLifeBox();
     })
+
+    // //handle viewport resize
+    // const handleResize = () => {
+    //     let newGrid = buildGrid()
+    //     setGrid(newGrid)
+    //     renderLifeBox()
+    // }
+    // window.addEventListener('resize', handleResize)
 
     // If grid is saved sets grid to have value of saved grid
     useEffect(() => {
