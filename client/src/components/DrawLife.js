@@ -109,7 +109,7 @@ const DrawLife = (props) => {
     // generates iterations of the lifebox
     useEffect(() => {
         if (!generate) return
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             genCount.current++
             setGrid(nextGen(grid))
         }, genFreq)
