@@ -177,7 +177,13 @@ const DrawLife = (props) => {
             }
             setGrid(resGrid)
         } else {
-            setGrid(loadGrid.grid)
+            for (let col = 0; col < resGrid.length; col++) {
+                for (let row = 0; row < resGrid[col].length; row++) {
+                    resGrid[col][row] = loadGrid.grid[col - colDiff][row - rowDiff];
+                }
+            }
+
+            setGrid(resGrid)
             renderLifeBox()
         }
         // setLoadGrid({ "name": loadGrid.name, "grid": loadGrid.grid, "saved": false })
