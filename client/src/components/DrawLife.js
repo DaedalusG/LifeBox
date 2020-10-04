@@ -69,7 +69,7 @@ const DrawLife = (props) => {
             return
         }
         load()
-    }, [loadGrid.saved])
+    }, [loadGrid.name])
 
     //generates new grid when grid props.resolution is set
     useEffect(() => {
@@ -170,6 +170,7 @@ const DrawLife = (props) => {
     function load() {
         if (generate) return
 
+
         const canvas = canvasRef.current;
         canvas.width = width;
         canvas.height = height;
@@ -194,9 +195,9 @@ const DrawLife = (props) => {
             }
 
             setGrid(resGrid)
-            renderLifeBox()
         }
-        // setLoadGrid({ "name": loadGrid.name, "grid": loadGrid.grid, "saved": false })
+        renderLifeBox()
+        // setLoadGrid({ "name": loadGrid.name, "grid": loadGrid.grid, "saved": true })
         genCount.current = 0
     }
 
