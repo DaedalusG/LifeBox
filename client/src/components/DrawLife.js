@@ -109,6 +109,11 @@ const DrawLife = (props) => {
     // generates iterations of the lifebox
     useEffect(() => {
         if (!generate) return
+        if (resolution === 10) {
+            requestAnimationFrame(
+
+            )
+        }
         setTimeout(() => {
             genCount.current++
             setGrid(nextGen(grid))
@@ -284,6 +289,15 @@ const DrawLife = (props) => {
             }
         }
         return nextGen
+    }
+
+    const runGeneration = () => {
+        setTimeout(() => {
+            genCount.current++
+            setGrid(nextGen(grid))
+        }, genFreq)
+        ctx.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        renderLifeBox();
     }
 
     return (
