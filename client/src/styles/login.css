@@ -36,6 +36,31 @@
     align-items: center;
 }
 
+.login_sub_container_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 40vw;
+}
+
+.login_info_link {
+    width: 3.5vw;
+    height: 4vh;
+    margin: auto;
+    margin-left: 4px;
+    margin-right: 4px;
+    border: 3px solid #36bb6e;
+    border-radius: 25px;
+    background-color: lightgreen;
+    z-index: 1;
+}
+
+.login_info_link:hover {
+    box-shadow: 0 5px 15px #49D884;
+    cursor: pointer;;
+}
+
 .login_background {
     position: absolute;
     display: inline;

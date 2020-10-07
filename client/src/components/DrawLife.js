@@ -197,7 +197,6 @@ const DrawLife = (props) => {
             setGrid(resGrid)
         }
         renderLifeBox()
-        // setLoadGrid({ "name": loadGrid.name, "grid": loadGrid.grid, "saved": true })
         genCount.current = 0
     }
 

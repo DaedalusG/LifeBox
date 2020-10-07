@@ -3,6 +3,7 @@ import RandomLifeBox from './RandomLifeBox.js'
 import SignUpModal from './SignUpModal.js'
 import Glider from '../images/glider.js'
 import { apiUrl } from '../config.js'
+import Question from '../images/question.svg'
 
 
 const Login = () => {
@@ -101,9 +102,12 @@ const Login = () => {
                         <div className={"login_response"}>{error}</div>
                     </div>
                 </div>
-                <div className={"login_sub_container"}>
-                    <div className={"signup_link"} onClick={() => setSignUp(true)}>Need a Login?</div>
-                    <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
+                <div className={"login_sub_container_row"}>
+                    <div className={"login_sub_container"}>
+                        <div className={"signup_link"} onClick={() => setSignUp(true)}>Need a Login?</div>
+                        <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
+                    </div>
+                    <img src={Question} alt='info_icon' className={'login_info_link'} />
                 </div>
             </div>
             <SignUpModal openSignUp={openSignUp} closeSignUp={() => setSignUp(false)} />
