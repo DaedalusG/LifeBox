@@ -1,0 +1,17 @@
+.devinfomodal {
+    position: absolute;
+    top:15vh;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #032116;
+    border: 3px solid #04D482;
+    border-radius: 20px;
+    z-index: 1000;
+    width: 45vw;
+    max-width: 400px;
+    min-height: 60vh;
+}

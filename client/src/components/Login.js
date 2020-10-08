@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RandomLifeBox from './RandomLifeBox.js'
 import SignUpModal from './SignUpModal.js'
+import DevInfoModal from './DevInfoModal.js'
 import Glider from '../images/glider.js'
 import { apiUrl } from '../config.js'
 import Question from '../images/question.svg'
@@ -12,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
     const [openSignUp, setSignUp] = useState(false)
+    const [openDevInfo, setDevInfo] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
@@ -107,10 +109,16 @@ const Login = () => {
                         <div className={"signup_link"} onClick={() => setSignUp(true)}>Need a Login?</div>
                         <div className={"signup_link"} onClick={loginDemoUser}>Sign in as Demo</div>
                     </div>
-                    <img src={Question} alt='info_icon' className={'login_info_link'} />
+                    <img
+                        src={Question}
+                        alt='info_icon'
+                        onClick={() => setDevInfo(true)}
+                        className={'login_info_link'}
+                    />
                 </div>
             </div>
             <SignUpModal openSignUp={openSignUp} closeSignUp={() => setSignUp(false)} />
+            <DevInfoModal openDevInfo={openDevInfo} closeDevInfo={() => setDevInfo(false)} />
             <RandomLifeBox className={"login_background"} />
         </div >
     )
