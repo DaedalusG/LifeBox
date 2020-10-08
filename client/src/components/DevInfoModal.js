@@ -13,16 +13,21 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
                     <span className="devinfo_title">About LifeBox</span>
                     <Close />
                 </div>
-                <p className="devinfo_text">
-                    <span>LifeBox is a social platform for students to explore complexity in mathematics via the popular cellular automata Conway's Game of Life.</span>
-                    <span>
+                <div className="devinfo_text">
+                    <p>
+                        LifeBox is a social platform for students to explore complexity in mathematics via the popular cellular automata Conway's Game of Life.
+                    </p>
+                    <p>
                         Conways Game of Life isn't a game in the conventional sesne.
                         There is no end goal. Game Of Life is more of a fiddle or canvas.
-                        Its basic appearance and behavior illustrated the emergence of complex behavior from a simple set of rules.
-                        LifeBox hopes to by this simple illustration, encourage thinking about the nature of systems,
+                        It's basic appearance and behavior illustrates the emergence of complex behavior from a simple set of rules.
+                        LifeBox hopes to, by this simple illustration, encourage thinking about the nature of systems,
                         and the broader rules of nature and their conncetion to mathematical principles.
-                    </span>
-                </p>
+                    </p>
+                    <p>
+                        LifeBox is a labor of love, please check back new features are being developed.
+                    </p>
+                </div>
             </div>
             <div className={'bottom_banner'} />
         </div >,
