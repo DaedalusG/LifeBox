@@ -14,19 +14,21 @@
     z-index: 1000;
     width: 52vw;
     height: 90vh;
-    /* max-width: 400px; */
+    max-width: 520px;
     min-height: 60vh;
 }
 
 .devinfo_sub_row {
     display:flex;
     width: inherit;
+    max-width: inherit;
 }
 
 .devinfo_sub_column {
     display: flex;
     flex-direction: column;
     width: inherit;
+    max-width: inherit;
 }
 
 .devinfo_close_container {
