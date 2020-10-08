@@ -10,8 +10,12 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
             <div className={'devinfo_sub_column'}>
                 <div className={'top_banner'} />
                 <div className={'devinfo_close_container'} onClick={closeDevInfo}>
+                    <span className="devinfo_title">About LifeBox</span>
                     <Close />
                 </div>
+                <p className="devinfo_text">
+                    {"LifeBox is a social platform for students to explore complexity in mathematics via the popular cellular automata Conway's Game of Life."}
+                </p>
             </div>
             <div className={'bottom_banner'} />
         </div >,
