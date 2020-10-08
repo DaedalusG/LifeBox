@@ -7,7 +7,7 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
 
     return ReactDom.createPortal(
         <div className={"devinfomodal"}>
-            <div className={'signup_close_container'} onClick={closeDevInfo}>
+            <div className={'devinfo_close_container'} onClick={closeDevInfo}>
                 <Close />
             </div>
         </div >,
