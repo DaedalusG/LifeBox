@@ -7,9 +7,13 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
 
     return ReactDom.createPortal(
         <div className={"devinfomodal"}>
-            <div className={'devinfo_close_container'} onClick={closeDevInfo}>
-                <Close />
+            <div className={'devinfo_sub_column'}>
+                <div className={'top_banner'} />
+                <div className={'devinfo_close_container'} onClick={closeDevInfo}>
+                    <Close />
+                </div>
             </div>
+            <div className={'bottom_banner'} />
         </div >,
         document.getElementById('devinfomodal')
     )

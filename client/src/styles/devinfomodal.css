@@ -1,6 +1,6 @@
 .devinfomodal {
     position: absolute;
-    top:15vh;
+    top:5vh;
     left: 50%;
     transform: translate(-50%);
     display: flex;
@@ -12,10 +12,16 @@
     border: 3px solid #04D482;
     border-radius: 20px;
     z-index: 1000;
-    width: 45vw;
-    height: 65vh;
-    max-width: 400px;
+    width: 52vw;
+    height: 90vh;
+    /* max-width: 400px; */
     min-height: 60vh;
+}
+
+.devinfo_sub_column {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
 }
 
 .devinfo_close_container {
@@ -24,9 +30,27 @@
    width: inherit;
    max-width: inherit;
    justify-content: flex-end;
-   background-image: image();
 }
 
 .devinfo_close_container > .close_button {
     margin: 10px;
+}
+
+.top_banner {
+    height: 14vh;
+    display: flex;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: inherit;
+    max-width: inherit;
+    background-image: url('../images/top_banner.png');
+}
+.bottom_banner {
+    height: 23vh;
+    display: flex;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: inherit;
+    max-width: inherit;
+    background-image: url('../images/bottom_banner.png');
 }
