@@ -113,7 +113,7 @@
     margin-bottom: 3px;
     background-color: #052115;
     outline: none;
-    height: -webkit-fill-available, -apple-fill-available;
+    height: -webkit-fill-available;
 }
 
 .navbar_search_input:hover {

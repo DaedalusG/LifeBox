@@ -75,6 +75,7 @@
    width: inherit;
    max-width: inherit;
    justify-content: flex-end;
+   cursor: pointer;
 }
 
 .signup_close_container > svg {

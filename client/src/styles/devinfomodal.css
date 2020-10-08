@@ -7,12 +7,13 @@
     flex-wrap: wrap;
     flex-flow: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #032116;
     border: 3px solid #04D482;
     border-radius: 20px;
     z-index: 1000;
     width: 45vw;
+    height: 65vh;
     max-width: 400px;
     min-height: 60vh;
 }
@@ -23,4 +24,9 @@
    width: inherit;
    max-width: inherit;
    justify-content: flex-end;
+   background-image: image();
+}
+
+.devinfo_close_container > .close_button {
+    margin: 10px;
 }
