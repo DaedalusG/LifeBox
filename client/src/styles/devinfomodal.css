@@ -74,3 +74,10 @@
     margin-left: 30px;
     margin-right: 30px;
 }
+
+.devinfo_border {
+    width:  28vw;
+    border: 1px solid #49D884;
+    border-radius: 25px;
+    margin: auto;
+}

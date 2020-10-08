@@ -13,6 +13,7 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
                     <span className="devinfo_title">About LifeBox</span>
                     <Close />
                 </div>
+                <div className={'devinfo_border'} />
                 <div className="devinfo_text">
                     <p>
                         LifeBox is a social platform for students to explore complexity in mathematics via the popular cellular automata Conway's Game of Life.
@@ -28,6 +29,7 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
                         LifeBox is a labor of love, please check back new features are being developed.
                     </p>
                 </div>
+                <div className={'devinfo_border'} />
             </div>
             <div className={'bottom_banner'} />
         </div >,
