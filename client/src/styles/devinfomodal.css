@@ -18,6 +18,11 @@
     min-height: 60vh;
 }
 
+.devinfo_sub_row {
+    display:flex;
+    width: inherit;
+}
+
 .devinfo_sub_column {
     display: flex;
     flex-direction: column;
@@ -34,6 +39,7 @@
 
 .devinfo_close_container > .close_button {
     margin: 10px;
+    cursor: pointer;
 }
 
 .top_banner {
