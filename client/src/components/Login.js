@@ -43,7 +43,18 @@ const Login = () => {
     };
 
     const loginDemoUser = async () => {
-        const demoUsername = "xenomorph";
+
+        const demoUsers = [
+            "metal_fingers",
+            "ultron",
+            "ElizabethII",
+            "xenomorph",
+            "Iggy",
+            "ThePredator",
+            "Arnold"
+        ]
+
+        const demoUsername = demoUsers[Math.floor(Math.random() * Math.floor(demoUsers.length))];
         const demoPassword = "password"
         let speed = 70, i = 1, k = 0;
 
