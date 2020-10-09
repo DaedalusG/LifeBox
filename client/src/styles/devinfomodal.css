@@ -1,6 +1,6 @@
 .devinfomodal {
     position: absolute;
-    top:5vh;
+    top:2vh;
     left: 50%;
     transform: translate(-50%);
     display: flex;
@@ -13,7 +13,7 @@
     border-radius: 20px;
     z-index: 1000;
     width: 52vw;
-    height: 90vh;
+    height: 95vh;
     max-width: 520px;
     min-height: 60vh;
 }

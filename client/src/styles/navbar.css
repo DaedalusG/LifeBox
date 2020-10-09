@@ -25,9 +25,9 @@
 }
 
 .navbar_profile_pic {
-    width: 12vw;
-    height: 9vh;
-    border-radius: 25px;
+    width: 10vw;
+    height: 15vh;
+    border-radius: 100%;
     border: 3px solid #49D884;
     margin: 6px;
 }
