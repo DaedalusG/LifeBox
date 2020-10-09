@@ -13,7 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
     const [openSignUp, setSignUp] = useState(false)
-    const [openDevInfo, setDevInfo] = useState(true)
+    const [openDevInfo, setDevInfo] = useState(false)
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
