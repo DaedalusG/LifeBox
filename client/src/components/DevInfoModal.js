@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import Close from '../images/close.js'
+import GitHub from "../images/GitHub-small.png"
 
 const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
     if (!openDevInfo) return null
@@ -30,6 +31,18 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
                     </p>
                 </div>
                 <div className={'devinfo_border'} />
+            </div>
+            <div className={'devinfo_links'}>
+                <a className={'devinfo_link'} href="https://github.com/DaedalusG/LifeBox">
+                    {/* <GitHub /> */}
+                    <img className={'devinfo_icon'} src={GitHub} />
+                </a>
+                <a className={'devinfo_link'} href="https://www.linkedin.com/in/warren-gifford-b1141a1b4/">
+                    <img className={'devinfo_icon'} src="https://img.icons8.com/fluent/48/000000/linkedin.png" />
+                </a>
+                <a className={'devinfo_link'} href="https://angel.co/u/warren-gifford">
+                    <img className={'devinfo_icon'} src="https://img.icons8.com/color/48/000000/angelist.png" />
+                </a>
             </div>
             <div className={'bottom_banner'} />
         </div >,
