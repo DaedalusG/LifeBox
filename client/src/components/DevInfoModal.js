@@ -34,14 +34,13 @@ const DevInfoModal = ({ openDevInfo, closeDevInfo }) => {
             </div>
             <div className={'devinfo_links'}>
                 <a className={'devinfo_link'} href="https://github.com/DaedalusG/LifeBox">
-                    {/* <GitHub /> */}
-                    <img className={'devinfo_icon'} src={GitHub} />
+                    <img className={'devinfo_icon'} alt={"github_icon"} src={GitHub} />
                 </a>
                 <a className={'devinfo_link'} href="https://www.linkedin.com/in/warren-gifford-b1141a1b4/">
-                    <img className={'devinfo_icon'} src="https://img.icons8.com/fluent/48/000000/linkedin.png" />
+                    <img className={'devinfo_icon'} alt={"linkedIn_icon"} src="https://img.icons8.com/fluent/48/000000/linkedin.png" />
                 </a>
                 <a className={'devinfo_link'} href="https://angel.co/u/warren-gifford">
-                    <img className={'devinfo_icon'} src="https://img.icons8.com/color/48/000000/angelist.png" />
+                    <img className={'devinfo_icon'} alt={"angelList_icon"} src="https://img.icons8.com/color/48/000000/angelist.png" />
                 </a>
             </div>
             <div className={'bottom_banner'} />

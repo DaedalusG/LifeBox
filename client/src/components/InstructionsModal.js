@@ -16,7 +16,7 @@ const InstructionsModal = ({ openInstructions, closeInstructions }) => {
                         <div className={'instructions_sub_container_column'}>
                             <div className={"instructions_close"}>
                                 <div>Conways Game of Life</div>
-                                <div onClick={closeInstructions}>
+                                <div className={"instructions_close_container"} onClick={closeInstructions}>
                                     <Close />
                                 </div>
                             </div>
