@@ -1,15 +1,26 @@
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
+import ReactS3 from 'react-s3';
+import { uploadFile } from 'react-s3';
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
-import defaultPic from "../images/default_profile_pic.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
+
+    //credentials for upload of custom profile picture
+    const config = {
+        bucketName: process.env.REACT_APP_BUCKETNAME,
+        region: process.env.REACT_APP_REGION,
+        accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+        secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
+    }
+
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
     const [error, setError] = useState("")
+    const [profilePic, setProfilePic] = useState("https://life-box-app.s3-us-west-2.amazonaws.com/default_profile_pic.png")
 
     const updateUsername = (e) => setUsername(e.target.value);
     const updateEmail = (e) => setEmail(e.target.value);
@@ -25,6 +36,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             email: email,
             password: password,
             rePassword: rePassword,
+            profile_pic: profilePic
         }
 
         const response = await fetch(`${apiUrl}/auth/signup`, {
@@ -60,7 +72,8 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
                 <Close />
             </div>
             <div className={"signup_sub_container"}>
-                <img src={defaultPic} alt="default_profile_pic"></img>
+                <img src={profilePic} alt="default_profile_pic"></img>
+                <input type="file"></input>
                 <div className={"signup_inputs_container"}>
                     <input
                         className="login_input_field"
