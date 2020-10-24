@@ -4,7 +4,6 @@ import ReactS3 from 'react-s3';
 import { uploadFile } from 'react-s3';
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
-// import defaultPic from "../images/default_profile_pic.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
 
@@ -74,6 +73,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             </div>
             <div className={"signup_sub_container"}>
                 <img src={profilePic} alt="default_profile_pic"></img>
+                <input type="file"></input>
                 <div className={"signup_inputs_container"}>
                     <input
                         className="login_input_field"
