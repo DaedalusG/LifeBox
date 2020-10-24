@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
+import ReactS3 from 'react-s3';
+import { uploadFile } from 'react-s3';
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
 import defaultPic from "../images/default_profile_pic.png"
 
 const SignUpModal = ({ openSignUp, closeSignUp }) => {
+
+    //credentials for upload of custom profile picture
+    const config = {
+        bucketName: process.env.REACT_APP_BUCKETNAME,
+        region: process.env.REACT_APP_REGION,
+        accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+        secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
+    }
+
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
