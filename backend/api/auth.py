@@ -61,6 +61,7 @@ def signup():
     try:
         username = data['username']
         email = data['email']
+        profile_pic = data['profile_pic']
 
         if not username:
             return jsonify(message="Username required"), 400
@@ -68,6 +69,9 @@ def signup():
             return jsonify(message='Email required'), 400
         elif not (data['password'] == data['rePassword']):
             return jsonify(message="Passwords must match"), 400
+
+        if not profile_pic:
+            return jsonify(message="error in profile pic upload")
 
         try:
             hashed_password = set_password(data['password'])
@@ -78,6 +82,7 @@ def signup():
             username=username,
             email=email,
             hashed_password=hashed_password,
+            profile_pic=profile_pic
         )
         db.session.add(user)
         db.session.commit()
