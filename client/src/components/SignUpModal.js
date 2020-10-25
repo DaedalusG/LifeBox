@@ -75,8 +75,10 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
                 <Close />
             </div>
             <div className={"signup_sub_container"}>
-                <img src={profilePic} alt="default_profile_pic"></img>
-                <input type="file" onChange={uploadImage}></input>
+                <label htmlFor={'signup-image'} className={"signup_image_upload"}>
+                    <img src={profilePic} alt="default_profile_pic"></img>
+                </label>
+                <input id={'signup-image'} style={{ display: 'none' }} type="file" onChange={uploadImage}></input>
                 <div className={"signup_inputs_container"}>
                     <input
                         className="login_input_field"
