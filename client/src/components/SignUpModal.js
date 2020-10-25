@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
-import ReactS3, { uploadFile } from 'react-s3';
+import S3FileUpload, { uploadFile } from 'react-s3';
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
 
@@ -33,9 +33,9 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const registerUser = async (e) => {
         e.preventDefault();
 
-        // uploadFile(profilePic, config)
-        //     .then(data => console.log(data))
-        //     .catch(err => console.error(err))
+        uploadFile(profilePic, config)
+            .then(data => console.log(data))
+            .catch(err => console.error(err))
 
 
         const user = {
