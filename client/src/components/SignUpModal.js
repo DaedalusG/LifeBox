@@ -27,7 +27,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const updateRePassword = (e) => setRePassword(e.target.value);
 
     const uploadImage = (e) => {
-        setProfilePic(URL.createObjectURL(e.target.files[0]))
+        setProfilePic({ preview: URL.createObjectURL(e.target.files[0]), raw: e.target.files[0] })
     }
 
     const registerUser = async (e) => {
@@ -80,7 +80,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             </div>
             <div className={"signup_sub_container"}>
                 <label htmlFor={'signup-image'} className={"signup_image_upload"}>
-                    <img src={profilePic} alt="default_profile_pic"></img>
+                    <img src={profilePic.preview ? profilePic.preview : profilePic} alt="default_profile_pic"></img>
                 </label>
                 <input id={'signup-image'} style={{ display: 'none' }} type="file" onChange={uploadImage}></input>
                 <div className={"signup_inputs_container"}>
