@@ -33,7 +33,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const registerUser = async (e) => {
         e.preventDefault();
 
-        uploadFile(profilePic, config)
+        uploadFile(profilePic.raw, config)
             .then(data => console.log(data))
             .catch(err => console.error(err))
 
@@ -43,7 +43,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             email: email,
             password: password,
             rePassword: rePassword,
-            profile_pic: profilePic
+            profile_pic: profilePic.preview
         }
 
         const response = await fetch(`${apiUrl}/auth/signup`, {
