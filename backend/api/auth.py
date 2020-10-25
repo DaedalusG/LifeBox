@@ -87,7 +87,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        auth_token = create_access_token(identity={"email": user.email})
+        auth_token = create_access_token(identity={"username": user.username})
         return jsonify(auth_token=auth_token), 200
 
     except Exception:

@@ -33,9 +33,9 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const registerUser = async (e) => {
         e.preventDefault();
 
-        uploadFile(profilePic, config)
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
+        // uploadFile(profilePic, config)
+        //     .then(data => console.log(data))
+        //     .catch(err => console.error(err))
 
 
         const user = {
