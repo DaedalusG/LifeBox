@@ -33,17 +33,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const registerUser = async (e) => {
         e.preventDefault();
 
-        // S3FileUpload.uploadFile(profilePic.raw, config)
-        //     .then((data) => {
-        //         changeProfile(data.location)
-        //     }).then(() => window.location.reload())
-        //     .catch((err) => {
-        //         alert(err)
-        //     })
-
         const data = await S3FileUpload.uploadFile(profilePic.raw, config)
-        console.log(data)
-
 
         const user = {
             username: username,
