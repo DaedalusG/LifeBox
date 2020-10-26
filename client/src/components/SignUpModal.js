@@ -33,9 +33,16 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const registerUser = async (e) => {
         e.preventDefault();
 
-        uploadFile(profilePic.raw, config)
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
+        // S3FileUpload.uploadFile(profilePic.raw, config)
+        //     .then((data) => {
+        //         changeProfile(data.location)
+        //     }).then(() => window.location.reload())
+        //     .catch((err) => {
+        //         alert(err)
+        //     })
+
+        const data = await S3FileUpload.uploadFile(profilePic.raw, config)
+        console.log(data)
 
 
         const user = {
@@ -43,7 +50,7 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
             email: email,
             password: password,
             rePassword: rePassword,
-            profile_pic: profilePic.preview
+            profile_pic: data.location
         }
 
         const response = await fetch(`${apiUrl}/auth/signup`, {
