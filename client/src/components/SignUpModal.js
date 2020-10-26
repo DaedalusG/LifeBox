@@ -67,12 +67,17 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
         }
     };
 
+    const clearAndCloseSignUp = () => {
+        setProfilePic("https://life-box-app.s3-us-west-2.amazonaws.com/default_profile_pic.png");
+        closeSignUp()
+    }
+
     // Switch on and off
     if (!openSignUp) return null
 
     return ReactDom.createPortal(
         <div className={"signupmodal"}>
-            <div className={'signup_close_container'} onClick={closeSignUp}>
+            <div className={'signup_close_container'} onClick={clearAndCloseSignUp}>
                 <Close />
             </div>
             <div className={"signup_sub_container"}>
