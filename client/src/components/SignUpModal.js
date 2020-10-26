@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
-import ReactS3 from 'react-s3';
-import { uploadFile } from 'react-s3';
+import S3FileUpload, { uploadFile } from 'react-s3';
 import Close from '../images/close.js'
 import { apiUrl } from '../config.js'
 
@@ -27,16 +26,31 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
     const updatePassword = (e) => setPassword(e.target.value);
     const updateRePassword = (e) => setRePassword(e.target.value);
 
+    const uploadImage = (e) => {
+        setProfilePic({ preview: URL.createObjectURL(e.target.files[0]), raw: e.target.files[0] })
+    }
 
     const registerUser = async (e) => {
         e.preventDefault();
+
+        // S3FileUpload.uploadFile(profilePic.raw, config)
+        //     .then((data) => {
+        //         changeProfile(data.location)
+        //     }).then(() => window.location.reload())
+        //     .catch((err) => {
+        //         alert(err)
+        //     })
+
+        const data = await S3FileUpload.uploadFile(profilePic.raw, config)
+        console.log(data)
+
 
         const user = {
             username: username,
             email: email,
             password: password,
             rePassword: rePassword,
-            profile_pic: profilePic
+            profile_pic: data.location
         }
 
         const response = await fetch(`${apiUrl}/auth/signup`, {
@@ -72,8 +86,10 @@ const SignUpModal = ({ openSignUp, closeSignUp }) => {
                 <Close />
             </div>
             <div className={"signup_sub_container"}>
-                <img src={profilePic} alt="default_profile_pic"></img>
-                <input type="file"></input>
+                <label htmlFor={'signup-image'} className={"signup_image_upload"}>
+                    <img src={profilePic.preview ? profilePic.preview : profilePic} alt="default_profile_pic"></img>
+                </label>
+                <input id={'signup-image'} style={{ display: 'none' }} type="file" onChange={uploadImage}></input>
                 <div className={"signup_inputs_container"}>
                     <input
                         className="login_input_field"
