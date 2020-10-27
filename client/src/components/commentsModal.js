@@ -8,7 +8,7 @@ const CommentsModal = ({ }) => {
 
     return ReactDom.createPortal(
         <div></div>,
-        document.getElementById('commentsModal')
+        document.getElementById('commentsmodal')
     )
 }
 

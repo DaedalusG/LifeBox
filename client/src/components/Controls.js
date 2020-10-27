@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config.js'
 import InstructionsModal from './InstructionsModal'
+import CommentsModal from './CommentsModal'
 import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
@@ -184,6 +185,7 @@ const Controls = () => {
                 openInstructions={openInstructions}
                 closeInstructions={() => setInstructions(false)}
             />
+            <CommentsModal />
             <DrawLife
                 init={init}
                 setInit={setInit}
