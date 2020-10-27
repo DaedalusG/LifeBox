@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Draggable from 'react-draggable';
+import Draggable from 'react-draggable'
 import Close from '../images/close.js'
 import Conway from '../images/Conway.jpg'
 
