@@ -6,7 +6,7 @@ import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
 import Search from '../images/search.svg'
 
-const HomePage = () => {
+const Controls = () => {
 
     const [user, setUser] = useState({})
     const [openInstructions, setInstructions] = useState(false)
@@ -198,4 +198,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default Controls
