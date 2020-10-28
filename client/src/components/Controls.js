@@ -6,6 +6,7 @@ import DrawLife from './DrawLife'
 import Brain from '../images/brain-svgrepo-com.svg'
 import Question from '../images/question.svg'
 import Search from '../images/search.svg'
+import Comment from '../images/comment.svg'
 
 const Controls = () => {
 
