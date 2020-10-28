@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Comment from '../images/comment.svg'
 
-const CommentsModal = ({ }) => {
-
+const CommentsModal = ({ openComments, closeComments }) => {
+    if (!openComments) return null
 
 
     return ReactDom.createPortal(
