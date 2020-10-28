@@ -1,13 +1,13 @@
 .commentsmodal {
     position: absolute;
-    left: 92%;
-    top: 92%;
+    left: 10%;
+    top: 12%;
     z-index: 1000;
 }
 
 .comments_icon {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     background-color: lightgreen;
     border: 3px solid #36bb6e;
     padding: 7px;
