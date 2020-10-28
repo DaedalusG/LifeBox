@@ -1,7 +1,7 @@
 .commentsmodal {
     position: absolute;
-    left: 10%;
-    top: 12%;
+    left: 8%;
+    top: 10%;
     z-index: 1000;
 }
 
@@ -12,4 +12,9 @@
     border: 3px solid #36bb6e;
     padding: 7px;
     border-radius: 999px;
+}
+
+.comments_icon:hover {
+    box-shadow: 0 5px 15px #49D884;
+    cursor: pointer;
 }
