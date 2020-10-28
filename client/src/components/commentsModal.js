@@ -8,7 +8,7 @@ const CommentsModal = ({ }) => {
 
     return ReactDom.createPortal(
         <div className="commentsmodal">
-            <img src={Comment} alt='comment_icon' className={'info_link'} />
+            <img src={Comment} alt='comment_icon' className={'comments_icon'} />
         </div>,
         document.getElementById('commentsmodal')
     )

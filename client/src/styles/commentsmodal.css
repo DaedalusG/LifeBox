@@ -3,9 +3,16 @@
     left: 100px;
     top: 100px;
     z-index: 1000;
-    /* margin: auto; */
 }
 
-.commentIcon {
-
+.comments_icon {
+    width: 3.5vw;
+    height: 4vh;
+    margin: auto;
+    margin-left: 4px;
+    margin-right: 4px;
+    border: 3px solid #36bb6e;
+    border-radius:25px;
+    background-color: lightgreen;
+    z-index: 1;
 }
