@@ -12,6 +12,7 @@ const Controls = () => {
 
     const [user, setUser] = useState({})
     const [openInstructions, setInstructions] = useState(false)
+    const [openComments, setComments] = useState(false)
     const [saving, setSaving] = useState(false)
     const [saveName, setSaveName] = useState('')
     const [searching, setSearching] = useState(false)
@@ -186,7 +187,10 @@ const Controls = () => {
                 openInstructions={openInstructions}
                 closeInstructions={() => setInstructions(false)}
             />
-            <CommentsModal />
+            <CommentsModal
+                openComments={openComments}
+                closeComments={() => setComments(false)}
+            />
             <DrawLife
                 init={init}
                 setInit={setInit}

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Conway from '../images/Conway.jpg'
-
+import Comment from '../images/comment.svg'
 
 const CommentsModal = ({ }) => {
 
@@ -9,7 +8,7 @@ const CommentsModal = ({ }) => {
 
     return ReactDom.createPortal(
         <div className="commentsmodal">
-            {/* <img src={Conway} alt="john_conway" /> */}
+            <img src={Comment} alt='comment_icon' className={'info_link'} />
         </div>,
         document.getElementById('commentsmodal')
     )
