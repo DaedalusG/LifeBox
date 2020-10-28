@@ -1,7 +1,9 @@
 .commentsmodal {
+    position: absolute;
+    left: 100px;
     width:  500px;
     height: 500px;
     background-color: black;
     z-index: 1000;
-    margin: auto;
+    /* margin: auto; */
 }
