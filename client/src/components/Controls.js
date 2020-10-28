@@ -188,6 +188,7 @@ const Controls = () => {
                 closeInstructions={() => setInstructions(false)}
             />
             <CommentsModal
+                loadGrid={loadGrid}
                 openComments={openComments}
                 closeComments={() => setComments(false)}
             />
