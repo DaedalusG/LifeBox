@@ -20,5 +20,9 @@
 }
 
 .comments_container {
-    
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 80%;
+    background-color: black;
 }

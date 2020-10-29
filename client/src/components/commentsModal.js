@@ -11,15 +11,17 @@ const CommentsModal = ({ loadGrid }) => {
     }
 
     return ReactDom.createPortal(
-        <div className="commentsmodal">
-            <img
-                src={Comment}
-                alt='comment_icon'
-                className={'comments_icon'}
-                onClick={() => toggleComment()}
-            />
+        <>
+            <div className="commentsmodal">
+                <img
+                    src={Comment}
+                    alt='comment_icon'
+                    className={'comments_icon'}
+                    onClick={() => toggleComment()}
+                />
+            </div>
             <div className="comments_container"></div>
-        </div>,
+        </>,
         document.getElementById('commentsmodal')
     )
 }
