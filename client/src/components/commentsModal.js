@@ -18,7 +18,7 @@ const CommentsModal = ({ loadGrid }) => {
                     "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify({
-                    name: loadGrid.owner
+                    id: loadGrid.owner
                 })
             })
 

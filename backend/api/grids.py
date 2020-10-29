@@ -44,7 +44,8 @@ def load():
 @grids.route('/comment_info', methods=['POST'])
 @jwt_required
 def info():
-    req_json = request.get_json()
-    match = User.query.filter(User.id.ilike(f'%{req_json["id"]}%'))
-    match_dict = match.to_safe_object()
-    return jsonify(message=req_json, owner=match_dict), 200
+    # req_json = request.get_json()
+    # match = User.query.filter(User.id.ilike(f'%{req_json["id"]}%'))
+    # match_dict = match.to_safe_object()
+    # return jsonify(message=req_json, owner=match_dict), 200
+    return jsonify(message="test"), 200
