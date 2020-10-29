@@ -21,6 +21,7 @@
 
 .comments_container {
     position: absolute;
+    z-index: 2;
     margin: auto;
     top: 0;
     right: 0;
@@ -29,5 +30,6 @@
     width: 50%;
     height: 80%;
     border: 3px solid #36bb6e;
+    border-radius: 5%;
     background-color: black;
 }
