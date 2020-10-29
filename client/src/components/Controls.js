@@ -120,6 +120,7 @@ const Controls = () => {
         setLoadGrid(
             {
                 "name": grid.name,
+                "owner": grid.user_id,
                 "grid": grid.grid_json.grid,
                 "saved": true
             }
