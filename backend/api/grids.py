@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import JWTManager, jwt_required
-from backend.models import db, Grid
+from backend.models import db, Grid, User
 
 grids = Blueprint('grids', __name__)
 
@@ -39,3 +39,12 @@ def load():
     grids = matches.all()
     grid_dict = [grid.to_dict() for grid in grids]
     return jsonify(message=req_json, grids=grid_dict), 200
+
+
+@grids.route('/comment_info', methods=['POST'])
+@jwt_required
+def info():
+    req_json = request.get_json()
+    match = User.query.filter(User.id.ilike(f'%{req_json["id"]}%'))
+    match_dict = match.to_safe_object()
+    return jsonify(message=req_json, owner=match_dict), 200
