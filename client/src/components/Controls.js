@@ -117,7 +117,6 @@ const Controls = () => {
     }
 
     const resultClick = (grid) => {
-        console.log('test')
         setLoadGrid(
             {
                 "name": grid.name,
