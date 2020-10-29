@@ -116,7 +116,7 @@ const Controls = () => {
         setSearching(false)
     }
 
-    const resultClick = (grid) => {
+    const searchSelect = (grid) => {
         setLoadGrid(
             {
                 "name": grid.name,
@@ -162,7 +162,7 @@ const Controls = () => {
                             <div className={'search_result_container'}>
                                 {searchResult.map((grid) => {
                                     return (
-                                        <div onClick={() => resultClick(grid)} key={grid.id} className={'search_result'}>
+                                        <div onClick={() => searchSelect(grid)} key={grid.id} className={'search_result'}>
                                             grid: <span>{grid.name}</span>
                                         </div>
                                     )
