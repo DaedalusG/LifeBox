@@ -16,7 +16,7 @@ const CommentsModal = ({ loadGrid }) => {
                 src={Comment}
                 alt='comment_icon'
                 className={'comments_icon'}
-                onClick={() => setComment(true)}
+                onClick={() => toggleComment()}
             />
             <div className="comments_container"></div>
         </div>,
