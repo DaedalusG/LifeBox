@@ -31,7 +31,7 @@ def save():
     return jsonify(message='added grid to db'), 200
 
 
-@grids.route('/load', methods=['POST'])
+@grids.route('/search', methods=['POST'])
 @jwt_required
 def load():
     req_json = request.get_json()

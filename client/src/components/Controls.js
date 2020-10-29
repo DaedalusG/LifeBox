@@ -93,7 +93,7 @@ const Controls = () => {
     const searchUpdate = async () => {
 
         const token = window.localStorage.getItem('auth_token')
-        const response = await fetch(`${apiUrl}/grids/load`, {
+        const response = await fetch(`${apiUrl}/grids/search`, {
             method: "POST",
             mode: "cors",
             headers: {
