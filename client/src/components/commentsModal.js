@@ -3,9 +3,10 @@ import ReactDom from 'react-dom'
 import { apiUrl } from '../config.js'
 import Comment from '../images/comment.svg'
 
-const CommentsModal = ({ loadGrid, user }) => {
+const CommentsModal = (props) => {
     const [openComment, setComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
+    const { user, loadGrid } = props
 
     useEffect(() => {
         console.log(gridOwner)
