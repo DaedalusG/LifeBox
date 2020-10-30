@@ -16,10 +16,7 @@ const DrawLife = (props) => {
     const colWidth = useMemo(() => Math.ceil(width / cols), [width, cols])
     const rowHeight = useMemo(() => Math.ceil(height / rows), [height, rows])
     const [generate, setGenerate] = useState(false)
-    const { init, setInit } = props
-    const { grid, setGrid } = props
-    const { resolution, setResolution } = props
-    const { loadGrid, setLoadGrid } = props
+    const { init, setInit, grid, setGrid, resolution, setResolution, loadGrid, setLoadGrid } = props
 
 
     //------------------------useEffects--------------------------
