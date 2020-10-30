@@ -25,7 +25,7 @@ const CommentsModal = (props) => {
             })
 
             const res = await response.json()
-            setOwner(res)
+            setOwner(res.owner)
         }
         getOwner()
     }, [loadGrid])
@@ -49,7 +49,7 @@ const CommentsModal = (props) => {
                 <div className="comments_container">
                     <div>{loadGrid.name}</div>
                     <div>{user.username}</div>
-                    <div>{gridOwner.message}</div>
+                    <div>{gridOwner.username}</div>
                 </div>
             }
         </>,
