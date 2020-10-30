@@ -49,6 +49,7 @@ const CommentsModal = (props) => {
                 <div className="comments_container">
                     <div>{loadGrid.name}</div>
                     <div>{user.username}</div>
+                    <div>{gridOwner.message}</div>
                 </div>
             }
         </>,
