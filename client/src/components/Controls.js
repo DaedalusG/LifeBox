@@ -187,6 +187,7 @@ const Controls = () => {
                 closeInstructions={() => setInstructions(false)}
             />
             <CommentsModal
+                user={user}
                 loadGrid={loadGrid}
             />
             <DrawLife

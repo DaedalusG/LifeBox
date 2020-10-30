@@ -3,11 +3,12 @@ import ReactDom from 'react-dom'
 import { apiUrl } from '../config.js'
 import Comment from '../images/comment.svg'
 
-const CommentsModal = ({ loadGrid }) => {
+const CommentsModal = ({ loadGrid, user }) => {
     const [openComment, setComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
 
     useEffect(() => {
+        console.log(gridOwner)
         const getOwner = async () => {
             const token = window.localStorage.getItem('auth_token')
             let response = await fetch(`${apiUrl}/grids/comment_info`, {
@@ -44,7 +45,10 @@ const CommentsModal = ({ loadGrid }) => {
                 />
             </div>
             {openComment &&
-                <div className="comments_container"></div>
+                <div className="comments_container">
+                    <div>{loadGrid.name}</div>
+                    <div>{user.username}</div>
+                </div>
             }
         </>,
         document.getElementById('commentsmodal')
