@@ -34,3 +34,12 @@
     border-radius: 5%;
     background-color: black;
 }
+
+.comments_header {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments_footer {
+
+}
