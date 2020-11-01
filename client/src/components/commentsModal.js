@@ -53,6 +53,7 @@ const CommentsModal = (props) => {
                         <div>{loadGrid.name}</div>
                     </div>
                     <div className="comments_footer">
+                        <img className="comment_image" src={user.profile_pic} />
                         <div>{user.username}</div>
                     </div>
                 </div>
