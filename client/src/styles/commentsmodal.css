@@ -38,11 +38,17 @@
 
 .comments_header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.comments_display {
+    width: 100%;
+    height: 70%;
 }
 
 .comments_footer {
-
+    display: flex;
+    flex-direction: row;
 }
 
 .comment_image {
