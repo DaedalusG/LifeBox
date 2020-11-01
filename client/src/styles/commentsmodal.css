@@ -21,6 +21,7 @@
 
 .comments_container {
     position: absolute;
+    display: flex;
     z-index: 2;
     margin: auto;
     top: 0;
