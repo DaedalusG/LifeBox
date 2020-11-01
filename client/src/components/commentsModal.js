@@ -47,9 +47,13 @@ const CommentsModal = (props) => {
             </div>
             {openComment &&
                 <div className="comments_container">
-                    <div>{loadGrid.name}</div>
-                    <div>{user.username}</div>
-                    <div>{gridOwner.username}</div>
+                    <div className="comments_header">
+                        <div>{gridOwner.username}</div>
+                        <div>{loadGrid.name}</div>
+                    </div>
+                    <div className="comments_footer">
+                        <div>{user.username}</div>
+                    </div>
                 </div>
             }
         </>,
