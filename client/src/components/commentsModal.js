@@ -56,8 +56,10 @@ const CommentsModal = (props) => {
                     </div>
                     <div className="comments_display"></div>
                     <div className="comments_footer">
+                        {/* <div className="footer_spacer" /> */}
                         <img className="footer_image" src={user.profile_pic} />
                         <div>{user.username}</div>
+                        {/* <div className="footer_spacer" /> */}
                     </div>
                 </div>
             }

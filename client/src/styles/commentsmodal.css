@@ -39,6 +39,7 @@
 .comments_header {
     display: flex;
     flex-direction: row;
+    margin: 5px;
 }
 
 .header_sub_header {
@@ -54,12 +55,14 @@
 .comments_footer {
     display: flex;
     flex-direction: row;
-    border-top: 3px solid #36bb6e;;
+    border-top: 3px solid #36bb6e;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .header_image {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 3px solid lightgreen;
 }
@@ -69,4 +72,8 @@
     height: 50px;
     border-radius: 50%;
     border: 3px solid lightgreen;
+}
+
+.footer_spacer {
+    width: 20px;
 }
