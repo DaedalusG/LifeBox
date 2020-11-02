@@ -50,7 +50,7 @@
 
 .header_spacer {
     height: 5px;
-    border-top: 3px solid #36bb6e;
+    /* border-top: 3px solid #36bb6e; */
     border-bottom: 3px solid #36bb6e;
 }
 
