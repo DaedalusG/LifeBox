@@ -79,6 +79,7 @@
     height: 50px;
     border-radius: 50%;
     border: 3px solid lightgreen;
+    margin: 5px;
 }
 
 .footer_spacer {
