@@ -47,6 +47,12 @@
     flex-direction: column;
 }
 
+.header_spacer {
+    height: 5px;
+    border-top: 3px solid #36bb6e;
+    border-bottom: 3px solid #36bb6e;
+}
+
 .comments_display {
     width: 100%;
     height: 70%;

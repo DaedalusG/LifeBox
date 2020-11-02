@@ -50,17 +50,15 @@ const CommentsModal = (props) => {
                     <div className="comments_header">
                         <img className="header_image" src={gridOwner.profile_pic} />
                         <div className="header_sub_header">
+                            <div className="header_spacer" />
                             <div>Grid Name: {loadGrid.name}</div>
                             <div>Composer: {gridOwner.username}</div>
+                            <div className="header_spacer" />
                         </div>
                     </div>
                     <div className="comments_display"></div>
-                    <div className="comments_footer">
-                        {/* <div className="footer_spacer" /> */}
-                        <img className="footer_image" src={user.profile_pic} />
-                        <div>{user.username}</div>
-                        {/* <div className="footer_spacer" /> */}
-                    </div>
+                    <div className="comments_footer">                        <img className="footer_image" src={user.profile_pic} />
+                        <div>{user.username}</div>                    </div>
                 </div>
             }
         </>,
