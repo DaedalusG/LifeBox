@@ -41,6 +41,11 @@
     flex-direction: row;
 }
 
+.header_sub_header {
+    display: flex;
+    flex-direction: column;
+}
+
 .comments_display {
     width: 100%;
     height: 70%;
@@ -49,6 +54,7 @@
 .comments_footer {
     display: flex;
     flex-direction: row;
+    border-top: 3px solid #36bb6e;;
 }
 
 .header_image {
