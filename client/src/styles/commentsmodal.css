@@ -66,6 +66,11 @@
     margin-right: 10px;
 }
 
+.comment_input {
+    width: auto;
+    height: auto;
+}
+
 .header_image {
     width: 70px;
     height: 70px;
@@ -79,6 +84,11 @@
     border-radius: 50%;
     border: 3px solid lightgreen;
     margin: 5px;
+}
+
+.footer_sub_container {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer_spacer {
