@@ -58,7 +58,10 @@ const CommentsModal = (props) => {
                     </div>
                     <div className="comments_display"></div>
                     <div className="comments_footer">
-                        <img className="footer_image" src={user.profile_pic} />
+                        <div className="footer_side_container">
+                            <img className="footer_image" src={user.profile_pic} />
+                            <div className="footer_sideborder" />
+                        </div>
                         <div className="footer_sub_container">
                             <div className="footer_sub_header">Username: {user.username}</div>
                             <textarea className="comment_input" />
