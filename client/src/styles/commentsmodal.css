@@ -68,8 +68,8 @@
 }
 
 .comment_input {
-    width: auto;
-    height: auto;
+    width: 36vw;
+    height: 6vh;
 }
 
 .header_image {
@@ -96,6 +96,7 @@
 .footer_sub_header {
     font-size: 1em;
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin: 5px;
 }
 
 .footer_spacer {
