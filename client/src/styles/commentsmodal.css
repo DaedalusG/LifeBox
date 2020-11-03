@@ -78,6 +78,28 @@
     outline: none;
     color: lightgreen;
     background-color: black;
+    
+}
+
+/* Placeholder Text Color Rules */
+textarea::-webkit-input-placeholder {
+  color: lightgreen;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+  color: lightgreen;  
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+  color: lightgreen;  
+}
+
+textarea:-ms-input-placeholder {
+  color: lightgreen;  
+}
+
+textarea::placeholder {
+  color: lightgreen;  
 }
 
 .header_image {
