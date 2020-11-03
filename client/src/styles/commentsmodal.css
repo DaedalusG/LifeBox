@@ -70,6 +70,8 @@
 .comment_input {
     width: 36vw;
     height: 6vh;
+    margin-top: 5px;
+    margin-left: 5px;
     resize: none;
     outline: none;
     color: lightgreen;
@@ -88,8 +90,7 @@
     height: 50px;
     border-radius: 50%;
     border: 3px solid lightgreen;
-    /* margin-left: 5px; */
-    /* margin-top: 5px; */
+    margin-top: 5px;
 }
 
 .footer_sub_container {
@@ -102,6 +103,8 @@
     font-size: 1em;
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     margin: 5px;
+    border-bottom: 3px solid #36bb6e;
+
 }
 
 .footer_spacer {
@@ -116,6 +119,6 @@
 }
 
 .footer_sideborder {
-    border: 1px solid lightgreen;
+    border: 1px solid #36bb6e;
     height: 10vh;
 }
