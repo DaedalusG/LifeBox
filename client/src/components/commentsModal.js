@@ -73,6 +73,7 @@ const CommentsModal = (props) => {
                             />
                         </div>
                     </div>
+                    <div>Submit</div>
                 </div>
             }
         </>,
