@@ -6,11 +6,10 @@ import Comment from '../images/comment.svg'
 const CommentsModal = (props) => {
     const [openComment, changeComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
-    const [comment, setComment] = useState(null)
+    const [comment, setComment] = useState(undefined)
     const { user, loadGrid } = props
 
     useEffect(() => {
-        console.log(gridOwner)
         const getOwner = async () => {
             const token = window.localStorage.getItem('auth_token')
             let response = await fetch(`${apiUrl}/grids/comment_info`, {
