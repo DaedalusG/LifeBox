@@ -4,8 +4,9 @@ import { apiUrl } from '../config.js'
 import Comment from '../images/comment.svg'
 
 const CommentsModal = (props) => {
-    const [openComment, setComment] = useState(false)
+    const [openComment, changeComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
+    const [comment, setComment] = useState(null)
     const { user, loadGrid } = props
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const CommentsModal = (props) => {
     }, [loadGrid])
 
     const toggleComment = () => {
-        if (openComment === false) { setComment(true) } else { setComment(false) }
+        if (openComment === false) { changeComment(true) } else { changeComment(false) }
     }
 
     if (loadGrid.name === undefined) return null
@@ -64,7 +65,12 @@ const CommentsModal = (props) => {
                         </div>
                         <div className="footer_sub_container">
                             <div className="footer_sub_header">Username: {user.username}</div>
-                            <textarea className="comment_input" />
+                            <textarea
+                                className="comment_input"
+                                value={comment}
+                                onChange={(e) => { setComment(e.target.value) }}
+                                placeholder={'Make a comment here'}
+                            />
                         </div>
                     </div>
                 </div>
