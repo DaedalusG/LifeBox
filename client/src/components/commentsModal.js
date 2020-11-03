@@ -73,7 +73,7 @@ const CommentsModal = (props) => {
                             />
                         </div>
                     </div>
-                    <div>Submit</div>
+                    <button className="drawlife_button" onClick={() => console.log('test')}>Submit</button>
                 </div>
             }
         </>,
