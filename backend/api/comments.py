@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import JWTManager, jwt_required
-from backend.models import db, Grid, User
+from backend.models import db, Grid, User, Comment
 
 comments = Blueprint('comments', __name__)
 
@@ -18,5 +18,16 @@ def info():
 @comments.route('/new', methods=['POST'])
 @jwt_required
 def new():
-    req_json = request.get_json()
-    return jsonify(test="test"), 200
+    data = request.get_json()
+    print('data --------->', data)
+
+    newComment = Comment(
+        user_id=data["user_id"],
+        grid_id=data["grid_id"],
+        content=data["content"]
+    )
+
+    db.session.add(newComment)
+    db.session.commit()
+
+    return jsonify(message='added comment to db'), 200
