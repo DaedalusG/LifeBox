@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
 import { apiUrl } from '../config.js'
 import Comment from '../images/comment.svg'
+import Close from '../images/close.js'
 
 const CommentsModal = (props) => {
     const [openComment, changeComment] = useState(false)
@@ -77,6 +78,7 @@ const CommentsModal = (props) => {
                             <div>Composer: {gridOwner.username}</div>
                             <div className="header_spacer" />
                         </div>
+                        <div onClick={toggleComment}><Close /></div>
                     </div>
                     <div className="comments_display"></div>
                     <div className="comments_footer">

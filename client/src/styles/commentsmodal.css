@@ -46,7 +46,7 @@
 .header_sub_header {
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 36vw;
 }
 
 .header_spacer {
