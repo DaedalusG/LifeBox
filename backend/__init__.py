@@ -22,6 +22,7 @@ from flask_jwt_extended import (
 
 from .api.auth import auth
 from .api.grids import grids
+from .api.comments import comments
 
 # Setup
 app = Flask(__name__, static_url_path='')
@@ -37,6 +38,7 @@ jwt = JWTManager(app)
 app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(grids, url_prefix='/api/grids')
 app.register_blueprint(auth, url_prefix='/api/auth')
+app.register_blueprint(comments, url_prefix='/api/comments')
 
 
 @app.after_request

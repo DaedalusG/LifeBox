@@ -12,7 +12,7 @@ const CommentsModal = (props) => {
     useEffect(() => {
         const getOwner = async () => {
             const token = window.localStorage.getItem('auth_token')
-            let response = await fetch(`${apiUrl}/grids/comment_info`, {
+            let response = await fetch(`${apiUrl}/comments/owner_info`, {
                 method: "POST",
                 mode: "cors",
                 headers: {
@@ -77,7 +77,10 @@ const CommentsModal = (props) => {
                             />
                         </div>
                     </div>
-                    <button className="drawlife_button" onClick={() => console.log('test')}>Submit</button>
+                    <div className="footer_bottom_container">
+                        <div className="footer_bottom_bar" />
+                        <button className="drawlife_button" onClick={() => console.log('test')}>Submit</button>
+                    </div>
                 </div>
             }
         </>,

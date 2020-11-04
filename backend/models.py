@@ -33,6 +33,8 @@ class Grid(db.Model):
     name = db.Column(db.String(40), nullable=False, unique=True)
     grid_json = db.Column(db.JSON, nullable=False)
 
+    comments = db.relationship("Comment", backref="grid")
+
     def to_dict(self):
         return {
             "id": self.id,
