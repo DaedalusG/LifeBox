@@ -6,7 +6,7 @@ import Comment from '../images/comment.svg'
 const CommentsModal = (props) => {
     const [openComment, changeComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
-    const [comment, setComment] = useState(undefined)
+    const [comment, setComment] = useState('')
     const { user, loadGrid } = props
 
     //Use effect to get the information for a grid owner for the comment modal anytime a new grid is loaded
@@ -38,7 +38,22 @@ const CommentsModal = (props) => {
 
     // function to submit a new comment
     const submitComment = async () => {
-        let response = await fetch(`${apiUrl}/comments/grid`)
+        const token = window.localStorage.getItem('auth_token')
+        let response = await fetch(`${apiUrl}/comments/new`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                user_id: user.id,
+                grid_id: loadGrid.owner,
+                content: comment,
+            })
+        })
+        if (response.ok) setComment('')
+        console.log('hit fetch')
     }
 
     if (loadGrid.name === undefined) return null
@@ -81,7 +96,7 @@ const CommentsModal = (props) => {
                     </div>
                     <div className="footer_bottom_container">
                         <div className="footer_bottom_bar" />
-                        <button className="drawlife_button" onClick={() => console.log('test')}>Submit</button>
+                        <button className="drawlife_button" onClick={submitComment}>Submit</button>
                     </div>
                 </div>
             }
