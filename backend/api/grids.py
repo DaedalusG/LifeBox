@@ -39,14 +39,3 @@ def load():
     grids = matches.all()
     grid_dict = [grid.to_dict() for grid in grids]
     return jsonify(message=req_json, grids=grid_dict), 200
-
-
-@grids.route('/comment_info', methods=['POST'])
-@jwt_required
-def info():
-    req_json = request.get_json()
-    print('req_json --------->', req_json)
-    match = User.query.get(req_json["id"])
-    match_dict = match.to_safe_object()
-    return jsonify(owner=match_dict), 200
-    # return jsonify(message="test"), 200
