@@ -34,6 +34,11 @@ const CommentsModal = (props) => {
         if (openComment === false) { changeComment(true) } else { changeComment(false) }
     }
 
+    // // function to submit a new comment
+    // const submitComment = async () => {
+    //     let response = await fetch(`${apiUrl}/grids/comments`)
+    // }
+
     if (loadGrid.name === undefined) return null
     return ReactDom.createPortal(
         <>
