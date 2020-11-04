@@ -1,4 +1,4 @@
-from backend.models import User, Grid
+from backend.models import User, Grid, Comment
 from backend import app, db
 from dotenv import load_dotenv
 from backend.api.auth import set_password
@@ -8920,6 +8920,60 @@ with app.app_context():
         }
     )
 
+    Snowflake_Comment = Comment(
+        user_id=7,
+        grid_id=1,
+        content="It looks like a snowflake, it doesn't persist long though."
+    )
+
+    Glider_Comment = Comment(
+        user_id=1,
+        grid_id=2,
+        content="This was one of the first discovered stable forms. It acts a little bit like a little cellular organism. Use your imagination."  # noqa
+    )
+
+    smallGrid_Comment = Comment(
+        user_id=4,
+        grid_id=3,
+        content="This is just a little premade thing to build up a grid."
+    )
+
+    bigGrid_Comment = Comment(
+        user_id=1,
+        grid_id=4,
+        content="Bigger version of the small grid."
+    )
+
+    BoxBox_Comment = Comment(
+        user_id=3,
+        grid_id=5,
+        content="The name says it all."
+    )
+
+    Conway_Comment = Comment(
+        user_id=2,
+        grid_id=6,
+        content="This is a really cute tribute byt the scientific community to Conway, at least thats what I like to think. It becomes a glider. Very Cool."  # noqa
+    )
+
+    demonoid_Comment = Comment(
+        user_id=1,
+        grid_id=7,
+        content="Oh man, I love this one. Its a stable little system that contains a pattern. I like to think its named after that little thrmodynamics demon."  # noqa
+    )
+
+    spaceship1_Comment = Comment(
+        user_id=5,
+        grid_id=8,
+        content="There are many 'spaceships' in Conway's game of life. This is just one of them."  # noqa
+    )
+
+    diamond_Comment = Comment(
+        user_id=1,
+        grid_id=9,
+        content="Looks like a diamond, enough said."
+    )
+
     db.session.add(metal_fingers)
     db.session.add(ultron)
     db.session.add(ElizabethII)
@@ -8937,5 +8991,15 @@ with app.app_context():
     db.session.add(demonoid)
     db.session.add(spaceship1)
     db.session.add(diamond)
+
+    db.session.add(Snowflake_Comment)
+    db.session.add(Glider_Comment)
+    db.session.add(smallGrid_Comment)
+    db.session.add(bigGrid_Comment)
+    db.session.add(BoxBox_Comment)
+    db.session.add(Conway_Comment)
+    db.session.add(demonoid_Comment)
+    db.session.add(spaceship1_Comment)
+    db.session.add(diamond_Comment)
 
     db.session.commit()
