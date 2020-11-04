@@ -9,35 +9,37 @@ const CommentsModal = (props) => {
     const [comment, setComment] = useState(undefined)
     const { user, loadGrid } = props
 
+    //Use effect to get the information for a grid owner for the comment modal anytime a new grid is loaded
     useEffect(() => {
-        const getOwner = async () => {
-            const token = window.localStorage.getItem('auth_token')
-            let response = await fetch(`${apiUrl}/comments/owner_info`, {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    id: loadGrid.owner
-                })
-            })
-
-            const res = await response.json()
-            setOwner(res.owner)
-        }
         getOwner()
     }, [loadGrid])
+
+    const getOwner = async () => {
+        const token = window.localStorage.getItem('auth_token')
+        let response = await fetch(`${apiUrl}/comments/owner_info`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id: loadGrid.owner
+            })
+        })
+
+        const res = await response.json()
+        setOwner(res.owner)
+    }
 
     const toggleComment = () => {
         if (openComment === false) { changeComment(true) } else { changeComment(false) }
     }
 
-    // // function to submit a new comment
-    // const submitComment = async () => {
-    //     let response = await fetch(`${apiUrl}/grids/comments`)
-    // }
+    // function to submit a new comment
+    const submitComment = async () => {
+        let response = await fetch(`${apiUrl}/comments/grid`)
+    }
 
     if (loadGrid.name === undefined) return null
     return ReactDom.createPortal(

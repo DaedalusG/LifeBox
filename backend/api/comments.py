@@ -15,7 +15,7 @@ def info():
     return jsonify(owner=match_dict), 200
 
 
-@comments.route('grid', methods=['GET'])
+@comments.route('/grid', methods=['GET'])
 @jwt_required
 def conv():
     req_json = request.get_json()
