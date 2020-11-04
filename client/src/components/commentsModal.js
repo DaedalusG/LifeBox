@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactDom from 'react-dom'
+import gridComment from './gridComment'
 import { apiUrl } from '../config.js'
 import Comment from '../images/comment.svg'
 import Close from '../images/close.js'
@@ -80,7 +81,9 @@ const CommentsModal = (props) => {
                         </div>
                         <div onClick={toggleComment}><Close /></div>
                     </div>
-                    <div className="comments_display"></div>
+                    <div className="comments_display">
+                        <gridComment />
+                    </div>
                     <div className="comments_footer">
                         <div className="footer_side_container">
                             <img className="footer_image" src={user.profile_pic} />
