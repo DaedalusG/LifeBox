@@ -1,9 +1,13 @@
 import React from 'react'
 
-const gridComment = () => {
+const GridComment = (props) => {
     return (
-        <div>Comment</div>
+        <>
+            <div className="grid_comment_container">
+                <img />
+            </div>
+        </>
     )
 }
 
-export default gridComment
+export default GridComment
