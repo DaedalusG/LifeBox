@@ -4,7 +4,14 @@ const GridComment = (props) => {
     return (
         <>
             <div className="grid_comment_container">
-                <img />
+                <div>
+                    <img />
+                    <div>spacer</div>
+                </div>
+                <div>
+                    <div>name</div>
+                    <div>content</div>
+                </div>
             </div>
         </>
     )
