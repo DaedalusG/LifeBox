@@ -82,7 +82,6 @@ const CommentsModal = (props) => {
                         <div onClick={toggleComment}><Close /></div>
                     </div>
                     <div className="comments_display">
-                        <div>Test</div>
                         <GridComment
                             user={user}
                             loadGrid={loadGrid}
