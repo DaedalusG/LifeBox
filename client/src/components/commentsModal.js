@@ -15,7 +15,9 @@ const CommentsModal = (props) => {
     //Use effect to get the information for a grid owner for the comment modal anytime a new grid is loaded
     useEffect(() => {
         getOwner()
+        getComments()
     }, [loadGrid])
+
 
     const getOwner = async () => {
         const token = window.localStorage.getItem('auth_token')
