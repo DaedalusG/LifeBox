@@ -83,7 +83,11 @@ const CommentsModal = (props) => {
                     </div>
                     <div className="comments_display">
                         <div>Test</div>
-                        <GridComment />
+                        <GridComment
+                            user={user}
+                            loadGrid={loadGrid}
+                            gridOwner={gridOwner}
+                        />
                     </div>
                     <div className="comments_footer">
                         <div className="footer_side_container">
