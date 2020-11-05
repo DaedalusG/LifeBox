@@ -9,7 +9,7 @@ const GridComment = (props) => {
                     <div>spacer</div>
                 </div>
                 <div>
-                    <div>name</div>
+                    <div>{props.gridOwner.email}</div>
                     <div>content</div>
                 </div>
             </div>
