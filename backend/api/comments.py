@@ -31,3 +31,12 @@ def new():
     db.session.commit()
 
     return jsonify(message='added comment to db'), 200
+
+
+@comments.route('/grid_comments', method=['GET'])
+@jwt_required
+def getComments():
+    data = request.get_json()
+    print('data --------->', data)
+
+    return jsonify(message='grabbed comments')
