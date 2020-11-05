@@ -35,6 +35,21 @@ const CommentsModal = (props) => {
         setOwner(res.owner)
     }
 
+    const getComments = async () => {
+        const token = window.localStorage.getItem('auth_token')
+        let response = await fetch(`${apiUrl}/comments/grid_comments`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id: loadGrid.id
+            })
+        })
+    }
+
     const toggleComment = () => {
         if (openComment === false) { changeComment(true) } else { changeComment(false) }
     }
