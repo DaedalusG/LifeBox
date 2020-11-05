@@ -40,7 +40,7 @@ const CommentsModal = (props) => {
     const getComments = async () => {
         const token = window.localStorage.getItem('auth_token')
         let response = await fetch(`${apiUrl}/comments/grid_comments`, {
-            method: "GET",
+            method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
@@ -50,6 +50,9 @@ const CommentsModal = (props) => {
                 id: loadGrid.id
             })
         })
+
+        const res = await response.json()
+        console.log(res.message)
     }
 
     const toggleComment = () => {

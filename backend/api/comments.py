@@ -33,10 +33,10 @@ def new():
     return jsonify(message='added comment to db'), 200
 
 
-# @comments.route('/grid_comments', method=['GET'])
-# @jwt_required
-# def getComments():
-#     data = request.get_json()
-#     print('data --------->', data)
+@comments.route('/grid_comments', methods=['POST'])
+@jwt_required
+def getComments():
+    data = request.get_json()
+    print('data --------->', data)
 
-#     return jsonify(message='grabbed comments')
+    return jsonify(message='grabbed comments')
