@@ -8,6 +8,7 @@ import Close from '../images/close.js'
 const CommentsModal = (props) => {
     const [openComment, changeComment] = useState(false)
     const [gridOwner, setOwner] = useState(null)
+    const [gridComments, setGridComments] = useState(null)
     const [comment, setComment] = useState('')
     const { user, loadGrid } = props
 
