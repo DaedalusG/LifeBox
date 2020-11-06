@@ -39,4 +39,4 @@ def getComments():
     data = request.get_json()
     print('data --------->', data)
 
-    return jsonify(message='grabbed comments')
+    return jsonify(message='grabbed comments'), 200
