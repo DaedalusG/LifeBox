@@ -38,7 +38,7 @@ def new():
 def getComments():
     data = request.get_json()
     print('data --------->', data)
-    comments = Comment.query.filter_by(grid_id=data["id"]).all()  # noqa
+    comments = Comment.query.options().filter(Comment.grid_id == data["id"])
     comments_dict = [comment.to_dict() for comment in comments]
     print('comments --------->', comments_dict)
     return jsonify(message='grabbed comments', comments=comments_dict), 200
