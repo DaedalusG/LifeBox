@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from sqlalchemy.orm import joinedload
 from flask_jwt_extended import JWTManager, jwt_required
 from backend.models import db, Grid, User, Comment
 
@@ -9,7 +10,7 @@ comments = Blueprint('comments', __name__)
 @jwt_required
 def info():
     req_json = request.get_json()
-    print('req_json --------->', req_json)
+    # print('req_json --------->', req_json)
     match = User.query.get(req_json["id"])
     match_dict = match.to_safe_object()
     return jsonify(owner=match_dict), 200
@@ -38,7 +39,10 @@ def new():
 def getComments():
     data = request.get_json()
     print('data --------->', data)
-    comments = Comment.query.options().filter(Comment.grid_id == data["id"])
+
+    comments = Comment.query.options(joinedload(
+        Comment.users, innerjoin=True)).filter(Comment.grid_id == data["id"])
     comments_dict = [comment.to_dict() for comment in comments]
     print('comments --------->', comments_dict)
+
     return jsonify(message='grabbed comments', comments=comments_dict), 200
