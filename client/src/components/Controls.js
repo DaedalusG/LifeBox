@@ -120,6 +120,7 @@ const Controls = () => {
             {
                 "name": grid.name,
                 "owner": grid.user_id,
+                "grid_id": grid.id,
                 "grid": grid.grid_json.grid,
                 "saved": true
             }
