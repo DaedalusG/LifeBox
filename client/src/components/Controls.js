@@ -84,7 +84,13 @@ const Controls = () => {
                 setSaving(false);
                 setSaveName('')
             }, 2250)
-            setLoadGrid({ "name": saveName, "grid": grid, "saved": true })
+            setLoadGrid(
+                {
+                    "name": saveName,
+                    "grid": grid,
+                    "saved": true
+                }
+            )
         }
     }
 
