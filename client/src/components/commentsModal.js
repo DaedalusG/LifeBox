@@ -63,6 +63,7 @@ const CommentsModal = (props) => {
 
     // function to submit a new comment
     const submitComment = async () => {
+        if (comment === '') return
         const token = window.localStorage.getItem('auth_token')
         let response = await fetch(`${apiUrl}/comments/new`, {
             method: "POST",
@@ -77,8 +78,10 @@ const CommentsModal = (props) => {
                 content: comment,
             })
         })
-        if (response.ok) setComment('')
-        console.log('hit fetch')
+        if (response.ok) {
+            setComment('')
+            getComments()
+        }
     }
 
     if (loadGrid.name === undefined) return null
