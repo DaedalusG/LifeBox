@@ -105,11 +105,13 @@ const CommentsModal = (props) => {
                         <div onClick={toggleComment}><Close /></div>
                     </div>
                     <div className="comments_display">
-                        <GridComment
-                            user={user}
-                            loadGrid={loadGrid}
-                            gridOwner={gridOwner}
-                        />
+                        {(gridComments !== null) &&
+                            <div>
+                                {gridComments.map((comment) => {
+                                    return <GridComment comment={comment} />
+                                })}
+                            </div>
+                        }
                     </div>
                     <div className="comments_footer">
                         <div className="footer_side_container">

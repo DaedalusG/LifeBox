@@ -1,16 +1,18 @@
 import React from 'react'
 
 const GridComment = (props) => {
+    const { username, profile_pic, content } = props.comment
+
     return (
         <>
             <div className="grid_comment_container">
                 <div>
-                    <img />
+                    <img src={profile_pic} />
                     <div>spacer</div>
                 </div>
                 <div>
-                    <div>{props.gridOwner.email}</div>
-                    <div>content</div>
+                    <div>{username}</div>
+                    <div>{content}</div>
                 </div>
             </div>
         </>
