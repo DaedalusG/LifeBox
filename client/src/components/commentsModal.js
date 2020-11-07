@@ -73,7 +73,7 @@ const CommentsModal = (props) => {
             },
             body: JSON.stringify({
                 user_id: user.id,
-                grid_id: loadGrid.owner,
+                grid_id: loadGrid.grid_id,
                 content: comment,
             })
         })
