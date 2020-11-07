@@ -40,9 +40,27 @@ def getComments():
     data = request.get_json()
     print('data --------->', data)
 
-    comments = Comment.query.options(joinedload(
-        Comment.users, innerjoin=True)).filter(Comment.grid_id == data["id"])
-    comments_dict = [comment.to_dict() for comment in comments]
-    print('comments --------->', comments_dict)
+    comments_data = []
+    comments = Comment.query.filter(Comment.grid_id == data["id"]).all()
+    for comment in comments:
+        user_info = User.query.filter(User.id == comment.user_id).one()
 
-    return jsonify(message='grabbed comments', comments=comments_dict), 200
+        comment_props = {}
+
+        comment_props["username"] = user_info.username
+        comment_props["profile_pic"] = user_info.profile_pic
+        comment_props["content"] = comment.content
+
+        comments_data.append(comment_props)
+
+        # safe = user_info.to_safe_object()
+        # comment_dict = comment.to_dict()
+        # comment_dict["user"] = safe
+        # comments_data.append(comment_dict)
+
+    print(comments_data)
+
+    # comments_dict = [comment.to_dict() for comment in comments]
+    # print('comments --------->', comments_dict)
+
+    return jsonify(message='grabbed comments', comments=comments_data), 200

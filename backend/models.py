@@ -52,7 +52,7 @@ class Comment(db.Model):
     grid_id = db.Column(db.Integer, db.ForeignKey("grids.id"), nullable=False)  # noqa
     content = db.Column(db.Text, nullable=False)
 
-    users = db.relationship('User', backref='comment')
+    user = db.relationship('User', backref='comment')
 
     def to_dict(self):
         return {
