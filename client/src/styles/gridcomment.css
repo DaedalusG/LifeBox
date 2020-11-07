@@ -35,10 +35,12 @@
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     border-bottom: 3px solid #36bb6e;
     width: 36vw;
+    max-width: 375px;
 }
 
 .gridcomment_content {
     margin-top: 5px;
+    max-width: 375px;
 }
 
 .gridcomment_sidebar {

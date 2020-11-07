@@ -1,7 +1,7 @@
 .comments_icon_container {
     position: absolute;
-    left: 8%;
-    top: 10%;
+    left: 85px;
+    top: 85px;
     z-index: 1000;
 }
 
@@ -30,6 +30,7 @@
     bottom: 0;
     left: 0;
     width: 50%;
+    max-width: 500px;
     height: 80%;
     border: 3px solid #36bb6e;
     border-radius: 5%;
@@ -71,6 +72,7 @@
 
 .comment_input {
     width: 36vw;
+    max-width: 400px;
     height: 12vh;
     margin-top: 5px;
     margin-left: 5px;
@@ -80,7 +82,6 @@
     outline: none;
     color: lightgreen;
     background-color: black;
-    
 }
 
 /* Placeholder Text Color Rules */
@@ -131,6 +132,7 @@ textarea::placeholder {
     margin: 5px;
     border-bottom: 3px solid #36bb6e;
     width: 38vw;
+    max-width: 400px;
 }
 
 .footer_spacer {
