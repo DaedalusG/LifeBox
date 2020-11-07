@@ -8,7 +8,6 @@ const GridComment = (props) => {
             <div className="grid_comment_container">
                 <div>
                     <img src={profile_pic} />
-                    <div>spacer</div>
                 </div>
                 <div>
                     <div>{username}</div>
