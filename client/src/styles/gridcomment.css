@@ -6,11 +6,19 @@
 .gridcomment_row {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 .gridcomment_column {
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
+}
+
+.gridcomment_column_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 5px;
     margin-left: 5px;
 }
@@ -26,8 +34,15 @@
 .gridcomment_username {
     font-family: "OrbitronSemiBold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     border-bottom: 3px solid #36bb6e;
+    width: 36vw;
 }
 
 .gridcomment_content {
+    margin-top: 5px;
+}
 
+.gridcomment_sidebar {
+    border: 1px solid lightgreen;
+    width: 0px;
+    height: 20px;
 }

@@ -7,7 +7,10 @@ const GridComment = (props) => {
         <>
             <div className="gridcomment_container">
                 <div className="gridcomment_row">
-                    <img className="gridcomment_user_image" src={profile_pic} />
+                    <div className="gridcomment_column_image">
+                        <img className="gridcomment_user_image" src={profile_pic} />
+                        <div className="gridcomment_sidebar" />
+                    </div>
                     <div className="gridcomment_column">
                         <div className="gridcomment_username">{username}</div>
                         <div className="gridcomment_content">{content}</div>
