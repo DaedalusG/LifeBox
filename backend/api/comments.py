@@ -53,14 +53,6 @@ def getComments():
 
         comments_data.append(comment_props)
 
-        # safe = user_info.to_safe_object()
-        # comment_dict = comment.to_dict()
-        # comment_dict["user"] = safe
-        # comments_data.append(comment_dict)
-
     print(comments_data)
-
-    # comments_dict = [comment.to_dict() for comment in comments]
-    # print('comments --------->', comments_dict)
 
     return jsonify(message='grabbed comments', comments=comments_data), 200

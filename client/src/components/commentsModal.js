@@ -49,9 +49,11 @@ const CommentsModal = (props) => {
             body: JSON.stringify({
                 id: loadGrid.grid_id
             })
+
         })
 
         const res = await response.json()
+        setGridComments(res.comments)
         console.log(res.message)
     }
 
