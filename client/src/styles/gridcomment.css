@@ -40,7 +40,8 @@
 
 .gridcomment_content {
     margin-top: 5px;
-    max-width: 375px;
+    max-width: 365px;
+    margin-left: 10px;
 }
 
 .gridcomment_sidebar {
