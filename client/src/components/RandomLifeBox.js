@@ -4,12 +4,6 @@ import React, { useEffect } from 'react';
 const RandomLifeBox = () => {
     const canvasRef = React.useRef(null);
 
-    //restarts on change of viewport
-    window.addEventListener("resize", handleResize)
-    //stops and restarts game on change of viewport
-    function handleResize() {
-        window.location.reload()
-    }
 
     useEffect(() => {
         let canvas = canvasRef.current;
@@ -23,6 +17,14 @@ const RandomLifeBox = () => {
         let grid = buildGrid();
         requestAnimationFrame(update);
 
+        //restarts on change of viewport
+        window.addEventListener("resize", handleResize)
+        //stops and restarts game on change of viewport
+        function handleResize() {
+            // window.location.reload()
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
         //--------------functions----------------
 
