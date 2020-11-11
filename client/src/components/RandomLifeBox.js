@@ -18,7 +18,12 @@ const RandomLifeBox = () => {
         requestAnimationFrame(update);
 
         //restarts on change of viewport
-        window.addEventListener("resize", handleResize)
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let grid = buildGrid();
+            requestAnimationFrame(update);
+        })
         //stops and restarts game on change of viewport
         function handleResize() {
             // window.location.reload()
