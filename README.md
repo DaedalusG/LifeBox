@@ -16,4 +16,6 @@ Complexity and Chaos Theory are concepts I wasn't exposed to until college, but,
 
 Users of LifeBox may create a profile and begin creating and saving to LifeBox initial conditions of a grid. Users can then comment on grids and search the app for grids other users have created. A minimal set of instructions is provided, and in the future more features to gamify the app may be added.
 
+![LifeBox Explore](client/public/LifeBoxExplore.gif)
+
 ## Application Architecture & Technologies Used
