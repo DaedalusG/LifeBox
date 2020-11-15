@@ -8,3 +8,6 @@
 - [Front-end Overview](#front-end-overview)
 - [Back-end Overview](#back-end-overview)
 - [Moving Forward](#moving-forward)
+
+## LifeBox Overview
+LifeBox is a 
