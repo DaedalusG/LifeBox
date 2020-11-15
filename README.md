@@ -3,3 +3,8 @@
 # Welcome to [LifeBox](https://life-box.herokuapp.com/)
 
 ## Table of Contents:
+- [LifeBox Overview](#lifebox-overview)
+- [Application Architecture & Technologies Used](#application-architecture)
+- [Front-end Overview](#front-end-overview)
+- [Back-end Overview](#back-end-overview)
+- [Moving Forward](#moving-forward)
