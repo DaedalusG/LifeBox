@@ -1,4 +1,4 @@
-<img src="https://lh3.googleusercontent.com/0EIYlnUWH4OvT1zWl8euV32KIkETkp_XJhmhYOdHRIAFP12FKvB5ktXyD_UE-98BxDStKZ2NZK7ekwo6pYljLBypzqul_H91Wmp7JMielb-p0dEZQApdDNNFTx3ITfP3eM19lz7izA=w2400" align=center alt=LifeBoxLogo/>
+<img src="https://lh3.googleusercontent.com/leCiYQX-bheA2_0h00QsLE6wV7cIzjiUc8Dc8_PoAZoeEvMLa0pqsTBaCP8_OmS1Sma7yBEbx2fujqMVTBKvz3B-E_vFCwx5hlo9N5Bb-DhNhIAHw3AXd_JbBWRlO30FOSZAjw0M5Q=w2400" align=center alt=LifeBoxLogo/>
 
 # Welcome to [LifeBox](https://life-box.herokuapp.com/)
 
