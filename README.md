@@ -1,1 +1,1 @@
-<img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
+<img src="https://lh3.googleusercontent.com/MOqT7kX4R6mVq-k6whFYqZuukfe2ysWz2Y-rOXOigvLcuSS_7MBGcYuBCNBGPCgHms_FyqZkXzyJUYvWBKiqXes9Zo-L_u5lNnU1hF2r6buI-xtNV-REnbRy_ytgD-_dTKTjF4BCww=w2400" align=center alt=LifeBoxLogo/>
