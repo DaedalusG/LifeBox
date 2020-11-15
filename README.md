@@ -1,1 +1,1 @@
-Test Readme
+<img src="https://i.imgur.com/HmQtgf3.jpg" align=center alt=MoneyPitLogo/>
