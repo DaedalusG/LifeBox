@@ -33,5 +33,6 @@ DrawLife runs the user interface. It renders initially as a grid with a hud for 
 The Game of life relies on a nested loops to iterate over each cell in the current grid (stored in DrawLifes state) and create a new grid according to the rules of GOL. The new grid is then saved to state and rendered as a new instance via the canvas API. This process is started and stopped by a system of useEffect hooks which are chained together by dependencies built into DrawLife and Controls state, this is mainly to overcome the trouble of having an initial instance of a canvas and grid in state. The canvas has built in event listeners on each cell, allowing users to create their own iterations of the grid.
 
 ## Controls
+The Controls component acts a a navbar. It incorperates the main functions a search function which queries the database by grid name searching for saved grids. When selected the grid is rendered and the DrawLife component enables a load button rather than the randomization button. Users also have access to the ability to save their current grid to the database. When a grid has been loaded users also have access to a comments modal associated with each grid. 
 
 
