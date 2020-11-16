@@ -30,6 +30,8 @@ RandomLifeBox was the first component constructed and acted as a proof of concep
 ## DrawLife
 DrawLife runs the user interface. It renders initially as a grid with a hud for controling properties of the instance of GOL. Users may control the grid dimensions, the rate of board generation, and have the option to randomly populate the grid, or reload an initial grid condition when a saved grid is currently loaded.
 
-The Game of life relies on a nested loops to iterate over each cell in the current grid (stored in DrawLifes state) and create a new grid according to the rules of GOL. The new grid is then saved to state and rendered as a new instance via the canvas API. This process is started and stopped by a system of useEffect hooks which are chained together by dependencies built into DrawLife and Controls state. 
+The Game of life relies on a nested loops to iterate over each cell in the current grid (stored in DrawLifes state) and create a new grid according to the rules of GOL. The new grid is then saved to state and rendered as a new instance via the canvas API. This process is started and stopped by a system of useEffect hooks which are chained together by dependencies built into DrawLife and Controls state, this is mainly to overcome the trouble of having an initial instance of a canvas and grid in state. The canvas has built in event listeners on each cell, allowing users to create their own iterations of the grid.
+
+## Controls
 
 
