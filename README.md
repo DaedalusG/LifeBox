@@ -58,7 +58,9 @@ setLoadGrid(
 The above code serves to illustrate the way json is used to to store the nested array representing a grid initial condition, and other information pertinent to displaying a grid. The loadGrid state variable is used to represent a saved grid thats been selected for editing.
 
 # Deployment
-This application has been deployed to Heroku using a docker file. Further the application's database can be seeded with some initial users, comments, and grids, via running a file called database.py. To run the application locally one must create an instance of the database in postgreSQL with the name lifebox_db and owner postgreSQL user lifebox. The docker file takes care of initializing a database for you upon deployment. 
+This application has been deployed to Heroku using a docker file. Further the application's database can be seeded with some initial users, comments, and grids, via running a file called database.py. To run the application locally one must create an instance of the database in postgreSQL with the name lifebox_db and owner postgreSQL user lifebox. The docker file takes care of initializing a database for you upon deployment.
+
+To start the application locally, create the database in postgreSQL as described above. Open the backend and run the command pipenv shell, then flask run. Then enter the client directory and run react with npm start.
 
 # Moving Forward
 LifeBox become ineffeciant when the user selects large grids. This is because the algorithm to generate a grid has a polynomial time complexity due to a bunch of nested for loops. Recently I've been exploring changing the algorithm to use an array storing only grid coordinates of live cells. This method would vastly improve the generation algorithms efficiancy, but will require significant rewriting of the applications component states. 
