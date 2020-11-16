@@ -19,4 +19,9 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 ![LifeBox Explore](client/public/LifeBoxExplore.gif)
 
 ## Application Architecture & Technologies Used
-LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask
+LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. 
+
+# Front-end Overview
+LifeBox has three main react components, DrawLife, Controls, and RandomLifeBox. 
+
+RandomLifeBox was the first component constructed and acted as a proof of concept for an implementation of Conway's Game Of Life. The entire game is built and run within a useEffect hook. 
