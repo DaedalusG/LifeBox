@@ -19,4 +19,4 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 ![LifeBox Explore](client/public/LifeBoxExplore.gif)
 
 ## Application Architecture & Technologies Used
-LifeBox was built using react with hooks and the Canvas API. The application relies on a postgreSQL database to store and serve user inforamtion and grids. These assets are served by a flask server. 
+LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask
