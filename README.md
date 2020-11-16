@@ -5,8 +5,8 @@
 ## Table of Contents:
 - [LifeBox Overview](#lifebox-overview)
 - [Application Architecture & Technologies Used](#application-architecture)
-- [Frontend Overview](#front-end-overview)
-- [Backend Overview](#back-end-overview)
+- [Frontend Overview](#frontend-overview)
+- [Backend Overview](#backend-overview)
 - [Moving Forward](#moving-forward)
 
 ## LifeBox Overview
