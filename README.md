@@ -19,9 +19,17 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 ![LifeBox Explore](client/public/LifeBoxExplore.gif)
 
 ## Application Architecture & Technologies Used
-LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. 
+LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. This application makes exptensive use of React Portals and the npm package react-draggable.
 
 # Front-end Overview
 LifeBox has three main react components, DrawLife, Controls, and RandomLifeBox. 
 
-RandomLifeBox was the first component constructed and acted as a proof of concept for an implementation of Conway's Game Of Life. The entire game is built and run within a useEffect hook. 
+## RandomLifeBox
+RandomLifeBox was the first component constructed and acted as a proof of concept for an implementation of Conway's Game Of Life. The entire game is built and run within a useEffect hook. The game uses a randomly generated initial condition and a grid of fixed dimensions. RandomLifeBox is now primarily used as a background screen for the Login page.
+
+## DrawLife
+DrawLife runs the user interface. It renders initially as a grid with a hud for controling properties of the instance of GOL. Users may control the grid dimensions, the rate of board generation, and have the option to randomly populate the grid, or reload an initial grid condition when a saved grid is currently loaded.
+
+The Game of life relies on a nested loops to iterate over each cell in the current grid (stored in DrawLifes state) and create a new grid according to the rules of GOL. The new grid is then saved to state and rendered as a new instance via the canvas API. This process is started and stopped by a system of useEffect hooks which are chained together by dependencies built into DrawLife and Controls state. 
+
+
