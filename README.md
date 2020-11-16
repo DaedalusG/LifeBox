@@ -5,8 +5,8 @@
 ## Table of Contents:
 - [LifeBox Overview](#lifebox-overview)
 - [Application Architecture & Technologies Used](#application-architecture)
-- [Front-end Overview](#front-end-overview)
-- [Back-end Overview](#back-end-overview)
+- [Frontend Overview](#front-end-overview)
+- [Backend Overview](#back-end-overview)
 - [Moving Forward](#moving-forward)
 
 ## LifeBox Overview
@@ -21,7 +21,7 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 ## Application Architecture & Technologies Used
 LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. This application makes exptensive use of React Portals and the npm package react-draggable.
 
-# Front-end Overview
+# Frontend Overview
 LifeBox has three main react components, DrawLife, Controls, and RandomLifeBox. 
 
 ## RandomLifeBox
