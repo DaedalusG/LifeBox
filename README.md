@@ -7,6 +7,7 @@
 - [Application Architecture & Technologies Used](#application-architecture)
 - [Frontend Overview](#frontend-overview)
 - [Backend Overview](#backend-overview)
+- [Deployment](#deployment)
 - [Moving Forward](#moving-forward)
 
 ## LifeBox Overview
@@ -19,7 +20,7 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 ![LifeBox Explore](client/public/LifeBoxExplore.gif)
 
 ## Application Architecture
-LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. This application makes exptensive use of React Portals and the npm package react-draggable.
+LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask, and manipulated through an SQLAlchemy ORM. User authentication is handled with the flask_jwt_extended and bcrypt. This application makes exptensive use of React Portals and the npm package react-draggable.
 
 # Frontend Overview
 LifeBox has three main react components, DrawLife, Controls, and RandomLifeBox. 
@@ -37,3 +38,23 @@ The Controls component acts a a navbar. It incorperates the main functions a sea
 
 # Backend Overview
 <img src="https://lh3.googleusercontent.com/wLlM94y46sPYcq_XanGk9SuKade4X-MNL9liiDwXWXNMs3m0nOswqE_wW6NTKuT5_ppukPKF_q00j1GOTrTcVbW3fXIBUjNafPRfLjN4KWdqHJMq78rarWuG71IUnLCvE0NNORns2Q=w2400" align=center width=800px height=500px alt=LifeBoxDB/>
+
+The database for LifeBox is very simple and is well illustrated by the diagram above. However the grids table is notable for its grid_json attribute. The database stores grids and grid information in a json object set in state and then commited to the database. The json objects properties are not strictly maintained. 
+
+```
+const [loadGrid, setLoadGrid] = useState({ "name": undefined, "grid": null, "saved": false })
+
+setLoadGrid(
+            {
+                "name": grid.name,
+                "owner": grid.user_id,
+                "grid_id": grid.id,
+                "grid": grid.grid_json.grid,
+                "saved": true
+            }
+        )
+```
+
+The above code serves to illustrate the way json is used to to store the nested array representing a grid initial condition, and other information pertinent to displaying a grid. The loadGrid state variable is used to represent a saved grid thats been selected for editing.
+
+# Moving Forward
