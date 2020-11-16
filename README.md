@@ -18,7 +18,7 @@ Users of LifeBox may create a profile and begin creating and saving to LifeBox i
 
 ![LifeBox Explore](client/public/LifeBoxExplore.gif)
 
-## Application Architecture & Technologies Used
+## Application Architecture
 LifeBox was built using react components with hooks and the Canvas API. The application relies on a postgreSQL database served with flask. User authentication is handled with the flask_jwt_extended and bcrypt. This application makes exptensive use of React Portals and the npm package react-draggable.
 
 # Frontend Overview
