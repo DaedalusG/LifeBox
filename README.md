@@ -36,4 +36,4 @@ The Game of life relies on a nested loops to iterate over each cell in the curre
 The Controls component acts a a navbar. It incorperates the main functions a search function which queries the database by grid name searching for saved grids. When selected the grid is rendered and the DrawLife component enables a load button rather than the randomization button. Users also have access to the ability to save their current grid to the database. When a grid has been loaded users also have access to a comments modal associated with each grid, where they can submit new comments to the database. 
 
 # Backend Overview
-
+<img src="https://lh3.googleusercontent.com/wLlM94y46sPYcq_XanGk9SuKade4X-MNL9liiDwXWXNMs3m0nOswqE_wW6NTKuT5_ppukPKF_q00j1GOTrTcVbW3fXIBUjNafPRfLjN4KWdqHJMq78rarWuG71IUnLCvE0NNORns2Q=w2400" align=center width=800px height=500px alt=LifeBoxDB/>
