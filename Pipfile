@@ -26,6 +26,7 @@ alembic = "*"
 flask-migrate = "*"
 flask-login = "*"
 bcrypt = "*"
+newrelic = "*"
 
 [requires]
 python_version = "3.8"
