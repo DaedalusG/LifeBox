@@ -54,37 +54,33 @@ def login():
 def signup():
     data = request.get_json()
 
+    username = data['username']
+    email = data['email']
+    profile_pic = data['profile_pic']
+
+    if not username:
+        return jsonify(message="Username required"), 400
+    elif not email:
+        return jsonify(message='Email required'), 400
+    elif not (data['password'] == data['rePassword']):
+        return jsonify(message="Passwords must match"), 400
+
+    if not profile_pic:
+        return jsonify(message="error in profile pic upload")
+
     try:
-        username = data['username']
-        email = data['email']
-        profile_pic = data['profile_pic']
-
-        if not username:
-            return jsonify(message="Username required"), 400
-        elif not email:
-            return jsonify(message='Email required'), 400
-        elif not (data['password'] == data['rePassword']):
-            return jsonify(message="Passwords must match"), 400
-
-        if not profile_pic:
-            return jsonify(message="error in profile pic upload")
-
-        try:
-            hashed_password = set_password(data['password'])
-        except Exception:
-            return jsonify(message='Password required'), 400
-
-        user = User(
-            username=username,
-            email=email,
-            hashed_password=hashed_password,
-            profile_pic=profile_pic
-        )
-        db.session.add(user)
-        db.session.commit()
-
-        auth_token = create_access_token(identity={"username": user.username})
-        return jsonify(auth_token=auth_token), 200
-
+        hashed_password = set_password(data['password'])
     except Exception:
-        return jsonify(message="try failed"), 409
+        return jsonify(message='Password required'), 400
+
+    user = User(
+        username=username,
+        email=email,
+        hashed_password=hashed_password,
+        profile_pic=profile_pic
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    auth_token = create_access_token(identity={"username": user.username})
+    return jsonify(auth_token=auth_token), 200
