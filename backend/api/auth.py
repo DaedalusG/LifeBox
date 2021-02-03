@@ -27,31 +27,27 @@ def login():
     print('-------------------****------------------')
     print(data)
 
-    try:
-        username = data['username']
-        password = data['password']
+    username = data['username']
+    password = data['password']
 
-        if not username or not password:
-            return jsonify(message='Username and password required'), 400
-        # elif not password:
-        #     return jsonify(message='Password Required'), 400
+    if not username or not password:
+        return jsonify(message='Username and password required'), 400
+    # elif not password:
+    #     return jsonify(message='Password Required'), 400
 
-        user = User.query.filter_by(username=username).first()
-        if not user:
-            return jsonify(message='Username not found'), 400
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return jsonify(message='Username not found'), 400
 
-        verified = verify_password(password, user.hashed_password)
+    verified = verify_password(password, user.hashed_password)
 
-        if not verified:
-            # Error needs handling decision
-            return jsonify(message='Password verify failed'), 403
-        else:
-            auth_token = create_access_token(
-                identity={"username": user.username})
-        return jsonify(auth_token=auth_token), 200
-
-    except Exception:
-        return jsonify(message='Login failed'), 408
+    if not verified:
+        # Error needs handling decision
+        return jsonify(message='Password verify failed'), 403
+    else:
+        auth_token = create_access_token(
+            identity={"username": user.username})
+    return jsonify(auth_token=auth_token), 200
 
 
 @auth.route('/signup', methods=['POST'])
