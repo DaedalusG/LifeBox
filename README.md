@@ -11,7 +11,7 @@
 - [Moving Forward](#moving-forward)
 
 ## LifeBox Overview
-LifeBox is a platform meant for exploring and sharing ideas about Conways Game of Life. The Game of Life is a set of rules applied to a grid on cells, populated or unpopulated. Although the rules are simple and deterministic, the grids behavior over iterations of the rules is fundementally unpredictable. For this reason Conways Game of Life is a classic visual representation of a complex system. 
+LifeBox is a social media website meant for exploring and sharing ideas about Conway's Game of Life. The Game of Life is a set of rules applied to a grid of cells, populated or unpopulated. Although the rules are simple and deterministic, the grids behavior over iterations of the rules is fundementally unpredictable. For this reason Conway's Game of Life is a classic visual representation of a complex system. 
 
 Complexity and Chaos Theory are concepts I wasn't exposed to until college, but, the philosophical implications of complexity and emergence in systems, would have been inspirational to me in my adolesence. LifeBox was inspired as a way to give k-12 educators a way to get kids talking about the weirdness of mathematics with a simple and playful tool. 
 
@@ -26,7 +26,7 @@ LifeBox was built using react components with hooks and the Canvas API. The appl
 LifeBox has three main react components, DrawLife, Controls, and RandomLifeBox. 
 
 ## RandomLifeBox
-RandomLifeBox was the first component constructed and acted as a proof of concept for an implementation of Conway's Game Of Life. The entire game is built and run within a useEffect hook. The game uses a randomly generated initial condition and a grid of fixed dimensions. RandomLifeBox is now primarily used as a background screen for the Login page.
+RandomLifeBox was the first component built. It acted as a proof of concept for an implementation of Conway's Game Of Life. The entire game is built and run within a useEffect hook. The game uses a randomly generated initial condition and a grid of fixed dimensions. RandomLifeBox is now primarily used as a background screen for the Login page.
 
 ## DrawLife
 DrawLife runs the user interface. It renders initially as a grid with a hud for controling properties of the instance of GOL. Users may control the grid dimensions, the rate of board generation, and have the option to randomly populate the grid, or reload an initial grid condition when a saved grid is currently loaded.
